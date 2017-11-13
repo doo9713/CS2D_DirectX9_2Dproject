@@ -1,0 +1,204 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="소스 파일">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="헤더 파일">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="리소스 파일">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="App">
+      <UniqueIdentifier>{453a0085-22f6-4b87-a6ed-5c425d3f34c3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utility">
+      <UniqueIdentifier>{aa9fa08c-2d65-4081-9334-39faccecae10}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utility\FileIO">
+      <UniqueIdentifier>{a9ef27f9-3646-40a8-af9f-83303bc29b02}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utility\MathF">
+      <UniqueIdentifier>{dc23bcd1-138d-46b3-b1b5-24f648eddd11}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utility\Rtti">
+      <UniqueIdentifier>{db6410dd-f1e3-44e2-9994-62e9e44b16fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utility\DirectX">
+      <UniqueIdentifier>{e62438b2-2cef-4240-a402-48179f9df3ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utility\TimeF">
+      <UniqueIdentifier>{9053e4ca-5ba2-4f03-8b06-b9500547bb8c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utility\ETC">
+      <UniqueIdentifier>{8ef72ad0-a5b9-4c72-a88e-74334ca16196}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObj">
+      <UniqueIdentifier>{c0fd12f9-21f0-4804-8c36-b9e2058aba1f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObj\List">
+      <UniqueIdentifier>{79820e1c-d4cc-4772-a9cb-5fe056758f00}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Component">
+      <UniqueIdentifier>{c57580a8-9059-4bef-9c7f-30fb7c9cb461}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="App\Game">
+      <UniqueIdentifier>{1efbee15-d4ab-4691-b7ea-843146e8a493}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Component\AutoDestroy">
+      <UniqueIdentifier>{0f1381d7-74e0-4870-898c-ac62d71888a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Component\BoxCollider">
+      <UniqueIdentifier>{8a12513f-5332-4dc9-8122-6a919ebf1df4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Component\Move">
+      <UniqueIdentifier>{59761706-cc05-4412-90b0-6786e369002d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Component\SpriteRender">
+      <UniqueIdentifier>{0f0b5965-814b-43d2-a23a-5f15002176c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Component\Rigid">
+      <UniqueIdentifier>{8cdfc64f-c605-4256-8a83-e55385bbfebd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Component\UIButton">
+      <UniqueIdentifier>{91707b0d-201e-411d-8076-b7c601cd68c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utility\KeyF">
+      <UniqueIdentifier>{2a6a5497-53e3-452c-a248-42fb509c59ac}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Main.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="FileIO.cpp">
+      <Filter>Utility\FileIO</Filter>
+    </ClCompile>
+    <ClCompile Include="MathF.cpp">
+      <Filter>Utility\MathF</Filter>
+    </ClCompile>
+    <ClCompile Include="DirectX.cpp">
+      <Filter>Utility\DirectX</Filter>
+    </ClCompile>
+    <ClCompile Include="TimeF.cpp">
+      <Filter>Utility\TimeF</Filter>
+    </ClCompile>
+    <ClCompile Include="EtcF.cpp">
+      <Filter>Utility\ETC</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObj.cpp">
+      <Filter>GameObj</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObjList.cpp">
+      <Filter>GameObj\List</Filter>
+    </ClCompile>
+    <ClCompile Include="Component.cpp">
+      <Filter>Component</Filter>
+    </ClCompile>
+    <ClCompile Include="Rtti.cpp">
+      <Filter>Utility\Rtti</Filter>
+    </ClCompile>
+    <ClCompile Include="GameApp.cpp">
+      <Filter>App\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="App.cpp">
+      <Filter>App</Filter>
+    </ClCompile>
+    <ClCompile Include="AutoDestroy.cpp">
+      <Filter>Component\AutoDestroy</Filter>
+    </ClCompile>
+    <ClCompile Include="BoxCollider.cpp">
+      <Filter>Component\BoxCollider</Filter>
+    </ClCompile>
+    <ClCompile Include="Move.cpp">
+      <Filter>Component\Move</Filter>
+    </ClCompile>
+    <ClCompile Include="KeyF.cpp">
+      <Filter>Utility\KeyF</Filter>
+    </ClCompile>
+    <ClCompile Include="Rigid.cpp">
+      <Filter>Component\Rigid</Filter>
+    </ClCompile>
+    <ClCompile Include="SpriteRender.cpp">
+      <Filter>Component\SpriteRender</Filter>
+    </ClCompile>
+    <ClCompile Include="UIButton.cpp">
+      <Filter>Component\UIButton</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Defines.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Constant.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Macro.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="App.h">
+      <Filter>App</Filter>
+    </ClInclude>
+    <ClInclude Include="Utility.h">
+      <Filter>Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="FileIO.h">
+      <Filter>Utility\FileIO</Filter>
+    </ClInclude>
+    <ClInclude Include="MathF.h">
+      <Filter>Utility\MathF</Filter>
+    </ClInclude>
+    <ClInclude Include="Rtti.h">
+      <Filter>Utility\Rtti</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectX.h">
+      <Filter>Utility\DirectX</Filter>
+    </ClInclude>
+    <ClInclude Include="TimeF.h">
+      <Filter>Utility\TimeF</Filter>
+    </ClInclude>
+    <ClInclude Include="EtcF.h">
+      <Filter>Utility\ETC</Filter>
+    </ClInclude>
+    <ClInclude Include="UtilConstant.h">
+      <Filter>Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObj.h">
+      <Filter>GameObj</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObjList.h">
+      <Filter>GameObj\List</Filter>
+    </ClInclude>
+    <ClInclude Include="Component.h">
+      <Filter>Component</Filter>
+    </ClInclude>
+    <ClInclude Include="GameApp.h">
+      <Filter>App\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="AutoDestroy.h">
+      <Filter>Component\AutoDestroy</Filter>
+    </ClInclude>
+    <ClInclude Include="BoxCollider.h">
+      <Filter>Component\BoxCollider</Filter>
+    </ClInclude>
+    <ClInclude Include="Move.h">
+      <Filter>Component\Move</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyF.h">
+      <Filter>Utility\KeyF</Filter>
+    </ClInclude>
+    <ClInclude Include="Rigid.h">
+      <Filter>Component\Rigid</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteRender.h">
+      <Filter>Component\SpriteRender</Filter>
+    </ClInclude>
+    <ClInclude Include="UIButton.h">
+      <Filter>Component\UIButton</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
