@@ -7,7 +7,7 @@ UTILITY::CTextureList UTILITY::TEXTURE;
 UTILITY::CFont UTILITY::FONT;
 UTILITY::CShader UTILITY::SHADER;
 
-// 쉐이더 사용 그리기
+// 쉐이더를 사용해서 그리기
 void UTILITY::CDirectX::Draw(LPD3DXEFFECT Shader, MATRIX& World, const char* Key, UINT Cnt)
 {
 	auto Texture = TEXTURE.GetImage(Key, Cnt);
@@ -52,7 +52,7 @@ void UTILITY::CDirectX::Draw(MATRIX& World, const char* Key, UINT Cnt)
 	pDevice->DrawPrimitive(D3DPT_TRIANGLELIST, 0, 2);
 }
 
-// 초기화
+// 다이렉트X 초기화
 void UTILITY::CDirectX::Init(HWND Window, BOOL Full)
 {
 	p3D = Direct3DCreate9(D3D_SDK_VERSION);
@@ -84,7 +84,7 @@ void UTILITY::CDirectX::Init(HWND Window, BOOL Full)
 
 	pDevice->SetRenderState(D3DRS_LIGHTING, false);
 	pDevice->SetRenderState(D3DRS_ALPHABLENDENABLE, true);
-	pDevice->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_INVDESTALPHA);
+	pDevice->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_INVSRCALPHA);
 	pDevice->SetRenderState(D3DRS_SRCBLEND, D3DBLEND_SRCALPHA);
 
 	pDevice->CreateVertexBuffer(sizeof(Vertex) * 6, 0, Vertex::FVF, D3DPOOL_MANAGED, &VB, nullptr);
@@ -104,7 +104,7 @@ void UTILITY::CDirectX::Init(HWND Window, BOOL Full)
 	VB->Unlock();
 }
 
-// 파일에서 읽어오기
+// 파일에서 텍스쳐 읽어오기(기본 확장자 : png)
 void UTILITY::CTexture::LoadFromFile(const char* Path, const char* Elimit)
 {
 	FileFinder FF(Path, Elimit);
@@ -124,7 +124,7 @@ void UTILITY::CTexture::LoadFromFile(const char* Path, const char* Elimit)
 	});
 }
 
-// 이미지 로드
+// 이미지 로드(기본 확장자 : png)
 void UTILITY::CTextureList::Load(const char* Key, const char* Path, const char* Elimit)
 {
 	auto finder_name = Texture.find(Key);
@@ -135,7 +135,7 @@ void UTILITY::CTextureList::Load(const char* Key, const char* Path, const char* 
 	Texture.insert(std::make_pair(Key, tex));
 }
 
-// 키를 통해 이미지 읽어오기
+// 이미지 가져오기
 UTILITY::CTexture::Image* UTILITY::CTextureList::GetImage(const char* Key, UINT Cnt)
 {
 	auto finder_name = Texture.find(Key);
@@ -247,7 +247,7 @@ void UTILITY::CShader::OnLoad(const char* Key, const char* Path)
 	EffList.insert(std::make_pair(Key, Eff));
 }
 
-// 효과 가져오기
+// 이펙트 가져오기
 LPD3DXEFFECT UTILITY::CShader::GetEffect(const char* Key)
 {
 	auto finder_name = EffList.find(Key);

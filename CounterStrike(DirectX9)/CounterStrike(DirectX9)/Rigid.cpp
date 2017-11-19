@@ -5,15 +5,15 @@
 
 RTTILINK(CRigid, CComponent)
 
-bool CRigid::IsPrevIn(CGameObj * Other)
+bool CRigid::IsPrevIn(CGameObj* Other)
 {
 	for (auto obj : PrevCollision)
 		if (obj == Other)
-			return false;
-	return true;
+			return true;
+	return false;
 }
 
-bool CRigid::IsIn(CGameObj * Other)
+bool CRigid::IsIn(CGameObj* Other)
 {
 	for (auto obj : Collision)
 		if (obj == Other)

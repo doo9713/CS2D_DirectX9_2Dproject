@@ -1,8 +1,10 @@
 #pragma once
 
 class CGameObjList;
+class CAnimClipList;
 
 extern CGameObjList GAMEOBJ;
+extern CAnimClipList ANIMCLIP;
 extern HWND hWnd;
 
 constexpr UINT ScreenWidth = 1600;
@@ -15,6 +17,7 @@ enum TAG
 	Tag_Player,
 	Tag_Enemy,
 	Tag_Enviroment,
+	Tag_Effect,
 	Tag_End
 };
 

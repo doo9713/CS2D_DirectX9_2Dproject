@@ -1,6 +1,6 @@
 #include "FileIO.h"
 
-// 파일검색
+// 파일 검색
 void UTILITY::FileFinder::Find
 (
 	bool IsFolder,

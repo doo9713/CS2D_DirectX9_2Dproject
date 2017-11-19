@@ -30,7 +30,7 @@ bool CBoxCollider::LineSplit(const VECTOR3* ABox, const VECTOR3* BBox, MATRIX AW
 	return true;
 }
 
-void CBoxCollider::PushCheck(const VECTOR3 * Box, const VECTOR3 & Pivot, const VECTOR3 & OtherPrivot, CBoxCollider * Other)
+void CBoxCollider::PushCheck(const VECTOR3* Box, const VECTOR3& Pivot, const VECTOR3& OtherPrivot, CBoxCollider* Other)
 {
 	float AngleArray[4] =
 	{
@@ -52,39 +52,39 @@ void CBoxCollider::PushCheck(const VECTOR3 * Box, const VECTOR3 & Pivot, const V
 		CenterPos = CenterPos - Pivot;
 		CGameObj* Temp = &Other->gameObj;
 		while (Temp->Parent) Temp = Temp->Parent;
-		Temp->Position += CenterPos.Normalize() * TIME.Delta * 1000;
+		Temp->Position += CenterPos.Normalize() * TIME.Delta * 200;
 		return;
 	}
-	if (AngleArray[(Low - 1) % 4] > TargetAngle || TargetAngle > AngleArray[(Low + 0) % 4])
+	if (AngleArray[(Low - 1) % 4] > TargetAngle && TargetAngle > AngleArray[(Low + 0) % 4])
 	{
 		CenterPos = (Box[(Low - 1) % 4] + Box[(Low + 0) % 4]) * 0.5;
 		CenterPos = CenterPos - Pivot;
 		CGameObj* Temp = &Other->gameObj;
 		while (Temp->Parent) Temp = Temp->Parent;
-		Temp->Position += CenterPos.Normalize() * TIME.Delta * 1000;
+		Temp->Position += CenterPos.Normalize() * TIME.Delta * 200;
 		return;
 	}
-	if (AngleArray[(Low + 1) % 4] > TargetAngle || TargetAngle > AngleArray[(Low + 2) % 4])
+	if (AngleArray[(Low + 1) % 4] > TargetAngle && TargetAngle > AngleArray[(Low + 2) % 4])
 	{
 		CenterPos = (Box[(Low + 1) % 4] + Box[(Low + 2) % 4]) * 0.5;
 		CenterPos = CenterPos - Pivot;
 		CGameObj* Temp = &Other->gameObj;
 		while (Temp->Parent) Temp = Temp->Parent;
-		Temp->Position += CenterPos.Normalize() * TIME.Delta * 1000;
+		Temp->Position += CenterPos.Normalize() * TIME.Delta * 200;
 		return;
 	}
-	if (AngleArray[(Low + 2) % 4] > TargetAngle || TargetAngle > AngleArray[(Low - 1) % 4])
+	if (AngleArray[(Low + 2) % 4] > TargetAngle && TargetAngle > AngleArray[(Low - 1) % 4])
 	{
 		CenterPos = (Box[(Low + 2) % 4] + Box[(Low - 1) % 4]) * 0.5;
 		CenterPos = CenterPos - Pivot;
 		CGameObj* Temp = &Other->gameObj;
 		while (Temp->Parent) Temp = Temp->Parent;
-		Temp->Position += CenterPos.Normalize() * TIME.Delta * 1000;
+		Temp->Position += CenterPos.Normalize() * TIME.Delta * 200;
 		return;
 	}
 }
 
-void CBoxCollider::BoxPushBox(CBoxCollider * Other)
+void CBoxCollider::BoxPushBox(CBoxCollider* Other)
 {
 	if (Freez && Other->Freez)
 		return;
@@ -123,7 +123,7 @@ void CBoxCollider::BoxPushBox(CBoxCollider * Other)
 		PushCheck(OtherBox, OtherPivot, Pivot, this);
 }
 
-bool CBoxCollider::BoxToPoint(VECTOR3 & Point)
+bool CBoxCollider::BoxToPoint(VECTOR3& Point)
 {
 	VECTOR3 Box[4] =
 	{
@@ -142,7 +142,7 @@ bool CBoxCollider::BoxToPoint(VECTOR3 & Point)
 	return false;
 }
 
-bool CBoxCollider::BoxToBox(const CBoxCollider * Other)
+bool CBoxCollider::BoxToBox(const CBoxCollider* Other)
 {
 	VECTOR3 Box[4] =
 	{
@@ -170,7 +170,7 @@ bool CBoxCollider::BoxToBox(const CBoxCollider * Other)
 	return true;
 }
 
-CBoxCollider::CBoxCollider(CGameObj * Owner)
+CBoxCollider::CBoxCollider(CGameObj* Owner)
 	: CComponent(Owner), Freez(false), Center(0, 0, 0), Size(0, 0, 0)
 {
 }

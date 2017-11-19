@@ -32,7 +32,7 @@ void CGameObj::_SetLayer(LAYER layer)
 	GAMEOBJ.LayerList[layer].push_back(this);
 }
 
-void CGameObj::_SetParent(CGameObj * parent)
+void CGameObj::_SetParent(CGameObj* parent)
 {
 	if (this->parent)
 	{
@@ -132,7 +132,7 @@ void CGameObj::Destroy(CGameObj& obj)
 	}
 }
 
-bool CGameObj::SameParent(CGameObj * Other)
+bool CGameObj::SameParent(CGameObj* Other)
 {
 	CGameObj* My = this;
 	while (My->parent) My = My->parent;

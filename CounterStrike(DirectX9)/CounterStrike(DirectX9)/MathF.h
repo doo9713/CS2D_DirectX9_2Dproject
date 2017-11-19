@@ -21,6 +21,11 @@ namespace UTILITY
 		{
 			return *this;
 		}
+		const VECTOR3 operator- (VECTOR3 other) const
+		{
+			VECTOR3 result((*this).x - other.x, (*this).y - other.y, (*this).z - other.z);
+			return result;
+		}
 
 		float Length() const
 		{

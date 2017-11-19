@@ -12,7 +12,7 @@ void CAutoDestroy::Start()
 	AddInvoke(CF(Auto), 0.1);
 }
 
-CAutoDestroy::CAutoDestroy(CGameObj * Owner)
+CAutoDestroy::CAutoDestroy(CGameObj* Owner)
 	: CComponent(Owner)
 {
 }

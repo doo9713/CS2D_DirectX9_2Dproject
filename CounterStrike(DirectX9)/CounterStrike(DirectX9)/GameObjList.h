@@ -19,6 +19,9 @@ public :
 public :
 	CGameObj* AddGameObj(const char* name = "GameObj", TAG tag = Tag_Default, LAYER layer = Layer_Default);
 	CGameObj* AddGameObj(CGameObj* obj);
+	CGameObj* FindGameObj(const char* name);
+	CGameObj* FindGameObj(const char* name, TAG tag);
+	CGameObj* FindGameObj(const char* name, LAYER layer);
 public :
 	CGameObjList();
 	CGameObjList(const CGameObjList&) = delete;

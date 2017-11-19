@@ -2,7 +2,7 @@
 #include "MathF.h"
 #include "Constant.h"
 
-// 최소값 반환
+// 최소값 찾기
 float UTILITY::MinList(std::initializer_list<float> min)
 {
 	float result = min.begin()[0];
@@ -14,7 +14,7 @@ float UTILITY::MinList(std::initializer_list<float> min)
 	return result;
 }
 
-// 최대값 반환
+// 최대값 찾기
 float UTILITY::MaxList(std::initializer_list<float> max)
 {
 	float result = max.begin()[0];
@@ -26,7 +26,7 @@ float UTILITY::MaxList(std::initializer_list<float> max)
 	return result;
 }
 
-// 최소값 인덱스 반환
+// 최소값 인덱스 찾기
 int UTILITY::MinIndex(std::initializer_list<float> min)
 {
 	int Idx = 0;
@@ -43,7 +43,7 @@ int UTILITY::MinIndex(std::initializer_list<float> min)
 	return Idx;
 }
 
-// 최대값 인덱스 반환
+// 최대값 인덱스 찾기
 int UTILITY::MaxIndex(std::initializer_list<float> max)
 {
 	int Idx = 0;
@@ -61,8 +61,9 @@ int UTILITY::MaxIndex(std::initializer_list<float> max)
 }
 
 std::mt19937_64 Engine;
+std::random_device Dev;
 
-// 난수 출력
+// 정수 난수 출력
 int UTILITY::Random(int Min, int Max)
 {
 	std::random_device Dev;
@@ -71,16 +72,15 @@ int UTILITY::Random(int Min, int Max)
 	return Sub(Engine);
 }
 
-// 난수 출력
+// 실수 난수 출력
 double UTILITY::Random(double Min, double Max)
 {
-	std::random_device Dev;
 	Engine.seed(Dev());
 	std::uniform_real_distribution<double> Sub(Min, Max);
 	return Sub(Engine);
 }
 
-// 마우스의 좌표를 DirectX 좌표계로 전환
+// 마우스 좌표를 다이렉트 좌표계로 변환
 UTILITY::VECTOR3 UTILITY::GetMousePosition()
 {
 	POINT pt;

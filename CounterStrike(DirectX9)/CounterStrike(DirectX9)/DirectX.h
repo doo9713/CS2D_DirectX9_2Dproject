@@ -24,7 +24,7 @@ namespace UTILITY
 			MATRIX mat;
 			pDevice->SetTransform(D3DTS_VIEW, &mat.Move(-x, -y));
 		}
-		// 카메라 이동(백터)
+		// 벡터를 사용한 카메라 이동
 		void Camera(const VECTOR3& Pos)
 		{
 			Camera(Pos.x, Pos.y);
@@ -40,7 +40,7 @@ namespace UTILITY
 		{
 			pDevice->Clear(0, nullptr,
 				D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER | D3DCLEAR_STENCIL,
-				D3DCOLOR_ARGB(255, 0, 0, 0),
+				D3DCOLOR_ARGB(255, 255, 255, 0),
 				1.0f, 0);
 			pDevice->BeginScene();
 		}

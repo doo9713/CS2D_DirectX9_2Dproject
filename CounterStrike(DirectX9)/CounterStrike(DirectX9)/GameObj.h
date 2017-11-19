@@ -17,6 +17,7 @@ private :
 	list<CComponent*> component;
 	list<CGameObj*> child;
 public :
+	VECTOR3 Center;
 	VECTOR3 Position;
 	VECTOR3 Scale;
 	FLOAT Angle;
@@ -33,13 +34,14 @@ public :
 	CGameObj* _GetParent() { return parent; }
 	MATRIX _GetWorld() const
 	{
-		MATRIX mAngle, mPosition, mScale;
+		MATRIX mAngle, mPosition, mScale, mCenter, mAround;
+		mCenter.Move(Center);
 		mScale.Scale(Scale);
 		mPosition.Move(Position);
 		mAngle.Rotation(Angle);
 		if (parent)
-			return mScale * mAngle * mPosition * parent->World;
-		return mScale * mAngle * mPosition;
+			return mCenter * mScale * mAngle * mPosition * parent->World;
+		return mCenter * mScale * mAngle * mPosition;
 	}
 public :
 	void _SetName(string name) 

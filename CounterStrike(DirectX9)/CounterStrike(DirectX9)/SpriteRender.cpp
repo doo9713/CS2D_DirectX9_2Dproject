@@ -56,7 +56,7 @@ void CSpriteRender::Render()
 }
 
 CSpriteRender::CSpriteRender(CGameObj* Owner)
-	: CComponent(Owner)
+	: CComponent(Owner), Page(0)
 {
 }
 

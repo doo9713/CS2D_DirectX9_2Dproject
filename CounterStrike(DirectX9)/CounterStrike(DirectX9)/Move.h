@@ -5,8 +5,8 @@
 class CMove : public CComponent
 {
 	RTTICHECK
-public :
-	void Update();
+protected :
+	int Speed;
 public :
 	CMove(CGameObj* Owner);
 	~CMove();

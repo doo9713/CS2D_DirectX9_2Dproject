@@ -40,9 +40,6 @@
     <Filter Include="GameObj">
       <UniqueIdentifier>{c0fd12f9-21f0-4804-8c36-b9e2058aba1f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="GameObj\List">
-      <UniqueIdentifier>{79820e1c-d4cc-4772-a9cb-5fe056758f00}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Component">
       <UniqueIdentifier>{c57580a8-9059-4bef-9c7f-30fb7c9cb461}</UniqueIdentifier>
     </Filter>
@@ -70,6 +67,48 @@
     <Filter Include="Utility\KeyF">
       <UniqueIdentifier>{2a6a5497-53e3-452c-a248-42fb509c59ac}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Component\Bullet">
+      <UniqueIdentifier>{45c2c8cf-771a-4089-95b8-36b56dcc8ef3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Component\Animation">
+      <UniqueIdentifier>{e57a5d55-4b89-48b8-843a-3fb70edddd45}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AnimClip">
+      <UniqueIdentifier>{e7969678-a8bb-4780-99bd-57767a98cd9c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AnimClip\AnimClipList">
+      <UniqueIdentifier>{5c376efd-189b-451b-81f6-1eb594ac14a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Component\Effect">
+      <UniqueIdentifier>{3ff0c7bc-9968-42c6-a703-b4e5254e919e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Component\Effect\GunFireEffect">
+      <UniqueIdentifier>{41b70067-0a1d-4501-b579-7ed8e87bc937}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Component\Controller">
+      <UniqueIdentifier>{56f10a68-c6b3-4866-9fd1-69a443824798}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Component\Controller\PlayerController">
+      <UniqueIdentifier>{a432e2a9-94a5-430b-b8dc-909ea68f659b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Component\Move\LeftMove">
+      <UniqueIdentifier>{ced3af64-8ac3-4f62-896c-01feca2af338}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Component\Move\RightMove">
+      <UniqueIdentifier>{76286954-0c06-49e1-bfb0-e03293e60fc0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Component\Move\UpMove">
+      <UniqueIdentifier>{f51bf384-4fc5-48f0-8d66-1068cb7463b2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Component\Move\DownMove">
+      <UniqueIdentifier>{68ac699f-ebdb-4acf-90b0-9c195516434c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObj\GameObjList">
+      <UniqueIdentifier>{79820e1c-d4cc-4772-a9cb-5fe056758f00}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Component\Controller\EnemyController">
+      <UniqueIdentifier>{9a330b92-18cd-4321-b33c-56c1461862a1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -94,7 +133,7 @@
       <Filter>GameObj</Filter>
     </ClCompile>
     <ClCompile Include="GameObjList.cpp">
-      <Filter>GameObj\List</Filter>
+      <Filter>GameObj\GameObjList</Filter>
     </ClCompile>
     <ClCompile Include="Component.cpp">
       <Filter>Component</Filter>
@@ -128,6 +167,45 @@
     </ClCompile>
     <ClCompile Include="UIButton.cpp">
       <Filter>Component\UIButton</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet.cpp">
+      <Filter>Component\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="Animation.cpp">
+      <Filter>Component\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimClip.cpp">
+      <Filter>AnimClip</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimClipList.cpp">
+      <Filter>AnimClip\AnimClipList</Filter>
+    </ClCompile>
+    <ClCompile Include="EffectEvent.cpp">
+      <Filter>Component\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="GunFireEffect.cpp">
+      <Filter>Component\Effect\GunFireEffect</Filter>
+    </ClCompile>
+    <ClCompile Include="Controller.cpp">
+      <Filter>Component\Controller</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerController.cpp">
+      <Filter>Component\Controller\PlayerController</Filter>
+    </ClCompile>
+    <ClCompile Include="RightMove.cpp">
+      <Filter>Component\Move\RightMove</Filter>
+    </ClCompile>
+    <ClCompile Include="UpMove.cpp">
+      <Filter>Component\Move\UpMove</Filter>
+    </ClCompile>
+    <ClCompile Include="DownMove.cpp">
+      <Filter>Component\Move\DownMove</Filter>
+    </ClCompile>
+    <ClCompile Include="LeftMove.cpp">
+      <Filter>Component\Move\LeftMove</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyController.cpp">
+      <Filter>Component\Controller\EnemyController</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -171,7 +249,7 @@
       <Filter>GameObj</Filter>
     </ClInclude>
     <ClInclude Include="GameObjList.h">
-      <Filter>GameObj\List</Filter>
+      <Filter>GameObj\GameObjList</Filter>
     </ClInclude>
     <ClInclude Include="Component.h">
       <Filter>Component</Filter>
@@ -199,6 +277,45 @@
     </ClInclude>
     <ClInclude Include="UIButton.h">
       <Filter>Component\UIButton</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet.h">
+      <Filter>Component\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="Animation.h">
+      <Filter>Component\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimClip.h">
+      <Filter>AnimClip</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimClipList.h">
+      <Filter>AnimClip\AnimClipList</Filter>
+    </ClInclude>
+    <ClInclude Include="EffectEvent.h">
+      <Filter>Component\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="GunFireEffect.h">
+      <Filter>Component\Effect\GunFireEffect</Filter>
+    </ClInclude>
+    <ClInclude Include="Controller.h">
+      <Filter>Component\Controller</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerController.h">
+      <Filter>Component\Controller\PlayerController</Filter>
+    </ClInclude>
+    <ClInclude Include="RightMove.h">
+      <Filter>Component\Move\RightMove</Filter>
+    </ClInclude>
+    <ClInclude Include="UpMove.h">
+      <Filter>Component\Move\UpMove</Filter>
+    </ClInclude>
+    <ClInclude Include="DownMove.h">
+      <Filter>Component\Move\DownMove</Filter>
+    </ClInclude>
+    <ClInclude Include="LeftMove.h">
+      <Filter>Component\Move\LeftMove</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyController.h">
+      <Filter>Component\Controller\EnemyController</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
