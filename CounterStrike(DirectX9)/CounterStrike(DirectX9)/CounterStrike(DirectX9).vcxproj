@@ -166,7 +166,6 @@
     <ClCompile Include="GameApp.cpp" />
     <ClCompile Include="GameObj.cpp" />
     <ClCompile Include="GameObjList.cpp" />
-    <ClCompile Include="GunFireEffect.cpp" />
     <ClCompile Include="KeyF.cpp" />
     <ClCompile Include="LeftMove.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -202,7 +201,6 @@
     <ClInclude Include="GameApp.h" />
     <ClInclude Include="GameObj.h" />
     <ClInclude Include="GameObjList.h" />
-    <ClInclude Include="GunFireEffect.h" />
     <ClInclude Include="KeyF.h" />
     <ClInclude Include="LeftMove.h" />
     <ClInclude Include="Macro.h" />

@@ -16,8 +16,10 @@ enum TAG
 	Tag_Default,
 	Tag_Player,
 	Tag_Enemy,
+	Tag_Bullet,
 	Tag_Enviroment,
 	Tag_Effect,
+	Tag_UI,
 	Tag_End
 };
 
@@ -25,9 +27,10 @@ enum LAYER
 {
 	Layer_Default,
 	Layer_Background,
-	Layer_Enviroment,
+	Layer_EnviromentDown,
 	Layer_Character,
 	Layer_Effect,
+	Layer_EnviromentUp,
 	Layer_UI,
 	Layer_End
 };

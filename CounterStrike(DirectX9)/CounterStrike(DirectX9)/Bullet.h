@@ -8,6 +8,7 @@ private :
 	FLOAT Angle;
 public :
 	VECTOR3 Dir;
+	CGameObj* Shooter;
 public :
 	void Update();
 	void OnCollisionEnter(CGameObj* Other);

@@ -56,7 +56,7 @@ void CSpriteRender::Render()
 }
 
 CSpriteRender::CSpriteRender(CGameObj* Owner)
-	: CComponent(Owner), Page(0)
+	: CComponent(Owner), Page(0), ColorAdd(0, 0, 0, 0), ColorMul(1, 1, 1, 1), ShaderKey(""), MosaicLevel(0), Twist(0), ColorRemove(-1, -1, -1, -1)
 {
 }
 

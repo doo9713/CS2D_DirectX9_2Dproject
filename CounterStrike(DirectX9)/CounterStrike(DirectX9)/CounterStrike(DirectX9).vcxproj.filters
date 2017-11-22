@@ -82,9 +82,6 @@
     <Filter Include="Component\Effect">
       <UniqueIdentifier>{3ff0c7bc-9968-42c6-a703-b4e5254e919e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Component\Effect\GunFireEffect">
-      <UniqueIdentifier>{41b70067-0a1d-4501-b579-7ed8e87bc937}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Component\Controller">
       <UniqueIdentifier>{56f10a68-c6b3-4866-9fd1-69a443824798}</UniqueIdentifier>
     </Filter>
@@ -182,9 +179,6 @@
     </ClCompile>
     <ClCompile Include="EffectEvent.cpp">
       <Filter>Component\Effect</Filter>
-    </ClCompile>
-    <ClCompile Include="GunFireEffect.cpp">
-      <Filter>Component\Effect\GunFireEffect</Filter>
     </ClCompile>
     <ClCompile Include="Controller.cpp">
       <Filter>Component\Controller</Filter>
@@ -292,9 +286,6 @@
     </ClInclude>
     <ClInclude Include="EffectEvent.h">
       <Filter>Component\Effect</Filter>
-    </ClInclude>
-    <ClInclude Include="GunFireEffect.h">
-      <Filter>Component\Effect\GunFireEffect</Filter>
     </ClInclude>
     <ClInclude Include="Controller.h">
       <Filter>Component\Controller</Filter>

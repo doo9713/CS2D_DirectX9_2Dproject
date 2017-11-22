@@ -10,7 +10,7 @@ void CBullet::Update()
 
 void CBullet::OnCollisionEnter(CGameObj* Other)
 {
-	if (Other->Tag != Tag_Player)
+	if (Other != Shooter)
 		Destroy(gameObj);
 }
 
