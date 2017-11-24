@@ -96,7 +96,7 @@ void CEnemyController::OnCollisionEnter(CGameObj* Other)
 }
 
 CEnemyController::CEnemyController(CGameObj* Owner)
-	: CController(Owner), Target(nullptr), Health(100)
+	: CController(Owner), Target(nullptr)
 {
 }
 

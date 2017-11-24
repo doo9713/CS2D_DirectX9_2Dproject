@@ -78,11 +78,15 @@ void CPlayerController::Start()
 
 void CPlayerController::Update()
 {
+	/* 카메라 이동 */
+	DRX.Camera(gameObj.Position);
+
 	/* 플래이어가 마우스 좌표를 바라봄 */
 	VECTOR3 Mouse = GetMousePosition();
 	MATRIX Matrix;
 	DRX->GetTransform(D3DTS_VIEW, &Matrix);	// 게임 맵 전체 좌표 기준으로 맞춤
-	Mouse.TransformCoord(Matrix);
+	Mouse.x -= Matrix._41;
+	Mouse.y -= Matrix._42;
 	gameObj.Angle = Angle(Mouse - gameObj.Position);
 
 	/* 움직임 시작 */
@@ -283,7 +287,7 @@ void CPlayerController::OnCollisionEnter(CGameObj * Other)
 }
 
 CPlayerController::CPlayerController(CGameObj* Owner)
-	: CController(Owner), Time(0), ActionTime(1), Weapon(Weapon_ShotGun), Anim(nullptr), Health(100), Armor(100), IsReloading(false)
+	: CController(Owner), Time(0), ActionTime(1), Weapon(Weapon_ShotGun), Anim(nullptr), Armor(100), IsReloading(false)
 {
 	HealthPos[0] = VECTOR3(-670, -420);
 	HealthPos[1] = VECTOR3(-700, -420);
@@ -310,6 +314,12 @@ CPlayerController::CPlayerController(CGameObj* Owner)
 
 CPlayerController::~CPlayerController()
 {
+}
+
+void CPlayerController::AddBullet()
+{
+	TotalBullet[Weapon_AutoGun] += 60;
+	TotalBullet[Weapon_ShotGun] += 10;
 }
 
 void CPlayerController::WeaponChange(WEAPON change)

@@ -106,6 +106,18 @@
     <Filter Include="Component\Controller\EnemyController">
       <UniqueIdentifier>{9a330b92-18cd-4321-b33c-56c1461862a1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Component\Item">
+      <UniqueIdentifier>{b00fa987-8140-4f7d-8692-ed4d25192771}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Component\Item\HealthItem">
+      <UniqueIdentifier>{5b6de14c-ed1b-4341-95ce-691e61ba233e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Component\Item\ArmorItem">
+      <UniqueIdentifier>{3cd46cae-de3b-427e-b2fc-a0487152395c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Component\Item\BulletItem">
+      <UniqueIdentifier>{1d336734-a5ac-4177-bdf8-9c96235ade0b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -200,6 +212,18 @@
     </ClCompile>
     <ClCompile Include="EnemyController.cpp">
       <Filter>Component\Controller\EnemyController</Filter>
+    </ClCompile>
+    <ClCompile Include="Item.cpp">
+      <Filter>Component\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="HealthItem.cpp">
+      <Filter>Component\Item\HealthItem</Filter>
+    </ClCompile>
+    <ClCompile Include="ArmorItem.cpp">
+      <Filter>Component\Item\ArmorItem</Filter>
+    </ClCompile>
+    <ClCompile Include="BulletItem.cpp">
+      <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -307,6 +331,18 @@
     </ClInclude>
     <ClInclude Include="EnemyController.h">
       <Filter>Component\Controller\EnemyController</Filter>
+    </ClInclude>
+    <ClInclude Include="Item.h">
+      <Filter>Component\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="HealthItem.h">
+      <Filter>Component\Item\HealthItem</Filter>
+    </ClInclude>
+    <ClInclude Include="ArmorItem.h">
+      <Filter>Component\Item\ArmorItem</Filter>
+    </ClInclude>
+    <ClInclude Include="BulletItem.h">
+      <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

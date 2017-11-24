@@ -7,7 +7,6 @@ class CEnemyController : public CController
 	RTTICHECK
 private :
 	CGameObj* Target;
-	UINT Health;
 /* Temp Function */
 private :
 	void Change();

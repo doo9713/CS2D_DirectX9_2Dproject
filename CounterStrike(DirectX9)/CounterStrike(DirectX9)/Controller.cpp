@@ -4,7 +4,7 @@
 RTTILINK(CController, CComponent)
 
 CController::CController(CGameObj* Owner)
-	: CComponent(Owner)
+	: CComponent(Owner), Health(100)
 {
 }
 

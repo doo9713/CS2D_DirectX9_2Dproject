@@ -37,7 +37,16 @@ public :
 		MATRIX mAngle, mPosition, mScale, mCenter, mAround;
 		mCenter.Move(Center);
 		mScale.Scale(Scale);
-		mPosition.Move(Position);
+		if (tag == Tag_UI)
+		{
+			MATRIX mat;
+			DRX->GetTransform(D3DTS_VIEW, &mat);
+			VECTOR3 UIWorldPos;
+			UIWorldPos.x = Position.x - mat._41;
+			UIWorldPos.y = Position.y - mat._42;
+			mPosition.Move(UIWorldPos);
+		}
+		else mPosition.Move(Position);
 		mAngle.Rotation(Angle);
 		if (parent)
 			return mCenter * mScale * mAngle * mPosition * parent->World;
@@ -61,7 +70,7 @@ public :
 	void Destroy(CGameObj& obj);
 public :
 	template <typename Type>
-	Type* GetComponent(unsigned int Count = 0)
+	Type* GetComponent(UINT Count = 0)
 	{
 		Type* result = nullptr;
 		for (auto com : component)

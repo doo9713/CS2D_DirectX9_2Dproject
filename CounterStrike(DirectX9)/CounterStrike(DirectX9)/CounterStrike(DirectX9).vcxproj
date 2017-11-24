@@ -152,9 +152,11 @@
     <ClCompile Include="AnimClip.cpp" />
     <ClCompile Include="AnimClipList.cpp" />
     <ClCompile Include="App.cpp" />
+    <ClCompile Include="ArmorItem.cpp" />
     <ClCompile Include="AutoDestroy.cpp" />
     <ClCompile Include="BoxCollider.cpp" />
     <ClCompile Include="Bullet.cpp" />
+    <ClCompile Include="BulletItem.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="Controller.cpp" />
     <ClCompile Include="DirectX.cpp" />
@@ -166,6 +168,8 @@
     <ClCompile Include="GameApp.cpp" />
     <ClCompile Include="GameObj.cpp" />
     <ClCompile Include="GameObjList.cpp" />
+    <ClCompile Include="HealthItem.cpp" />
+    <ClCompile Include="Item.cpp" />
     <ClCompile Include="KeyF.cpp" />
     <ClCompile Include="LeftMove.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -185,9 +189,11 @@
     <ClInclude Include="AnimClip.h" />
     <ClInclude Include="AnimClipList.h" />
     <ClInclude Include="App.h" />
+    <ClInclude Include="ArmorItem.h" />
     <ClInclude Include="AutoDestroy.h" />
     <ClInclude Include="BoxCollider.h" />
     <ClInclude Include="Bullet.h" />
+    <ClInclude Include="BulletItem.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="Constant.h" />
     <ClInclude Include="Controller.h" />
@@ -201,6 +207,8 @@
     <ClInclude Include="GameApp.h" />
     <ClInclude Include="GameObj.h" />
     <ClInclude Include="GameObjList.h" />
+    <ClInclude Include="HealthItem.h" />
+    <ClInclude Include="Item.h" />
     <ClInclude Include="KeyF.h" />
     <ClInclude Include="LeftMove.h" />
     <ClInclude Include="Macro.h" />
