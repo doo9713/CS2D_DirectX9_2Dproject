@@ -10,6 +10,8 @@ void CBulletItem::OnCollisionEnter(CGameObj* Other)
 	{
 		auto player = Other->GetComponent<CPlayerController>();
 		player->AddBullet();
+		player->InvalidateUI();
+		Destroy(gameObj);
 	}
 }
 

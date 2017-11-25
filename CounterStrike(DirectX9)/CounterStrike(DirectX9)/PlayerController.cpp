@@ -72,15 +72,12 @@ void CPlayerController::Start()
 		CurrentBulletRender[i]->RenderKey = "Number";
 		CurrentBulletRender[i]->Page = PositionNum(i, Bullet);
 	}
-	InvisibleNumber(TotalBulletRender, TotalBullet[Weapon]);
-	InvisibleNumber(CurrentBulletRender, Bullet);
+
+	InvalidateUI();
 }
 
 void CPlayerController::Update()
 {
-	/* 카메라 이동 */
-	DRX.Camera(gameObj.Position);
-
 	/* 플래이어가 마우스 좌표를 바라봄 */
 	VECTOR3 Mouse = GetMousePosition();
 	MATRIX Matrix;
@@ -115,6 +112,10 @@ void CPlayerController::Update()
 		Weapon = Weapon_Change;
 		AddInvoke(OCF(WeaponChange, Weapon_AutoGun), 1);
 		ActionTime = 0.15;
+
+		WaitingBar[0]->RenderKey = "Bar";
+		WaitingBar[1]->RenderKey = "Bar";
+		WaitingBar[1]->gameObj.Scale = VECTOR3(0, 0.2);
 	}
 	if (KEY.Push('2'))
 	{
@@ -122,6 +123,49 @@ void CPlayerController::Update()
 		Weapon = Weapon_Change;
 		AddInvoke(OCF(WeaponChange, Weapon_ShotGun), 1);
 		ActionTime = 1;
+
+		WaitingBar[0]->RenderKey = "Bar";
+		WaitingBar[1]->RenderKey = "Bar";
+		WaitingBar[1]->gameObj.Scale = VECTOR3(0, 0.2);
+	}
+
+	/* 총 장전 */
+	if (KEY.Push('R'))
+	{
+		WaitingBar[0]->RenderKey = "Bar";
+		WaitingBar[1]->RenderKey = "Bar";
+		WaitingBar[1]->gameObj.Scale = VECTOR3(0, 0.2);
+
+		IsReloading = true;
+	}
+
+	static double rate = 0;
+	if (IsReloading)
+	{
+		rate = Clamp(rate + TIME.Delta);
+		WaitingBar[1]->gameObj.Scale = VECTOR3(Lerp(rate, 0.0, 0.49), 0.2);
+		if (rate == 1)
+		{
+			WaitingBar[0]->RenderKey = "";
+			WaitingBar[1]->RenderKey = "";
+			rate = 0;
+
+			UINT needBullet = MagazineBullet[Weapon] - Bullet;
+			if (TotalBullet[Weapon] <= needBullet)
+			{
+				Bullet += TotalBullet[Weapon];
+				TotalBullet[Weapon] = 0;
+			}
+			else
+			{
+				TotalBullet[Weapon] -= needBullet;
+				Bullet += needBullet;
+			}
+
+			InvalidateUI();
+
+			IsReloading = false;
+		}
 	}
 
 	/* 총 발사 */
@@ -160,9 +204,8 @@ void CPlayerController::Update()
 				Bullet = Clamp(Bullet - 1, 0, MagazineBullet[Weapon_AutoGun]);
 				for (int i = 0; i < 3; ++i)
 					CurrentBulletRender[i]->Page = PositionNum(i, Bullet);
-				InvisibleNumber(CurrentBulletRender, Bullet);
-				if (Bullet == 0)
-					Anim->AnimationName = "";
+
+				InvalidateUI();
 			}
 			Time += TIME.Delta;
 		}
@@ -195,9 +238,8 @@ void CPlayerController::Update()
 					csr->RenderKey = "Bullet";
 				}
 				Bullet = Clamp(Bullet - 1, 0, MagazineBullet[Weapon_ShotGun]);
-				for (int i = 0; i < 3; ++i)
-					CurrentBulletRender[i]->Page = PositionNum(i, Bullet);
-				InvisibleNumber(CurrentBulletRender, Bullet);
+
+				InvalidateUI();
 			}
 			if (Time > ActionTime)
 				Time = 0;
@@ -205,55 +247,21 @@ void CPlayerController::Update()
 		if (Time <= ActionTime)
 			Time += TIME.Delta;
 		break;
-	}
-
-	/* 총 장전 */
-	if (KEY.Push('R'))
-	{
-		WaitingBar[0]->RenderKey = "Bar";
-		WaitingBar[1]->RenderKey = "Bar";
-		WaitingBar[1]->gameObj.Scale = VECTOR3(0, 0.2);
-
-		IsReloading = true;
-	}
-
-	static double rate = 0;
-	if (IsReloading)
-	{
-		rate = Clamp(rate + TIME.Delta * 0.7);
+	/* 총교환 UI 생성 */
+	case Weapon_Change :
+		rate = Clamp(rate + TIME.Delta);
 		WaitingBar[1]->gameObj.Scale = VECTOR3(Lerp(rate, 0.0, 0.49), 0.2);
 		if (rate == 1)
 		{
 			WaitingBar[0]->RenderKey = "";
 			WaitingBar[1]->RenderKey = "";
 			rate = 0;
-			
-			UINT needBullet = MagazineBullet[Weapon] - Bullet;
-			if (TotalBullet[Weapon] <= needBullet)
-			{
-				Bullet += TotalBullet[Weapon];
-				TotalBullet[Weapon] = 0;
-			}
-			else
-			{
-				TotalBullet[Weapon] -= needBullet;
-				Bullet += needBullet;
-			}
-
-			for (int i = 0; i < 3; ++i)
-			{
-				TotalBulletRender[i]->Page = PositionNum(i, TotalBullet[Weapon]);
-				CurrentBulletRender[i]->Page = PositionNum(i, Bullet);
-			}
-			InvisibleNumber(TotalBulletRender, TotalBullet[Weapon]);
-			InvisibleNumber(CurrentBulletRender, Bullet);
-
-			IsReloading = false;
 		}
+		break;
 	}
 }
 
-void CPlayerController::OnCollisionEnter(CGameObj * Other)
+void CPlayerController::OnCollisionEnter(CGameObj* Other)
 {
 	if (Other->Tag == Tag_Bullet && Other->GetComponent<CBullet>()->Shooter != &gameObj)
 	{
@@ -267,22 +275,11 @@ void CPlayerController::OnCollisionEnter(CGameObj * Other)
 		{
 			Armor = Clamp(Armor - Random(2, 4), 0, 100);
 			Health = Clamp(Health - Random(0, 2), 0, 100);
-
-			for (int i = 0; i < 3; ++i)
-			{
-				HealthRender[i]->Page = PositionNum(i, Health);
-				ArmorRender[i]->Page = PositionNum(i, Armor);
-			}
 		}
 		else
-		{
 			Health = Clamp(Health - Random(5, 8), 0, 100);
-			for (int i = 0; i < 3; ++i)
-				HealthRender[i]->Page = PositionNum(i, Health);
-		}
 
-		InvisibleNumber(HealthRender, Health);
-		InvisibleNumber(ArmorRender, Armor);
+		InvalidateUI();
 	}
 }
 
@@ -322,6 +319,22 @@ void CPlayerController::AddBullet()
 	TotalBullet[Weapon_ShotGun] += 10;
 }
 
+void CPlayerController::InvalidateUI()
+{
+	for (int i = 0; i < 3; ++i)
+	{
+		HealthRender[i]->Page = PositionNum(i, Health);
+		ArmorRender[i]->Page = PositionNum(i, Armor);
+		TotalBulletRender[i]->Page = PositionNum(i, TotalBullet[Weapon]);
+		CurrentBulletRender[i]->Page = PositionNum(i, Bullet);
+	}
+
+	InvisibleNumber(HealthRender, Health);
+	InvisibleNumber(ArmorRender, Armor);
+	InvisibleNumber(TotalBulletRender, TotalBullet[Weapon]);
+	InvisibleNumber(CurrentBulletRender, Bullet);
+}
+
 void CPlayerController::WeaponChange(WEAPON change)
 {
 	Weapon = change;
@@ -337,14 +350,8 @@ void CPlayerController::WeaponChange(WEAPON change)
 		TotalBullet[Weapon] -= needBullet;
 		Bullet = needBullet;
 	}
-	
-	for (int i = 0; i < 3; ++i)
-	{
-		TotalBulletRender[i]->Page = PositionNum(i, TotalBullet[Weapon]);
-		CurrentBulletRender[i]->Page = PositionNum(i, Bullet);
-	}
-	InvisibleNumber(TotalBulletRender, TotalBullet[Weapon]);
-	InvisibleNumber(CurrentBulletRender, Bullet);
+
+	InvalidateUI();
 }
 
 void CPlayerController::ShotGunEffEnd()

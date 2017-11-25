@@ -17,6 +17,7 @@ enum TAG
 	Tag_Player,
 	Tag_Enemy,
 	Tag_Bullet,
+	Tag_Item,
 	Tag_Enviroment,
 	Tag_Effect,
 	Tag_UI,

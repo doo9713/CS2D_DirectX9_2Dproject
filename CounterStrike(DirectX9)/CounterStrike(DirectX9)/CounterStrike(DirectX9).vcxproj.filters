@@ -223,7 +223,7 @@
       <Filter>Component\Item\ArmorItem</Filter>
     </ClCompile>
     <ClCompile Include="BulletItem.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>Component\Item\BulletItem</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -342,7 +342,7 @@
       <Filter>Component\Item\ArmorItem</Filter>
     </ClInclude>
     <ClInclude Include="BulletItem.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>Component\Item\BulletItem</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -6,6 +6,7 @@ class CEnemyController : public CController
 {
 	RTTICHECK
 private :
+	float ViewLength;
 	CGameObj* Target;
 /* Temp Function */
 private :

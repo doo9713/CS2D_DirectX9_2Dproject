@@ -10,6 +10,8 @@ void CArmorItem::OnCollisionEnter(CGameObj* Other)
 	{
 		auto player = Other->GetComponent<CPlayerController>();
 		player->ARMOR = Clamp(player->ARMOR + 100, 0, 100);
+		player->InvalidateUI();
+		Destroy(gameObj);
 	}
 }
 

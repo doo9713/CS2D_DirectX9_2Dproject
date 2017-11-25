@@ -1,24 +1,2 @@
-﻿  PlayerController.cpp
-d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\playercontroller.cpp(46): warning C4305: '인수': 'double'에서 'float'(으)로 잘립니다.
-d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\playercontroller.cpp(55): warning C4305: '인수': 'double'에서 'float'(으)로 잘립니다.
-d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\playercontroller.cpp(146): warning C4244: '=': 'double'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\playercontroller.cpp(151): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\playercontroller.cpp(183): warning C4244: '=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\playercontroller.cpp(184): warning C4244: '=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\playercontroller.cpp(185): warning C4244: '=': 'double'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\playercontroller.cpp(190): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\playercontroller.cpp(215): warning C4305: '인수': 'double'에서 'float'(으)로 잘립니다.
-d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\playercontroller.cpp(224): warning C4305: '인수': 'double'에서 'float'(으)로 잘립니다.
-d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\playercontroller.cpp(224): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  BulletItem.cpp
-  ArmorItem.cpp
-  코드를 생성하고 있습니다...
-d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\playercontroller.cpp(382): warning C4715: 'CPlayerController::PositionNum': 모든 제어 경로에서 값을 반환하지는 않습니다.
-  컴파일하고 있습니다...
-  EnemyController.cpp
-  코드를 생성하고 있습니다...
-  건너뛰고 있습니다... (관련된 변경 내용 없음)
-  HealthItem.cpp
-  GameApp.cpp
-  CounterStrike(DirectX9).vcxproj -> D:\문서\GitHub\CS2D_DirectX9_2Dproject\CounterStrike(DirectX9)\Debug\CounterStrike(DirectX9).exe
+﻿  CounterStrike(DirectX9).vcxproj -> D:\문서\GitHub\CS2D_DirectX9_2Dproject\CounterStrike(DirectX9)\Debug\CounterStrike(DirectX9).exe
   CounterStrike(DirectX9).vcxproj -> D:\문서\GitHub\CS2D_DirectX9_2Dproject\CounterStrike(DirectX9)\Debug\CounterStrike(DirectX9).pdb (Full PDB)

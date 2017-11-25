@@ -15,7 +15,7 @@ void CBullet::OnCollisionEnter(CGameObj* Other)
 }
 
 CBullet::CBullet(CGameObj* Owner)
-	: CComponent(Owner)
+	: CComponent(Owner), Shooter(nullptr), Dir(1, 0, 0)
 {
 }
 

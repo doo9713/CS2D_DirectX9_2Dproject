@@ -75,9 +75,34 @@ void CEnemyController::Update()
 	if (Health == 0)
 		Destroy(gameObj);
 
-	if ((Target->Position - gameObj.Position).Length() < 150)
+	/* 일정거리에서 적이 플래이어를 바라보도록 설정 */
+	static double rate = 0;
+	static double firstAngle = 0;
+	static double dstAngle = 0;
+	if ((Target->Position - gameObj.Position).Length() < ViewLength)
 	{
-		gameObj.Angle = ToTarget(Target->Position, gameObj.Position) + 180;
+		if (rate == 0)
+		{
+			firstAngle = gameObj.Angle;
+			dstAngle = ToTarget(Target->Position, gameObj.Position) + 180;
+			if (dstAngle >= 360) dstAngle -= 360;
+			if (firstAngle < 90 && dstAngle > 270) firstAngle += 360;
+			if (dstAngle < 90 && firstAngle > 270) dstAngle += 360;
+		}
+
+		rate = Clamp(rate + TIME.Delta * 8, 0.0, 1.0);
+		gameObj.Angle = Lerp(rate, firstAngle, dstAngle);
+
+		if (dstAngle != ToTarget(Target->Position, gameObj.Position) + 180)
+		{
+			firstAngle = gameObj.Angle;
+			dstAngle = ToTarget(Target->Position, gameObj.Position) + 180;
+			if (dstAngle >= 360) dstAngle -= 360;
+			if (firstAngle < 90 && dstAngle > 270) firstAngle += 360;
+			if (dstAngle < 90 && firstAngle > 270) dstAngle += 360;
+			rate = 0;
+		}
+		//gameObj.Angle = ToTarget(Target->Position, gameObj.Position) + 180;
 	}
 }
 
@@ -96,7 +121,7 @@ void CEnemyController::OnCollisionEnter(CGameObj* Other)
 }
 
 CEnemyController::CEnemyController(CGameObj* Owner)
-	: CController(Owner), Target(nullptr)
+	: CController(Owner), Target(nullptr), ViewLength(300)
 {
 }
 

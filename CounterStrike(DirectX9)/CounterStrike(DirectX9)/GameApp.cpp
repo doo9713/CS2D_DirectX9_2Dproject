@@ -8,6 +8,9 @@
 #include "AnimClipList.h"
 #include "PlayerController.h"
 #include "EnemyController.h"
+#include "HealthItem.h"
+#include "ArmorItem.h"
+#include "BulletItem.h"
 
 void CGameApp::Initialize()
 {
@@ -25,6 +28,7 @@ void CGameApp::Initialize()
 	TEXTURE.Load("GunFire", "../Resource/Texture/Effect/GunFire");
 	TEXTURE.Load("BodyPart", "../Resource/Texture/BodyPart");
 	TEXTURE.Load("Tree", "../Resource/Texture/Object/Tree");
+	TEXTURE.Load("Item", "../Resource/Texture/Object/Item"); // page : 0 -> C4, 1 -> Bag, 2 -> Armor, 3 -> Health
 
 	ANIMCLIP.OnLoad("GunFireEffect", "../Resource/AnimClip/GunFire.Clip");
 
@@ -69,6 +73,34 @@ void CGameApp::Initialize()
 	csr = obj->AddComponent<CSpriteRender>();
 	csr->RenderKey = "Player";
 	csr->Page = 2;
+
+	/* Temp make Item */
+	obj = GAMEOBJ.AddGameObj("HealthItem", Tag_Item, Layer_EnviromentDown);
+	obj->Position = VECTOR3(-300, 300);
+	obj->AddComponent<CRigid>();
+	obj->AddComponent<CBoxCollider>();
+	obj->AddComponent<CHealthItem>();
+	csr = obj->AddComponent<CSpriteRender>();
+	csr->RenderKey = "Item";
+	csr->Page = 3;
+
+	obj = GAMEOBJ.AddGameObj("ArmorItem", Tag_Item, Layer_EnviromentDown);
+	obj->Position = VECTOR3(-400, 300);
+	obj->AddComponent<CRigid>();
+	obj->AddComponent<CBoxCollider>();
+	obj->AddComponent<CArmorItem>();
+	csr = obj->AddComponent<CSpriteRender>();
+	csr->RenderKey = "Item";
+	csr->Page = 2;
+
+	obj = GAMEOBJ.AddGameObj("BulletItem", Tag_Item, Layer_EnviromentDown);
+	obj->Position = VECTOR3(-500, 300);
+	obj->AddComponent<CRigid>();
+	obj->AddComponent<CBoxCollider>();
+	obj->AddComponent<CBulletItem>();
+	csr = obj->AddComponent<CSpriteRender>();
+	csr->RenderKey = "Item";
+	csr->Page = 1;
 
 	// TODO : UI Initialize Code
 	TEXTURE.Load("Symbol", "../Resource/Texture/Ui/Symbol");

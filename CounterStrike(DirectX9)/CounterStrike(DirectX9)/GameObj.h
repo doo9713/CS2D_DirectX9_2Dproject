@@ -69,15 +69,15 @@ public :
 	void Destroy(CGameObj* obj);
 	void Destroy(CGameObj& obj);
 public :
-	template <typename Type>
-	Type* GetComponent(UINT Count = 0)
+	template <typename T>
+	T* GetComponent(UINT Count = 0)
 	{
-		Type* result = nullptr;
+		T* result = nullptr;
 		for (auto com : component)
 		{
-			if (com->GetRTTI().TreeIn(Type::_rtti))
+			if (com->GetRTTI().TreeIn(T::_rtti))
 			{
-				result = (Type*)com;
+				result = (T*)com;
 				if (!Count)
 					break;
 				--Count;
@@ -85,10 +85,10 @@ public :
 		}
 		return result;
 	}
-	template <typename Type>
-	Type* AddComponent()
+	template <typename T>
+	T* AddComponent()
 	{
-		Type* result = new Type(this);
+		T* result = new T(this);
 		component.emplace_back(result);
 		result->Start();
 		return result;

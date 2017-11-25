@@ -46,6 +46,7 @@ public :
 	~CPlayerController();
 public :
 	void AddBullet();
+	void InvalidateUI();
 private :
 	void WeaponChange(WEAPON change);
 	void ShotGunEffEnd();

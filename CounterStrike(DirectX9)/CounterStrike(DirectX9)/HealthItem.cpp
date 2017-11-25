@@ -10,6 +10,8 @@ void CHealthItem::OnCollisionEnter(CGameObj* Other)
 	{
 		auto player = Other->GetComponent<CPlayerController>();
 		player->HEALTH = Clamp(player->HEALTH + Random(20, 40), 0, 100);
+		player->InvalidateUI();
+		Destroy(gameObj);
 	}
 }
 
