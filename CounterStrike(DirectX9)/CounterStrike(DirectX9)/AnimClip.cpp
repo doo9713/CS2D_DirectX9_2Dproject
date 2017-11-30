@@ -28,7 +28,7 @@ void CAnimClip::OnLoad(const char * Path)
 	fclose(fp);
 }
 
-const char * CAnimClip::Animation(UINT & Page, double & Time, UINT & RenderPage)
+const char* CAnimClip::Animation(UINT& Page, double& Time, UINT& RenderPage)
 {
 	if (AllTime <= Time)
 	{

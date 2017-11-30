@@ -13,7 +13,7 @@ void CAnimClipList::OnLoad(const char * Key, const char * Path)
 	ClipList.insert(make_pair(Key, Clip));
 }
 
-UINT CAnimClipList::GetBeginRenderPage(const char * Key)
+UINT CAnimClipList::GetBeginRenderPage(const char* Key)
 {
 	auto finder_name = ClipList.find(Key);
 	if (finder_name == ClipList.end())
@@ -21,7 +21,7 @@ UINT CAnimClipList::GetBeginRenderPage(const char * Key)
 	return finder_name->second->GetBeginRenderPage();
 }
 
-const char * CAnimClipList::Animation(const char * Key, UINT & Page, double & Time, UINT & RenderPage)
+const char* CAnimClipList::Animation(const char* Key, UINT & Page, double& Time, UINT& RenderPage)
 {
 	auto finder_name = ClipList.find(Key);
 	if (finder_name == ClipList.end())

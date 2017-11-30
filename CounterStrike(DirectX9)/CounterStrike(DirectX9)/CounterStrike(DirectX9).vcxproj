@@ -148,6 +148,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Ammo.cpp" />
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="AnimClip.cpp" />
     <ClCompile Include="AnimClipList.cpp" />
@@ -164,10 +165,12 @@
     <ClCompile Include="EffectEvent.cpp" />
     <ClCompile Include="EnemyController.cpp" />
     <ClCompile Include="EtcF.cpp" />
+    <ClCompile Include="ExplosionEffect.cpp" />
     <ClCompile Include="FileIO.cpp" />
     <ClCompile Include="GameApp.cpp" />
     <ClCompile Include="GameObj.cpp" />
     <ClCompile Include="GameObjList.cpp" />
+    <ClCompile Include="Grenade.cpp" />
     <ClCompile Include="HealthItem.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="KeyF.cpp" />
@@ -185,6 +188,7 @@
     <ClCompile Include="UpMove.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Ammo.h" />
     <ClInclude Include="Animation.h" />
     <ClInclude Include="AnimClip.h" />
     <ClInclude Include="AnimClipList.h" />
@@ -203,10 +207,12 @@
     <ClInclude Include="EffectEvent.h" />
     <ClInclude Include="EnemyController.h" />
     <ClInclude Include="EtcF.h" />
+    <ClInclude Include="ExplosionEffect.h" />
     <ClInclude Include="FileIO.h" />
     <ClInclude Include="GameApp.h" />
     <ClInclude Include="GameObj.h" />
     <ClInclude Include="GameObjList.h" />
+    <ClInclude Include="Grenade.h" />
     <ClInclude Include="HealthItem.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="KeyF.h" />

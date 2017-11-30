@@ -41,6 +41,9 @@ void CRigid::Update()
 				otherbox = obj->GetComponent<CBoxCollider>();
 				if (otherbox)
 				{
+					/*  동일한 Tag의 물체는 서로 충돌처리를 하지 않음 */
+					if (Collider->gameObj.Tag == otherbox->gameObj.Tag)
+						continue;
 					otherrigid = obj->GetComponent<CRigid>();
 					if (otherrigid)
 					{
@@ -100,7 +103,7 @@ void CRigid::Update()
 							}
 						}
 
-						// 충돌
+						// 충돌후 처리
 						Collider->BoxPushBox(otherbox);
 					}
 					else

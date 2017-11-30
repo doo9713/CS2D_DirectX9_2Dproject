@@ -10,13 +10,14 @@ extern HWND hWnd;
 constexpr UINT ScreenWidth = 1600;
 constexpr UINT ScreenHeight = 900;
 constexpr double FrameTime = 0.01666666;
+constexpr double UpdateTime = 0.01;
 
 enum TAG
 {
 	Tag_Default,
 	Tag_Player,
 	Tag_Enemy,
-	Tag_Bullet,
+	Tag_Ammo,
 	Tag_Item,
 	Tag_Enviroment,
 	Tag_Effect,

@@ -1,15 +1,11 @@
 #pragma once
-#include "Component.h"
+#include "Ammo.h"
 
-class CBullet :	public CComponent
+class CBullet :	public CAmmo
 {
 	RTTICHECK
-private :
-	FLOAT Angle;
 public :
-	VECTOR3 Dir;
-	CGameObj* Shooter;
-public :
+	void Start();
 	void Update();
 	void OnCollisionEnter(CGameObj* Other);
 public :

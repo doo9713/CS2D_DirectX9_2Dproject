@@ -4,6 +4,7 @@
 #include "BoxCollider.h"
 #include "SpriteRender.h"
 #include "Bullet.h"
+#include "Grenade.h"
 #include "LeftMove.h"
 #include "RightMove.h"
 #include "UpMove.h"
@@ -58,6 +59,14 @@ void CPlayerController::Start()
 	WaitingBar[1]->RenderKey = "";
 
 	/* ÃÑ¾Ë UI */
+	obj = GAMEOBJ.AddGameObj("Slash", Tag_UI, Layer_UI);
+	obj->Scale = VECTOR3(0.02, 1.5);
+	obj->Position = VECTOR3(650, -420);
+	auto csr = obj->AddComponent<CSpriteRender>();
+	csr->RenderKey = "Bar";
+	csr->ShaderKey = "Default";
+	csr->ChangeColorMul(220, 0, 0, 0);
+	csr->ChangeColorAddAfter(0, 150, 150, 150);
 	for (int i = 0; i < 3; ++i)
 	{
 		obj = GAMEOBJ.AddGameObj("", Tag_UI, Layer_UI);
@@ -78,6 +87,10 @@ void CPlayerController::Start()
 
 void CPlayerController::Update()
 {
+	/* ÇÃ·¡ÀÌ¾î Á×À½ */
+	if (Health == 0)
+		Destroy(gameObj);
+
 	/* ÇÃ·¡ÀÌ¾î°¡ ¸¶¿ì½º ÁÂÇ¥¸¦ ¹Ù¶óº½ */
 	VECTOR3 Mouse = GetMousePosition();
 	MATRIX Matrix;
@@ -106,9 +119,11 @@ void CPlayerController::Update()
 		Destroy(gameObj.GetComponent<CLeftMove>());
 
 	/* ÃÑ ±³È¯ */
-	if (KEY.Push('1'))
+	if (Weapon != Weapon_AutoGun && KEY.Push('1'))
 	{
+		Anim->AnimationName = "";
 		TotalBullet[Weapon] += Bullet;
+		Bullet = 0;
 		Weapon = Weapon_Change;
 		AddInvoke(OCF(WeaponChange, Weapon_AutoGun), 1);
 		ActionTime = 0.15;
@@ -116,10 +131,14 @@ void CPlayerController::Update()
 		WaitingBar[0]->RenderKey = "Bar";
 		WaitingBar[1]->RenderKey = "Bar";
 		WaitingBar[1]->gameObj.Scale = VECTOR3(0, 0.2);
+
+		InvalidateUI();
 	}
-	if (KEY.Push('2'))
+	if (Weapon != Weapon_ShotGun && KEY.Push('2'))
 	{
+		Anim->AnimationName = "";
 		TotalBullet[Weapon] += Bullet;
+		Bullet = 0;
 		Weapon = Weapon_Change;
 		AddInvoke(OCF(WeaponChange, Weapon_ShotGun), 1);
 		ActionTime = 1;
@@ -127,6 +146,8 @@ void CPlayerController::Update()
 		WaitingBar[0]->RenderKey = "Bar";
 		WaitingBar[1]->RenderKey = "Bar";
 		WaitingBar[1]->gameObj.Scale = VECTOR3(0, 0.2);
+
+		InvalidateUI();
 	}
 
 	/* ÃÑ ÀåÀü */
@@ -170,10 +191,6 @@ void CPlayerController::Update()
 
 	/* ÃÑ ¹ß»ç */
 	int i = -3;
-	double Angle;
-	CGameObj* obj;
-	CBullet* bullet;
-	CSpriteRender* csr;
 	switch (Weapon)
 	{
 	case Weapon_AutoGun :
@@ -184,28 +201,19 @@ void CPlayerController::Update()
 			Anim->AnimationName = "GunFireEffect";
 			if (Time > ActionTime || Time == 0)
 			{
-				Angle = Random(gameObj.Angle - 2, gameObj.Angle + 2);
-				obj = GAMEOBJ.AddGameObj("Bullet", Tag_Bullet, Layer_EnviromentDown);
-				obj->Position = gameObj.Position;
-				obj->Angle = Angle + 45;
-				obj->AddComponent<CBoxCollider>();
-
-				bullet = obj->AddComponent<CBullet>();
-				bullet->Dir = VECTOR3(1, 0, 0);
-				bullet->Dir.Rotation(Angle);
-				bullet->Dir.Normalize();
-				bullet->Shooter = &gameObj;
-
-				csr = obj->AddComponent<CSpriteRender>();
-				csr->RenderKey = "Bullet";
+				MakeBullet(Random(gameObj.Angle - 2, gameObj.Angle + 2));
 
 				if(Time != 0)
 					Time -= ActionTime;
+
 				Bullet = Clamp(Bullet - 1, 0, MagazineBullet[Weapon_AutoGun]);
 				for (int i = 0; i < 3; ++i)
 					CurrentBulletRender[i]->Page = PositionNum(i, Bullet);
 
 				InvalidateUI();
+
+				if (Bullet == 0)
+					Anim->AnimationName = "";
 			}
 			Time += TIME.Delta;
 		}
@@ -221,21 +229,9 @@ void CPlayerController::Update()
 				AddInvoke(CF(ShotGunEffEnd), 0.2);
 				for (; i < 4; ++i)
 				{
-					Angle = gameObj.Angle + i;
-					obj = GAMEOBJ.AddGameObj("Bullet", Tag_Bullet, Layer_EnviromentDown);
-					obj->Position.x = Random(gameObj.Position.x - 10, gameObj.Position.x + 10);
-					obj->Position.y = Random(gameObj.Position.y - 10, gameObj.Position.y + 10);
-					obj->Angle = Angle + 45;
-					obj->AddComponent<CBoxCollider>();
-
-					bullet = obj->AddComponent<CBullet>();
-					bullet->Dir = VECTOR3(1, 0, 0);
-					bullet->Dir.Rotation(Angle);
-					bullet->Dir.Normalize();
-					bullet->Shooter = &gameObj;
-
-					csr = obj->AddComponent<CSpriteRender>();
-					csr->RenderKey = "Bullet";
+					MakeBullet(gameObj.Angle + i, 
+						Random(gameObj.Position.x - 10, gameObj.Position.x + 10), 
+						Random(gameObj.Position.y - 10, gameObj.Position.y + 10));
 				}
 				Bullet = Clamp(Bullet - 1, 0, MagazineBullet[Weapon_ShotGun]);
 
@@ -259,11 +255,31 @@ void CPlayerController::Update()
 		}
 		break;
 	}
+
+	/* ¼ö·ùÅº ÅõÃ´ */
+	if (KEY.Push('F'))
+	{
+		auto obj = GAMEOBJ.AddGameObj("Grenade", Tag_Ammo, Layer_EnviromentDown);
+		obj->Position = gameObj.Position;
+
+		auto box = obj->AddComponent<CBoxCollider>();
+		box->Trigger = true;
+
+		auto grenade = obj->AddComponent<CGrenade>();
+		grenade->Dir = VECTOR3(1, 0, 0);
+		grenade->Dir.Rotation(gameObj.Angle);
+		grenade->Dir.Normalize();
+		grenade->Shooter = &gameObj;
+		
+		auto csr = obj->AddComponent<CSpriteRender>();
+		csr->RenderKey = "Ammo";
+		csr->Page = 1;
+	}
 }
 
 void CPlayerController::OnCollisionEnter(CGameObj* Other)
 {
-	if (Other->Tag == Tag_Bullet && Other->GetComponent<CBullet>()->Shooter != &gameObj)
+	if (Other->Tag == Tag_Ammo && Other->GetComponent<CAmmo>()->Shooter != &gameObj)
 	{
 		auto obj = GAMEOBJ.AddGameObj("BodyPart", Tag_Enviroment, Layer_EnviromentDown);
 		obj->Position = gameObj.Position;
@@ -299,13 +315,15 @@ CPlayerController::CPlayerController(CGameObj* Owner)
 	CurrentBulletPos[1] = VECTOR3(600, -420);
 	CurrentBulletPos[2] = VECTOR3(570, -420);
 
-	TotalBullet = new UINT(Weapon_Change);
-	MagazineBullet = new UINT(Weapon_Change);
+	TotalBullet = new UINT(Weapon_End);
+	MagazineBullet = new UINT(Weapon_End);
 
 	TotalBullet[Weapon_AutoGun] = 270;
 	TotalBullet[Weapon_ShotGun] = 45;
+	TotalBullet[Weapon_Change] = 0;
 	MagazineBullet[Weapon_AutoGun] = 30;
 	MagazineBullet[Weapon_ShotGun] = 5;
+	TotalBullet[Weapon_Change] = 0;
 	Bullet = MagazineBullet[Weapon];
 }
 
@@ -335,8 +353,46 @@ void CPlayerController::InvalidateUI()
 	InvisibleNumber(CurrentBulletRender, Bullet);
 }
 
+void CPlayerController::MakeBullet(double angle)
+{
+	double Angle = angle;
+	auto obj = GAMEOBJ.AddGameObj("Bullet", Tag_Ammo, Layer_EnviromentDown);
+	obj->Position = gameObj.Position;
+	obj->Angle = Angle + 45;
+	obj->AddComponent<CBoxCollider>();
+
+	auto bullet = obj->AddComponent<CBullet>();
+	bullet->Dir = VECTOR3(1, 0, 0);
+	bullet->Dir.Rotation(Angle);
+	bullet->Dir.Normalize();
+	bullet->Shooter = &gameObj;
+
+	auto csr = obj->AddComponent<CSpriteRender>();
+	csr->RenderKey = "Ammo";
+}
+
+void CPlayerController::MakeBullet(double angle, float posx, float posy)
+{
+	double Angle = gameObj.Angle;
+	auto obj = GAMEOBJ.AddGameObj("Bullet", Tag_Ammo, Layer_EnviromentDown);
+	obj->Position.x = posx;
+	obj->Position.y = posy;
+	obj->Angle = Angle + 45;
+	obj->AddComponent<CBoxCollider>();
+
+	auto bullet = obj->AddComponent<CBullet>();
+	bullet->Dir = VECTOR3(1, 0, 0);
+	bullet->Dir.Rotation(Angle);
+	bullet->Dir.Normalize();
+	bullet->Shooter = &gameObj;
+
+	auto csr = obj->AddComponent<CSpriteRender>();
+	csr->RenderKey = "Ammo";
+}
+
 void CPlayerController::WeaponChange(WEAPON change)
 {
+	Time = 0;
 	Weapon = change;
 
 	UINT needBullet = MagazineBullet[Weapon];

@@ -10,6 +10,7 @@ private :
 	void PushCheck(const VECTOR3* Box, const VECTOR3& Pivot, const VECTOR3& OtherPrivot, CBoxCollider* Other);
 public :
 	bool Freez;
+	bool Trigger;
 	VECTOR3 Center;
 	VECTOR3 Size;
 public :

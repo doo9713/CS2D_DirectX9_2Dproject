@@ -42,6 +42,26 @@ double UTILITY::Clamp(double data, double min, double max)
 	return data;
 }
 
+// 해당 값 사이로 순환
+int UTILITY::ClampCycle(int data, int min, int max)
+{
+	if (data < min)
+		return max;
+	if (data > max)
+		return min;
+	return data;
+}
+
+// 해당 값 사이로 순환
+double UTILITY::ClampCycle(double data, double min, double max)
+{
+	if (data < min)
+		return max;
+	if (data > max)
+		return min;
+	return data;
+}
+
 // 선형 보간
 int UTILITY::Lerp(double rate, int begin, int end)
 {

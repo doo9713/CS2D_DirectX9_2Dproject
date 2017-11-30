@@ -40,7 +40,7 @@ void CEnemyController::ChangeB()
 
 void CEnemyController::Shoot()
 {
-	auto obj = GAMEOBJ.AddGameObj("Bullet", Tag_Bullet, Layer_EnviromentDown);
+	auto obj = GAMEOBJ.AddGameObj("Bullet", Tag_Ammo, Layer_EnviromentDown);
 	obj->Angle = gameObj.Angle + 45;
 	obj->Position = gameObj.Position;
 	obj->AddComponent<CBoxCollider>();
@@ -108,7 +108,7 @@ void CEnemyController::Update()
 
 void CEnemyController::OnCollisionEnter(CGameObj* Other)
 {
-	if (Other->Tag == Tag_Bullet && Other->GetComponent<CBullet>()->Shooter != &gameObj)
+	if (Other->Tag == Tag_Ammo && Other->GetComponent<CAmmo>()->Shooter != &gameObj)
 	{
 		auto obj = GAMEOBJ.AddGameObj("BodyPart", Tag_Enviroment, Layer_EnviromentDown);
 		obj->Position = gameObj.Position;

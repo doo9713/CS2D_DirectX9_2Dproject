@@ -140,6 +140,9 @@ namespace UTILITY
 	int Clamp(int data, int min = 0, int max = 1);
 	double Clamp(double data, double min = 0, double max = 1);
 
+	int ClampCycle(int data, int min = 0, int max = 1);
+	double ClampCycle(double data, double min = 0, double max = 1);
+
 	int Lerp(double rate, int begin = 0, int end = 1);
 	double Lerp(double rate, double begin = 0, double end = 1);
 	VECTOR3 Lerp(double rate, const VECTOR3& begin, const VECTOR3& end);

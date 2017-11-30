@@ -70,7 +70,7 @@ public :
 	void Destroy(CGameObj& obj);
 public :
 	template <typename T>
-	T* GetComponent(UINT Count = 0)
+	T* GetComponent(UINT Count = 0 /* 같은 컴포넌트의 인덱스 */)
 	{
 		T* result = nullptr;
 		for (auto com : component)

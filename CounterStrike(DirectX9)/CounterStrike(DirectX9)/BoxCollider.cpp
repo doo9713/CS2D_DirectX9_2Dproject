@@ -86,6 +86,8 @@ void CBoxCollider::PushCheck(const VECTOR3* Box, const VECTOR3& Pivot, const VEC
 
 void CBoxCollider::BoxPushBox(CBoxCollider* Other)
 {
+	if (Trigger || Other->Trigger)
+		return;
 	if (Freez && Other->Freez)
 		return;
 
@@ -171,7 +173,7 @@ bool CBoxCollider::BoxToBox(const CBoxCollider* Other)
 }
 
 CBoxCollider::CBoxCollider(CGameObj* Owner)
-	: CComponent(Owner), Freez(false), Center(0, 0, 0), Size(0, 0, 0)
+	: CComponent(Owner), Freez(false), Trigger(false), Center(0, 0, 0), Size(0, 0, 0)
 {
 }
 

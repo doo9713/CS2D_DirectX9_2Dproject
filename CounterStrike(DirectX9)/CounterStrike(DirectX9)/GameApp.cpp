@@ -21,39 +21,75 @@ void CGameApp::Initialize()
 	D3DXMatrixOrthoLH(&Projection, ScreenWidth, ScreenHeight, 0, 1);
 	DRX->SetTransform(D3DTS_PROJECTION, &Projection);
 
-	// TODO : Game Initialize Code
+#pragma region File Load
+	// TODO : File Load Code
 	TEXTURE.Load("Player", "../Resource/Texture/Player");
 	TEXTURE.Load("Box", "../Resource/Texture/Object/Box");
-	TEXTURE.Load("Bullet", "../Resource/Texture/Bullet");
+	TEXTURE.Load("Ammo", "../Resource/Texture/Ammo");
 	TEXTURE.Load("GunFire", "../Resource/Texture/Effect/GunFire");
+	TEXTURE.Load("Explosion", "../Resource/Texture/Effect/Explosion");
 	TEXTURE.Load("BodyPart", "../Resource/Texture/BodyPart");
 	TEXTURE.Load("Tree", "../Resource/Texture/Object/Tree");
 	TEXTURE.Load("Item", "../Resource/Texture/Object/Item"); // page : 0 -> C4, 1 -> Bag, 2 -> Armor, 3 -> Health
 
 	ANIMCLIP.OnLoad("GunFireEffect", "../Resource/AnimClip/GunFire.Clip");
+	ANIMCLIP.OnLoad("ExplosionEffect", "../Resource/AnimClip/Explosion.Clip");
 
 	SHADER.OnLoad("Default", "../Resource/Effect/Default.fx");
+#pragma endregion
 
+#pragma region Obj Init
+	// TODO : Game Initialize Code
 	auto obj = GAMEOBJ.AddGameObj("Player", Tag_Player, Layer_Character);
+
 	auto box = obj->AddComponent<CBoxCollider>();
 	box->Size = VECTOR3(20, 20);
 	box->Center = VECTOR3(-10, 0, 0);
+
 	auto csr = obj->AddComponent<CSpriteRender>();
 	csr->RenderKey = "Player";
 	csr->Page = 3;
+
 	obj->Center = VECTOR3(12, 0, 0);
 	obj->AddComponent<CPlayerController>();
 	obj->AddComponent<CRigid>();
+#pragma endregion
 
-	/* Temp make Box */
-	obj = GAMEOBJ.AddGameObj("Box", Tag_Enviroment, Layer_EnviromentDown);
-	box = obj->AddComponent<CBoxCollider>();
-	box->Size = VECTOR3(50, 50);
-	box->Freez = true;
+#pragma region UI Init
+	// TODO : UI Initialize Code
+	TEXTURE.Load("Symbol", "../Resource/Texture/Ui/Symbol");
+	TEXTURE.Load("Number", "../Resource/Texture/Ui/Number");
+	TEXTURE.Load("Bar", "../Resource/Texture/Ui/");
+
+	obj = GAMEOBJ.AddGameObj("Health", Tag_UI, Layer_UI);
+	obj->Position = VECTOR3(-760, -420);
 	csr = obj->AddComponent<CSpriteRender>();
-	csr->RenderKey = "Box";
-	obj->Position = VECTOR3(0, 100);
-	obj->AddComponent<CRigid>();
+	csr->RenderKey = "Symbol";
+	csr->Page = 0;
+
+	obj = GAMEOBJ.AddGameObj("Armor", Tag_UI, Layer_UI);
+	obj->Position = VECTOR3(-620, -420);
+	csr = obj->AddComponent<CSpriteRender>();
+	csr->RenderKey = "Symbol";
+	csr->Page = 1;
+
+	obj = GAMEOBJ.AddGameObj("Timer", Tag_UI, Layer_UI);
+	obj->Position = VECTOR3(-100, -420);
+	csr = obj->AddComponent<CSpriteRender>();
+	csr->RenderKey = "Symbol";
+	csr->Page = 2;
+#pragma endregion
+
+#pragma region Test Code
+	/* Temp make Box */
+	//MakeBox(0, 100, 50, 50);
+	//for (int i = -900; i < 900; i += 50)
+	//{
+	//	MakeBox(i, 500, 50, 50);
+	//	MakeBox(i, -500, 50, 50);
+	//}
+	MakeBox(0, 500, 1800, 50, 1);
+	MakeBox(0, -500, 1800, 50, 1);
 
 	/* Temp make Tree */
 	obj = GAMEOBJ.AddGameObj("Tree", Tag_Enviroment, Layer_EnviromentUp);
@@ -101,29 +137,7 @@ void CGameApp::Initialize()
 	csr = obj->AddComponent<CSpriteRender>();
 	csr->RenderKey = "Item";
 	csr->Page = 1;
-
-	// TODO : UI Initialize Code
-	TEXTURE.Load("Symbol", "../Resource/Texture/Ui/Symbol");
-	TEXTURE.Load("Number", "../Resource/Texture/Ui/Number");
-	TEXTURE.Load("Bar", "../Resource/Texture/Ui/");
-
-	obj = GAMEOBJ.AddGameObj("Health", Tag_UI, Layer_UI);
-	obj->Position = VECTOR3(-760, -420);
-	csr = obj->AddComponent<CSpriteRender>();
-	csr->RenderKey = "Symbol";
-	csr->Page = 0;
-
-	obj = GAMEOBJ.AddGameObj("Armor", Tag_UI, Layer_UI);
-	obj->Position = VECTOR3(-620, -420);
-	csr = obj->AddComponent<CSpriteRender>();
-	csr->RenderKey = "Symbol";
-	csr->Page = 1;
-
-	obj = GAMEOBJ.AddGameObj("Timer", Tag_UI, Layer_UI);
-	obj->Position = VECTOR3(-100, -420);
-	csr = obj->AddComponent<CSpriteRender>();
-	csr->RenderKey = "Symbol";
-	csr->Page = 2;
+#pragma endregion
 }
 
 CGameApp::CGameApp()
@@ -132,4 +146,22 @@ CGameApp::CGameApp()
 
 CGameApp::~CGameApp()
 {
+}
+
+void CGameApp::MakeBox(float posx, float posy, float sizex, float sizey, UINT page)
+{
+	auto obj = GAMEOBJ.AddGameObj("Box", Tag_Enviroment, Layer_EnviromentDown);
+	obj->Position = VECTOR3(posx, posy);
+	obj->AddComponent<CRigid>();
+	auto box = obj->AddComponent<CBoxCollider>();
+	box->Size = VECTOR3(sizex, sizey);
+	box->Freez = true;
+	auto csr = obj->AddComponent<CSpriteRender>();
+	csr->RenderKey = "Box";
+	csr->Page = page;
+}
+
+void CGameApp::MakeBox(VECTOR3 pos, VECTOR3 size, UINT page)
+{
+	MakeBox(pos.x, pos.y, size.x, size.y, page);
 }

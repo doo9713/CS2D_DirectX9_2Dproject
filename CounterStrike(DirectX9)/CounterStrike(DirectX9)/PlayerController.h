@@ -48,6 +48,8 @@ public :
 	void AddBullet();
 	void InvalidateUI();
 private :
+	void MakeBullet(double angle);
+	void MakeBullet(double angle, float posx, float posy);
 	void WeaponChange(WEAPON change);
 	void ShotGunEffEnd();
 	void InvisibleNumber(CSpriteRender* src[3], UINT data);

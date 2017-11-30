@@ -1,6 +1,9 @@
 #include "SpriteRender.h"
 #include "GameObj.h"
 
+/* Test */
+#include "PlayerController.h"
+
 RTTILINK(CSpriteRender, CComponent)
 
 void CSpriteRender::ChangeColorRemove(UINT Red, UINT Green, UINT Blue)
@@ -59,7 +62,6 @@ CSpriteRender::CSpriteRender(CGameObj* Owner)
 	: CComponent(Owner), Page(0), ColorAdd(0, 0, 0, 0), ColorMul(1, 1, 1, 1), ShaderKey(""), MosaicLevel(0), Twist(0), ColorRemove(-1, -1, -1, -1)
 {
 }
-
 
 CSpriteRender::~CSpriteRender()
 {

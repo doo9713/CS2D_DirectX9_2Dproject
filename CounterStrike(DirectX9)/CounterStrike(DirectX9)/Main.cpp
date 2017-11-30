@@ -46,16 +46,18 @@ int APIENTRY WinMain(HINSTANCE Inst, HINSTANCE PrevInst,
 
 	MSG msg;
 
-	TimeClass Rendering;
-	double Time = 0;
+	TimeClass TimeC;
+	double FTime = 0;
+	double UTime = 0;
 	// TODO : App Initialize Code
 	CGameApp Game;
 	Game.Initialize();
 
 	while (true)
 	{
-		Rendering.SetTimer();
-		Time += Rendering.RealTime;
+		TimeC.SetTimer();
+		FTime += TimeC.RealTime;
+		UTime += TimeC.RealTime;
 		if (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE))
 		{
 			if (msg.message == WM_QUIT)
@@ -64,12 +66,16 @@ int APIENTRY WinMain(HINSTANCE Inst, HINSTANCE PrevInst,
 			DispatchMessage(&msg);
 		}
 
-		// TODO : App Update Code
-		Game.Update();
-
-		if (Time > FrameTime)
+		if (UTime > UpdateTime)
 		{
-			Time -= FrameTime;
+			UTime -= UpdateTime;
+			// TODO : App Update Code
+			Game.Update();
+		}
+
+		if (FTime > FrameTime)
+		{
+			FTime -= FrameTime;
 			// TODO : App Render Code
 			Game.Render();
 		}

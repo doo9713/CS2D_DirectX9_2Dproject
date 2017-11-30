@@ -1,11 +1,17 @@
 #include "Bullet.h"
 #include "GameObj.h"
 
-RTTILINK(CBullet, CComponent)
+RTTILINK(CBullet, CAmmo)
+
+void CBullet::Start()
+{
+	AddInvoke(OCF(Destroy, gameObj), 2);
+	Speed = 900;
+}
 
 void CBullet::Update()
 {
-	gameObj.Position += Dir * TIME.Delta * 900;
+	gameObj.Position += Dir * TIME.Delta * Speed;
 }
 
 void CBullet::OnCollisionEnter(CGameObj* Other)
@@ -15,7 +21,7 @@ void CBullet::OnCollisionEnter(CGameObj* Other)
 }
 
 CBullet::CBullet(CGameObj* Owner)
-	: CComponent(Owner), Shooter(nullptr), Dir(1, 0, 0)
+	: CAmmo(Owner)
 {
 }
 

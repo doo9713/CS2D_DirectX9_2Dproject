@@ -67,9 +67,6 @@
     <Filter Include="Utility\KeyF">
       <UniqueIdentifier>{2a6a5497-53e3-452c-a248-42fb509c59ac}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Component\Bullet">
-      <UniqueIdentifier>{45c2c8cf-771a-4089-95b8-36b56dcc8ef3}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Component\Animation">
       <UniqueIdentifier>{e57a5d55-4b89-48b8-843a-3fb70edddd45}</UniqueIdentifier>
     </Filter>
@@ -117,6 +114,18 @@
     </Filter>
     <Filter Include="Component\Item\BulletItem">
       <UniqueIdentifier>{1d336734-a5ac-4177-bdf8-9c96235ade0b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Component\Ammo">
+      <UniqueIdentifier>{ff9bf033-0e37-4e23-8975-b0711a461346}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Component\Ammo\Bullet">
+      <UniqueIdentifier>{45c2c8cf-771a-4089-95b8-36b56dcc8ef3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Component\Ammo\Grenade">
+      <UniqueIdentifier>{8b81ade4-9d3e-4519-b5cc-2e0bd4227b10}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Component\Effect\ExplosionEffect">
+      <UniqueIdentifier>{a9253136-ee37-42fb-bea5-2d815a529a2a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -178,7 +187,7 @@
       <Filter>Component\UIButton</Filter>
     </ClCompile>
     <ClCompile Include="Bullet.cpp">
-      <Filter>Component\Bullet</Filter>
+      <Filter>Component\Ammo\Bullet</Filter>
     </ClCompile>
     <ClCompile Include="Animation.cpp">
       <Filter>Component\Animation</Filter>
@@ -224,6 +233,15 @@
     </ClCompile>
     <ClCompile Include="BulletItem.cpp">
       <Filter>Component\Item\BulletItem</Filter>
+    </ClCompile>
+    <ClCompile Include="Ammo.cpp">
+      <Filter>Component\Ammo</Filter>
+    </ClCompile>
+    <ClCompile Include="Grenade.cpp">
+      <Filter>Component\Ammo\Grenade</Filter>
+    </ClCompile>
+    <ClCompile Include="ExplosionEffect.cpp">
+      <Filter>Component\Effect\ExplosionEffect</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -297,7 +315,7 @@
       <Filter>Component\UIButton</Filter>
     </ClInclude>
     <ClInclude Include="Bullet.h">
-      <Filter>Component\Bullet</Filter>
+      <Filter>Component\Ammo\Bullet</Filter>
     </ClInclude>
     <ClInclude Include="Animation.h">
       <Filter>Component\Animation</Filter>
@@ -343,6 +361,15 @@
     </ClInclude>
     <ClInclude Include="BulletItem.h">
       <Filter>Component\Item\BulletItem</Filter>
+    </ClInclude>
+    <ClInclude Include="Ammo.h">
+      <Filter>Component\Ammo</Filter>
+    </ClInclude>
+    <ClInclude Include="Grenade.h">
+      <Filter>Component\Ammo\Grenade</Filter>
+    </ClInclude>
+    <ClInclude Include="ExplosionEffect.h">
+      <Filter>Component\Effect\ExplosionEffect</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

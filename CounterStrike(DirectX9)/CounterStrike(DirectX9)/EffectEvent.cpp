@@ -4,7 +4,7 @@
 RTTILINK(CEffectEvent, CComponent)
 
 CEffectEvent::CEffectEvent(CGameObj* Owner)
-	: CComponent(Owner)
+	: CComponent(Owner), IsLoop(false), lastPage(0)
 {
 }
 
