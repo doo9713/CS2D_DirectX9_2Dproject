@@ -28,6 +28,8 @@ void CRigid::Start()
 
 void CRigid::Update()
 {
+	gameObj.Position += Force * TIME.Delta;
+
 	if (Collider)
 	{
 		PrevCollision.clear();
@@ -108,45 +110,48 @@ void CRigid::Update()
 					}
 					else
 					{
-						// 面倒 场
-						for (auto coll = Collision.begin();
-							coll != Collision.end(); ++coll)
+						if (!IsIn(obj))
 						{
-							if (*coll == obj)
-							{
-								Collision.erase(coll);
-								break;
-							}
-						}
-						if (otherrigid)
-						{
-							for (auto coll = otherrigid->Collision.begin();
-								coll != otherrigid->Collision.end(); ++coll)
+							// 面倒 场
+							for (auto coll = Collision.begin();
+								coll != Collision.end(); ++coll)
 							{
 								if (*coll == obj)
 								{
-									otherrigid->Collision.erase(coll);
+									Collision.erase(coll);
 									break;
 								}
 							}
-						}
-						CGameObj* Temp = &gameObj;
-						while (Temp)
-						{
-							for (auto com : Temp->component)
+							if (otherrigid)
 							{
-								com->OnCollisionExit(obj);
+								for (auto coll = otherrigid->Collision.begin();
+									coll != otherrigid->Collision.end(); ++coll)
+								{
+									if (*coll == obj)
+									{
+										otherrigid->Collision.erase(coll);
+										break;
+									}
+								}
 							}
-							Temp = Temp->parent;
-						}
-						Temp = obj;
-						while (Temp)
-						{
-							for (auto com : Temp->component)
+							CGameObj* Temp = &gameObj;
+							while (Temp)
 							{
-								com->OnCollisionExit(&gameObj);
+								for (auto com : Temp->component)
+								{
+									com->OnCollisionExit(obj);
+								}
+								Temp = Temp->parent;
 							}
-							Temp = Temp->parent;
+							Temp = obj;
+							while (Temp)
+							{
+								for (auto com : Temp->component)
+								{
+									com->OnCollisionExit(&gameObj);
+								}
+								Temp = Temp->parent;
+							}
 						}
 					}
 				}

@@ -13,6 +13,6 @@ public :
 	CGrenade(CGameObj* Other);
 	~CGrenade();
 public :
-	void Explosion(CGameObj& obj);
+	void Explosion();
 };
 

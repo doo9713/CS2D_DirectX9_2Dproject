@@ -52,7 +52,7 @@ void CEnemyController::Shoot()
 	bullet->Shooter = &gameObj;
 
 	auto csr = obj->AddComponent<CSpriteRender>();
-	csr->RenderKey = "Bullet";
+	csr->RenderKey = "Ammo";
 }
 
 void CEnemyController::Start()
@@ -108,13 +108,32 @@ void CEnemyController::Update()
 
 void CEnemyController::OnCollisionEnter(CGameObj* Other)
 {
+	if (!strcmp(Other->Name.data(), "Explosion"))
+	{
+		for (int i = 0; i < 6; ++i)
+		{
+			auto obj = GAMEOBJ.AddGameObj("BodyPart", Tag_Enviroment, Layer_EnviromentDown);
+			obj->Position.x = gameObj.Position.x - Random(-15, 15);
+			obj->Position.y = gameObj.Position.y - Random(-15, 15);
+			auto csr = obj->AddComponent<CSpriteRender>();
+			csr->RenderKey = obj->Name;
+			csr->Page = Random(0, 7);
+		}
+
+		Health = Clamp(Health - 100, 0, 100);
+	}
+
 	if (Other->Tag == Tag_Ammo && Other->GetComponent<CAmmo>()->Shooter != &gameObj)
 	{
-		auto obj = GAMEOBJ.AddGameObj("BodyPart", Tag_Enviroment, Layer_EnviromentDown);
-		obj->Position = gameObj.Position;
-		auto csr = obj->AddComponent<CSpriteRender>();
-		csr->RenderKey = obj->Name;
-		csr->Page = Random(0, 7);
+		for (int i = 0; i < 3; ++i)
+		{
+			auto obj = GAMEOBJ.AddGameObj("BodyPart", Tag_Enviroment, Layer_EnviromentDown);
+			obj->Position.x = gameObj.Position.x - Random(-15, 15);
+			obj->Position.y = gameObj.Position.y - Random(-15, 15);
+			auto csr = obj->AddComponent<CSpriteRender>();
+			csr->RenderKey = obj->Name;
+			csr->Page = Random(0, 7);
+		}
 
 		Health = Clamp(Health - Random(5, 15), 0, 100);
 	}

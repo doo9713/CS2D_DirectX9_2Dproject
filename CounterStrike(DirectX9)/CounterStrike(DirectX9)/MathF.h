@@ -110,13 +110,19 @@ namespace UTILITY
 		// 크기행렬(값)
 		MATRIX& Scale(float x = 1, float y = 1, float z = 1)
 		{
-			D3DXMatrixScaling(this, x, y, z);
+			if(z = 0)
+				D3DXMatrixScaling(this, x, y, 1);
+			else
+				D3DXMatrixScaling(this, x, y, z);
 			return *this;
 		}
 		// 크기행렬(벡터)
 		MATRIX& Scale(const VECTOR3& dst)
 		{
-			D3DXMatrixScaling(this, dst.x, dst.y, dst.z);
+			if(dst.z == 0)
+				D3DXMatrixScaling(this, dst.x, dst.y, 1);
+			else 
+				D3DXMatrixScaling(this, dst.x, dst.y, dst.z);
 			return *this;
 		}
 		// 회전행렬

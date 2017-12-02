@@ -82,12 +82,6 @@ void CGameApp::Initialize()
 
 #pragma region Test Code
 	/* Temp make Box */
-	//MakeBox(0, 100, 50, 50);
-	//for (int i = -900; i < 900; i += 50)
-	//{
-	//	MakeBox(i, 500, 50, 50);
-	//	MakeBox(i, -500, 50, 50);
-	//}
 	MakeBox(0, 500, 1800, 50, 1);
 	MakeBox(0, -500, 1800, 50, 1);
 

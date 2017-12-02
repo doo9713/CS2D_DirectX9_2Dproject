@@ -10,6 +10,7 @@
 #include "UpMove.h"
 #include "DownMove.h"
 #include "Animation.h"
+#include "Rigid.h"
 
 RTTILINK(CPlayerController, CController)
 
@@ -261,9 +262,8 @@ void CPlayerController::Update()
 	{
 		auto obj = GAMEOBJ.AddGameObj("Grenade", Tag_Ammo, Layer_EnviromentDown);
 		obj->Position = gameObj.Position;
-
-		auto box = obj->AddComponent<CBoxCollider>();
-		box->Trigger = true;
+		obj->AddComponent<CRigid>();
+		obj->AddComponent<CBoxCollider>();
 
 		auto grenade = obj->AddComponent<CGrenade>();
 		grenade->Dir = VECTOR3(1, 0, 0);
@@ -279,13 +279,40 @@ void CPlayerController::Update()
 
 void CPlayerController::OnCollisionEnter(CGameObj* Other)
 {
+	if (!strcmp(Other->Name.data(), "Explosion"))
+	{
+		for (int i = 0; i < 6; ++i)
+		{
+			auto obj = GAMEOBJ.AddGameObj("BodyPart", Tag_Enviroment, Layer_EnviromentDown);
+			obj->Position.x = gameObj.Position.x - Random(-15, 15);
+			obj->Position.y = gameObj.Position.y - Random(-15, 15);
+			auto csr = obj->AddComponent<CSpriteRender>();
+			csr->RenderKey = obj->Name;
+			csr->Page = Random(0, 7);
+		}
+
+		if (Armor > 0)
+		{
+			Armor = Clamp(Armor - Random(60, 100), 0, 100);
+			Health = Clamp(Health - Random(40, 70), 0, 100);
+		}
+		else
+			Health = Clamp(Health - Random(70, 100), 0, 100);
+
+		InvalidateUI();
+	}
+
 	if (Other->Tag == Tag_Ammo && Other->GetComponent<CAmmo>()->Shooter != &gameObj)
 	{
-		auto obj = GAMEOBJ.AddGameObj("BodyPart", Tag_Enviroment, Layer_EnviromentDown);
-		obj->Position = gameObj.Position;
-		auto csr = obj->AddComponent<CSpriteRender>();
-		csr->RenderKey = obj->Name;
-		csr->Page = Random(0, 7);
+		for (int i = 0; i < 3; ++i)
+		{
+			auto obj = GAMEOBJ.AddGameObj("BodyPart", Tag_Enviroment, Layer_EnviromentDown);
+			obj->Position.x = gameObj.Position.x - Random(-15, 15);
+			obj->Position.y = gameObj.Position.y - Random(-15, 15);
+			auto csr = obj->AddComponent<CSpriteRender>();
+			csr->RenderKey = obj->Name;
+			csr->Page = Random(0, 7);
+		}
 
 		if (Armor > 0)
 		{
