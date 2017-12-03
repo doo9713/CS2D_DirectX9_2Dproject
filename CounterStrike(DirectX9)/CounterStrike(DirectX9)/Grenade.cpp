@@ -12,15 +12,12 @@ RTTILINK(CGrenade, CAmmo)
 void CGrenade::Start()
 {
 	AddInvoke(CF(Explosion), 1.5);
-	Speed = 450;
+	Speed = 250;
 }
 
 void CGrenade::Update()
 {
-	auto rig = gameObj.GetComponent<CRigid>();
-	rig->SetForce(Dir * Speed);
-	Speed = Clamp(Speed - 3, 0, Speed);
-	//gameObj.Position += Dir * TIME.Delta * Speed;
+	gameObj.Position += Dir * TIME.Delta * Speed;
 	gameObj.Angle = ClampCycle(gameObj.Angle + TIME.Delta * 500, 0.0, 360.0);
 }
 
@@ -33,13 +30,14 @@ void CGrenade::OnCollisionEnter(CGameObj* Other)
 		else
 		{
 			AddInvoke(CF(Explosion), 0.5);
+			Dir *= -1;
 			Speed = 75;
 		}
 	}
 }
 
 CGrenade::CGrenade(CGameObj* Owner)
-	: CAmmo(Owner)
+	: CAmmo(Owner), IsFirstUpdate(true)
 {
 }
 

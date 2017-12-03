@@ -5,6 +5,8 @@
 class CGrenade : public CAmmo
 {
 	RTTICHECK
+private :
+	bool IsFirstUpdate;
 public :
 	void Start();
 	void Update();

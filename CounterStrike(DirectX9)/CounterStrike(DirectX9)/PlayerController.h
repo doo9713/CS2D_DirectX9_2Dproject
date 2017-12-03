@@ -2,24 +2,13 @@
 
 #include "Controller.h"
 
-class CAnimation;
+//class CAnimation;
 class CSpriteRender;
 class CPlayerController : public CController
 {
 	RTTICHECK
 private :
-	enum WEAPON
-	{
-		Weapon_AutoGun,
-		Weapon_ShotGun,
-		Weapon_Change,
-		Weapon_End
-	};
 	bool IsReloading;
-	double ActionTime;
-	double Time;
-	WEAPON Weapon;
-	CAnimation* Anim;
 	CSpriteRender* WaitingBar[2]; // 0 -> ¹è°æ, 1 -> ¹Ù
 	UINT Armor;
 	UINT Bullet;
@@ -48,8 +37,6 @@ public :
 	void AddBullet();
 	void InvalidateUI();
 private :
-	void MakeBullet(double angle);
-	void MakeBullet(double angle, float posx, float posy);
 	void WeaponChange(WEAPON change);
 	void ShotGunEffEnd();
 	void InvisibleNumber(CSpriteRender* src[3], UINT data);

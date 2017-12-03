@@ -1,2 +1,4 @@
-﻿  CounterStrike(DirectX9).vcxproj -> D:\문서\GitHub\CS2D_DirectX9_2Dproject\CounterStrike(DirectX9)\Debug\CounterStrike(DirectX9).exe
+﻿  GameApp.cpp
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\gameapp.cpp(21): warning C4244: '인수': 'const UINT'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  CounterStrike(DirectX9).vcxproj -> D:\문서\GitHub\CS2D_DirectX9_2Dproject\CounterStrike(DirectX9)\Debug\CounterStrike(DirectX9).exe
   CounterStrike(DirectX9).vcxproj -> D:\문서\GitHub\CS2D_DirectX9_2Dproject\CounterStrike(DirectX9)\Debug\CounterStrike(DirectX9).pdb (Full PDB)

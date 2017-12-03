@@ -19,6 +19,11 @@ void CPlayerController::Start()
 	Health = 100;
 	Armor = 100;
 
+	if (Weapon == Weapon_AutoGun)
+		ActionTime = 0.15;
+	else
+		ActionTime = 1;
+
 	/* ÃÑ ¹ß»ç ÀÌÆåÆ® */
 	auto eff = GAMEOBJ.AddGameObj("GunFireEffect", Tag_Effect, Layer_Effect);
 	eff->AddComponent<CSpriteRender>();
@@ -262,8 +267,9 @@ void CPlayerController::Update()
 	{
 		auto obj = GAMEOBJ.AddGameObj("Grenade", Tag_Ammo, Layer_EnviromentDown);
 		obj->Position = gameObj.Position;
-		obj->AddComponent<CRigid>();
-		obj->AddComponent<CBoxCollider>();
+		
+		auto box = obj->AddComponent<CBoxCollider>();
+		box->Trigger = true;
 
 		auto grenade = obj->AddComponent<CGrenade>();
 		grenade->Dir = VECTOR3(1, 0, 0);
@@ -282,14 +288,7 @@ void CPlayerController::OnCollisionEnter(CGameObj* Other)
 	if (!strcmp(Other->Name.data(), "Explosion"))
 	{
 		for (int i = 0; i < 6; ++i)
-		{
-			auto obj = GAMEOBJ.AddGameObj("BodyPart", Tag_Enviroment, Layer_EnviromentDown);
-			obj->Position.x = gameObj.Position.x - Random(-15, 15);
-			obj->Position.y = gameObj.Position.y - Random(-15, 15);
-			auto csr = obj->AddComponent<CSpriteRender>();
-			csr->RenderKey = obj->Name;
-			csr->Page = Random(0, 7);
-		}
+			MakeBlood();
 
 		if (Armor > 0)
 		{
@@ -305,14 +304,7 @@ void CPlayerController::OnCollisionEnter(CGameObj* Other)
 	if (Other->Tag == Tag_Ammo && Other->GetComponent<CAmmo>()->Shooter != &gameObj)
 	{
 		for (int i = 0; i < 3; ++i)
-		{
-			auto obj = GAMEOBJ.AddGameObj("BodyPart", Tag_Enviroment, Layer_EnviromentDown);
-			obj->Position.x = gameObj.Position.x - Random(-15, 15);
-			obj->Position.y = gameObj.Position.y - Random(-15, 15);
-			auto csr = obj->AddComponent<CSpriteRender>();
-			csr->RenderKey = obj->Name;
-			csr->Page = Random(0, 7);
-		}
+			MakeBlood();
 
 		if (Armor > 0)
 		{
@@ -327,7 +319,7 @@ void CPlayerController::OnCollisionEnter(CGameObj* Other)
 }
 
 CPlayerController::CPlayerController(CGameObj* Owner)
-	: CController(Owner), Time(0), ActionTime(1), Weapon(Weapon_ShotGun), Anim(nullptr), Armor(100), IsReloading(false)
+	: CController(Owner), Armor(100), IsReloading(false)
 {
 	HealthPos[0] = VECTOR3(-670, -420);
 	HealthPos[1] = VECTOR3(-700, -420);
@@ -378,43 +370,6 @@ void CPlayerController::InvalidateUI()
 	InvisibleNumber(ArmorRender, Armor);
 	InvisibleNumber(TotalBulletRender, TotalBullet[Weapon]);
 	InvisibleNumber(CurrentBulletRender, Bullet);
-}
-
-void CPlayerController::MakeBullet(double angle)
-{
-	double Angle = angle;
-	auto obj = GAMEOBJ.AddGameObj("Bullet", Tag_Ammo, Layer_EnviromentDown);
-	obj->Position = gameObj.Position;
-	obj->Angle = Angle + 45;
-	obj->AddComponent<CBoxCollider>();
-
-	auto bullet = obj->AddComponent<CBullet>();
-	bullet->Dir = VECTOR3(1, 0, 0);
-	bullet->Dir.Rotation(Angle);
-	bullet->Dir.Normalize();
-	bullet->Shooter = &gameObj;
-
-	auto csr = obj->AddComponent<CSpriteRender>();
-	csr->RenderKey = "Ammo";
-}
-
-void CPlayerController::MakeBullet(double angle, float posx, float posy)
-{
-	double Angle = gameObj.Angle;
-	auto obj = GAMEOBJ.AddGameObj("Bullet", Tag_Ammo, Layer_EnviromentDown);
-	obj->Position.x = posx;
-	obj->Position.y = posy;
-	obj->Angle = Angle + 45;
-	obj->AddComponent<CBoxCollider>();
-
-	auto bullet = obj->AddComponent<CBullet>();
-	bullet->Dir = VECTOR3(1, 0, 0);
-	bullet->Dir.Rotation(Angle);
-	bullet->Dir.Normalize();
-	bullet->Shooter = &gameObj;
-
-	auto csr = obj->AddComponent<CSpriteRender>();
-	csr->RenderKey = "Ammo";
 }
 
 void CPlayerController::WeaponChange(WEAPON change)

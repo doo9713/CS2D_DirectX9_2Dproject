@@ -53,6 +53,22 @@ void CGameApp::Initialize()
 	obj->Center = VECTOR3(12, 0, 0);
 	obj->AddComponent<CPlayerController>();
 	obj->AddComponent<CRigid>();
+
+	MakeBox(150, 150);
+	MakeBox(100, 150);
+	MakeBox(150, 100);
+
+	MakeBox(-150, 150);
+	MakeBox(-100, 150);
+	MakeBox(-150, 100);
+
+	MakeBox(150, -150);
+	MakeBox(100, -150);
+	MakeBox(150, -100);
+
+	MakeBox(-150, -150);
+	MakeBox(-100, -150);
+	MakeBox(-150, -100);
 #pragma endregion
 
 #pragma region UI Init
@@ -96,13 +112,29 @@ void CGameApp::Initialize()
 	obj->AddComponent<CRigid>();
 	obj->AddComponent<CEnemyController>();
 	obj->Center = VECTOR3(12, 0, 0);
-	obj->Position = VECTOR3(300, 0);
+	obj->Position = VECTOR3(400, 0);
+
 	box = obj->AddComponent<CBoxCollider>();
 	box->Size = VECTOR3(20, 20);
 	box->Center = VECTOR3(-10, 0, 0);
+
 	csr = obj->AddComponent<CSpriteRender>();
 	csr->RenderKey = "Player";
-	csr->Page = 2;
+	csr->Page = 3;
+
+	obj = GAMEOBJ.AddGameObj("Enemy", Tag_Enemy, Layer_Character);
+	obj->AddComponent<CRigid>();
+	obj->AddComponent<CEnemyController>();
+	obj->Center = VECTOR3(12, 0, 0);
+	obj->Position = VECTOR3(-400, 0);
+
+	box = obj->AddComponent<CBoxCollider>();
+	box->Size = VECTOR3(20, 20);
+	box->Center = VECTOR3(-10, 0, 0);
+
+	csr = obj->AddComponent<CSpriteRender>();
+	csr->RenderKey = "Player";
+	csr->Page = 3;
 
 	/* Temp make Item */
 	obj = GAMEOBJ.AddGameObj("HealthItem", Tag_Item, Layer_EnviromentDown);

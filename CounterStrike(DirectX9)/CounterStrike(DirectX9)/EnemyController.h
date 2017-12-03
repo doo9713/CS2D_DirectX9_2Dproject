@@ -7,14 +7,10 @@ class CEnemyController : public CController
 	RTTICHECK
 private :
 	float ViewLength;
+	double rate;
+	double firstAngle;
+	double dstAngle;
 	CGameObj* Target;
-/* Temp Function */
-private :
-	void Change();
-	void ChangeA();
-	void ChangeB();
-	void Shoot();
-/* ------------- */
 public :
 	void Start();
 	void Update();
@@ -22,5 +18,7 @@ public :
 public :
 	CEnemyController(CGameObj* Owner);
 	~CEnemyController();
+private :
+	void ShotGunEffEnd();
 };
 
