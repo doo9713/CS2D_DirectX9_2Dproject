@@ -23,6 +23,7 @@ void CGameApp::Initialize()
 
 #pragma region File Load
 	// TODO : File Load Code
+	TEXTURE.Load("BackGround", "../Resource/Temp/");
 	TEXTURE.Load("Player", "../Resource/Texture/Player");
 	TEXTURE.Load("Box", "../Resource/Texture/Object/Box");
 	TEXTURE.Load("Ammo", "../Resource/Texture/Ammo");
@@ -97,6 +98,11 @@ void CGameApp::Initialize()
 #pragma endregion
 
 #pragma region Test Code
+	/* Temp make BackGround */
+	obj = GAMEOBJ.AddGameObj("BackGround", Tag_Enviroment, Layer_Background);
+	csr = obj->AddComponent<CSpriteRender>();
+	csr->RenderKey = "BackGround";
+
 	/* Temp make Box */
 	MakeBox(0, 500, 1800, 50, 1);
 	MakeBox(0, -500, 1800, 50, 1);
