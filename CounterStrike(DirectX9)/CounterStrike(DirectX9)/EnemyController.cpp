@@ -102,10 +102,13 @@ void CEnemyController::Update()
 		}
 
 		/* 일정거리에서 적이 나를 향해 전진 */
-		VECTOR3 Dir = VECTOR3(1, 0, 0);
-		Dir.Rotation(gameObj.Angle);
-		Dir.Normalize();
-		gameObj.Position += Dir * TIME.Delta * 200;
+		if ((Target->Position - gameObj.Position).Length() > 200)
+		{
+			VECTOR3 Dir = VECTOR3(1, 0, 0);
+			Dir.Rotation(gameObj.Angle);
+			Dir.Normalize();
+			gameObj.Position += Dir * TIME.Delta * 150;
+		}
 	}
 	else
 		Anim->AnimationName = "";
@@ -121,12 +124,12 @@ void CEnemyController::OnCollisionEnter(CGameObj* Other)
 		Health = Clamp(Health - 100, 0, 100);
 	}
 
-	if (Other->Tag == Tag_Ammo && Other->GetComponent<CAmmo>()->Shooter != &gameObj)
+	if (Other->Tag == Tag_Ammo && (Other->GetComponent<CAmmo>()->Shooter)->Tag == Tag_Player/* != &gameObj*/)
 	{
 		for (int i = 0; i < 3; ++i)
 			MakeBlood();
 
-		Health = Clamp(Health - Random(5, 15), 0, 100);
+		Health = Clamp(Health - Random(20, 40), 0, 100);
 	}
 }
 

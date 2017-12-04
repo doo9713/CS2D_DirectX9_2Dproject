@@ -207,7 +207,7 @@ void CPlayerController::Update()
 			Anim->AnimationName = "GunFireEffect";
 			if (Time > ActionTime || Time == 0)
 			{
-				MakeBullet(Random(gameObj.Angle - 2, gameObj.Angle + 2));
+				MakeBullet(Random(gameObj.Angle - 1, gameObj.Angle + 1));
 
 				if(Time != 0)
 					Time -= ActionTime;

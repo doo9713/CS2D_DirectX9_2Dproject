@@ -9,7 +9,7 @@ void CHealthItem::OnCollisionEnter(CGameObj* Other)
 	if (Other->Tag == Tag_Player)
 	{
 		auto player = Other->GetComponent<CPlayerController>();
-		player->HEALTH = Clamp(player->HEALTH + Random(20, 40), 0, 100);
+		player->HEALTH = Clamp(player->HEALTH + Random(40, 80), 0, 100);
 		player->InvalidateUI();
 		Destroy(gameObj);
 	}
