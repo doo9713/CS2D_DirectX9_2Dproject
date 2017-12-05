@@ -19,6 +19,7 @@ public :
 	CEnemyController(CGameObj* Owner);
 	~CEnemyController();
 private :
+	void MakeItem(WEAPON myWeapon);
 	void ShotGunEffEnd();
 };
 

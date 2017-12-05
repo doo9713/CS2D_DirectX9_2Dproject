@@ -11,6 +11,7 @@ public :
 public :
 	void Start();
 	void Update();
+	void OnButton();
 public :
 	CUIButton(CGameObj* Owner);
 	~CUIButton();

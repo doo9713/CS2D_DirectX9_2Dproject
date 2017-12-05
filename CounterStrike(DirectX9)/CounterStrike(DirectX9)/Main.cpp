@@ -1,4 +1,5 @@
 #include "GameApp.h"
+#include "MenuApp.h"
 
 HWND hWnd;
 
@@ -51,7 +52,9 @@ int APIENTRY WinMain(HINSTANCE Inst, HINSTANCE PrevInst,
 	double UTime = 0;
 	// TODO : App Initialize Code
 	CGameApp Game;
-	Game.Initialize();
+	CMenuApp Menu;
+	//Game.Initialize();
+	Menu.Initialize();
 
 	while (true)
 	{
@@ -70,14 +73,16 @@ int APIENTRY WinMain(HINSTANCE Inst, HINSTANCE PrevInst,
 		{
 			UTime -= UpdateTime;
 			// TODO : App Update Code
-			Game.Update();
+			//Game.Update();
+			Menu.Update();
 		}
 
 		if (FTime > FrameTime)
 		{
 			FTime -= FrameTime;
 			// TODO : App Render Code
-			Game.Render();
+			//Game.Render();
+			Menu.Render();
 		}
 	}
 

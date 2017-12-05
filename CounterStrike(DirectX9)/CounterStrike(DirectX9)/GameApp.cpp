@@ -27,6 +27,7 @@ void CGameApp::Initialize()
 
 #pragma region File Load
 	// TODO : File Load Code
+	TEXTURE.Load("Text", "../Resource/Texture/Text");
 	TEXTURE.Load("BackGround", "../Resource/Texture/Map");
 	TEXTURE.Load("Player", "../Resource/Texture/Player");
 	TEXTURE.Load("Box", "../Resource/Texture/Object/Box");
@@ -35,12 +36,14 @@ void CGameApp::Initialize()
 	TEXTURE.Load("Explosion", "../Resource/Texture/Effect/Explosion");
 	TEXTURE.Load("BodyPart", "../Resource/Texture/BodyPart");
 	TEXTURE.Load("Tree", "../Resource/Texture/Object/Tree");
-	TEXTURE.Load("Item", "../Resource/Texture/Object/Item"); // page : 0 -> C4, 1 -> Bag, 2 -> Armor, 3 -> Health
+	TEXTURE.Load("Item", "../Resource/Texture/Object/Item"); // page : 0 -> C4, 1 -> Bag, 2 -> Armor, 3 -> Health, 4 -> AutoGun, 5 -> ShotGun
 
 	ANIMCLIP.OnLoad("GunFireEffect", "../Resource/AnimClip/GunFire.Clip");
 	ANIMCLIP.OnLoad("ExplosionEffect", "../Resource/AnimClip/Explosion.Clip");
 
 	SHADER.OnLoad("Default", "../Resource/Effect/Default.fx");
+
+	FONT.FontLoad("Default", 0, "../Resource/Font/Font_01.txt");
 #pragma endregion
 
 #pragma region Map obj Init
@@ -77,8 +80,6 @@ void CGameApp::Initialize()
 	MakeBox(-125, -175);
 	MakeBox(-75, -175);
 	MakeBox(-125, -125);
-
-	MakeBox(-575, 325, 5, 150, 150);
 
 	MakeBox(-1425, 525, 3);
 	MakeBox(-1375, 525, 3);
@@ -145,9 +146,20 @@ void CGameApp::Initialize()
 
 	/* Make Other Obj */
 	MakeTree(-75, 75);
-	MakeTree(-90, 540);
+	MakeTree(-160, 580);
+	MakeTree(-330, 190);
+	MakeTree(-430, 790);
+	MakeTree(-540, 590);
+	MakeTree(-570, 700);
+	MakeTree(-840, 120);
 	MakeTree(-890, 590);
 	MakeTree(-930, 647);
+	MakeTree(-940, 260);
+	MakeTree(-1030, 230);
+
+	MakeTree(-260, -290);
+	MakeTree(-400, -200);
+	MakeTree(-480, -330);
 #pragma endregion
 
 #pragma region Character Obj Init
@@ -185,11 +197,17 @@ void CGameApp::Initialize()
 	csr->RenderKey = "Symbol";
 	csr->Page = 1;
 
-	obj = GAMEOBJ.AddGameObj("Timer", Tag_UI, Layer_UI);
-	obj->Position = VECTOR3(-100, -420);
-	csr = obj->AddComponent<CSpriteRender>();
-	csr->RenderKey = "Symbol";
-	csr->Page = 2;
+	//obj = GAMEOBJ.AddGameObj("Timer", Tag_UI, Layer_UI);
+	//obj->Position = VECTOR3(-100, -420);
+	//csr = obj->AddComponent<CSpriteRender>();
+	//csr->RenderKey = "Symbol";
+	//csr->Page = 2;
+#pragma endregion
+
+#pragma region Font
+	FONT.WordScale = VECTOR3(1, 1);
+	FONT.WordJump = 10;
+	FONT.WordLine = 200;
 #pragma endregion
 
 #pragma region Test Code
@@ -199,6 +217,7 @@ void CGameApp::Initialize()
 	obj->AddComponent<CEnemyController>();
 	obj->Center = VECTOR3(12, 0, 0);
 	obj->Position = VECTOR3(400, 0);
+	obj->Angle = Random(0, 360);
 
 	box = obj->AddComponent<CBoxCollider>();
 	box->Size = VECTOR3(20, 20);
@@ -213,6 +232,7 @@ void CGameApp::Initialize()
 	obj->AddComponent<CEnemyController>();
 	obj->Center = VECTOR3(12, 0, 0);
 	obj->Position = VECTOR3(-400, 0);
+	obj->Angle = Random(0, 360);
 
 	box = obj->AddComponent<CBoxCollider>();
 	box->Size = VECTOR3(20, 20);

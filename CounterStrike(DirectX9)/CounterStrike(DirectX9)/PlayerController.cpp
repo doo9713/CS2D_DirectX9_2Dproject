@@ -87,6 +87,11 @@ void CPlayerController::Start()
 		CurrentBulletRender[i]->RenderKey = "Number";
 		CurrentBulletRender[i]->Page = PositionNum(i, Bullet);
 	}
+	obj = GAMEOBJ.AddGameObj("", Tag_UI, Layer_UI);
+	obj->Position = VECTOR3(730, -370);
+	GrenadeRender = obj->AddComponent<CSpriteRender>();
+	GrenadeRender->RenderKey = "Number";
+	GrenadeRender->Page = GrenadeCnt;
 
 	InvalidateUI();
 }
@@ -235,7 +240,7 @@ void CPlayerController::Update()
 				AddInvoke(CF(ShotGunEffEnd), 0.2);
 				for (; i < 4; ++i)
 				{
-					MakeBullet(gameObj.Angle + i, 
+					MakeBullet(gameObj.Angle + i,
 						Random(gameObj.Position.x - 10, gameObj.Position.x + 10), 
 						Random(gameObj.Position.y - 10, gameObj.Position.y + 10));
 				}
@@ -263,23 +268,12 @@ void CPlayerController::Update()
 	}
 
 	/* ¼ö·ùÅº ÅõÃ´ */
-	if (KEY.Push('F'))
+	if (KEY.Push('F') && !IsReloading)
 	{
-		auto obj = GAMEOBJ.AddGameObj("Grenade", Tag_Ammo, Layer_EnviromentDown);
-		obj->Position = gameObj.Position;
-		
-		auto box = obj->AddComponent<CBoxCollider>();
-		box->Trigger = true;
-
-		auto grenade = obj->AddComponent<CGrenade>();
-		grenade->Dir = VECTOR3(1, 0, 0);
-		grenade->Dir.Rotation(gameObj.Angle);
-		grenade->Dir.Normalize();
-		grenade->Shooter = &gameObj;
-		
-		auto csr = obj->AddComponent<CSpriteRender>();
-		csr->RenderKey = "Ammo";
-		csr->Page = 1;
+		AddInvoke(CF(FireInTheHall), 1);
+		GrenadeCnt = Clamp(GrenadeCnt - 1, 0, 5);
+		IsReloading = true;
+		InvalidateUI();
 	}
 }
 
@@ -319,7 +313,7 @@ void CPlayerController::OnCollisionEnter(CGameObj* Other)
 }
 
 CPlayerController::CPlayerController(CGameObj* Owner)
-	: CController(Owner), Armor(100), IsReloading(false)
+	: CController(Owner), Armor(100), IsReloading(false), GrenadeCnt(5)
 {
 	HealthPos[0] = VECTOR3(-670, -420);
 	HealthPos[1] = VECTOR3(-700, -420);
@@ -350,10 +344,25 @@ CPlayerController::~CPlayerController()
 {
 }
 
-void CPlayerController::AddBullet()
+void CPlayerController::AddBullet(UINT type)
 {
-	TotalBullet[Weapon_AutoGun] += 60;
-	TotalBullet[Weapon_ShotGun] += 10;
+	switch (type)
+	{
+	case 0 :
+		TotalBullet[Weapon_AutoGun] += 60;
+		TotalBullet[Weapon_ShotGun] += 10;
+		GrenadeCnt = Clamp(GrenadeCnt + 1, 0, 5);
+		break;
+	case 1 :
+		TotalBullet[Weapon_AutoGun] += 60;
+		break;
+	case 2 :
+		TotalBullet[Weapon_ShotGun] += 10;
+		break;
+	default :
+		break;
+	}
+
 }
 
 void CPlayerController::InvalidateUI()
@@ -365,11 +374,33 @@ void CPlayerController::InvalidateUI()
 		TotalBulletRender[i]->Page = PositionNum(i, TotalBullet[Weapon]);
 		CurrentBulletRender[i]->Page = PositionNum(i, Bullet);
 	}
+	GrenadeRender->Page = GrenadeCnt;
 
 	InvisibleNumber(HealthRender, Health);
 	InvisibleNumber(ArmorRender, Armor);
 	InvisibleNumber(TotalBulletRender, TotalBullet[Weapon]);
 	InvisibleNumber(CurrentBulletRender, Bullet);
+}
+
+void CPlayerController::FireInTheHall()
+{
+	auto obj = GAMEOBJ.AddGameObj("Grenade", Tag_Ammo, Layer_EnviromentDown);
+	obj->Position = gameObj.Position;
+
+	auto box = obj->AddComponent<CBoxCollider>();
+	box->Trigger = true;
+
+	auto grenade = obj->AddComponent<CGrenade>();
+	grenade->Dir = VECTOR3(1, 0, 0);
+	grenade->Dir.Rotation(gameObj.Angle);
+	grenade->Dir.Normalize();
+	grenade->Shooter = &gameObj;
+
+	auto csr = obj->AddComponent<CSpriteRender>();
+	csr->RenderKey = "Ammo";
+	csr->Page = 1;
+
+	IsReloading = false;
 }
 
 void CPlayerController::WeaponChange(WEAPON change)

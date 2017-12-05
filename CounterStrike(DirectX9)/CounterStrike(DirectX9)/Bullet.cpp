@@ -1,5 +1,6 @@
 #include "Bullet.h"
 #include "GameObj.h"
+#include "SpriteRender.h"
 
 RTTILINK(CBullet, CAmmo)
 

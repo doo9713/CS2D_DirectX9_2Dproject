@@ -18,6 +18,7 @@ void CGrenade::Start()
 void CGrenade::Update()
 {
 	gameObj.Position += Dir * TIME.Delta * Speed;
+	Speed -= 2;
 	gameObj.Angle = ClampCycle(gameObj.Angle + TIME.Delta * 500, 0.0, 360.0);
 }
 
@@ -25,14 +26,15 @@ void CGrenade::OnCollisionEnter(CGameObj* Other)
 {
 	if (Other != Shooter)
 	{
-		if (Other->Tag == Tag_Enemy)
-			Explosion();
-		else
-		{
-			AddInvoke(CF(Explosion), 0.5);
-			Dir *= -1;
-			Speed = 75;
-		}
+		Explosion();
+		//if (Other->Tag == Tag_Enemy)
+		//	Explosion();
+		//else
+		//{
+		//	AddInvoke(CF(Explosion), 0.5);
+		//	Dir *= -1;
+		//	Speed = 75;
+		//}
 	}
 }
 
@@ -49,10 +51,10 @@ void CGrenade::Explosion()
 {
 	auto explo = GAMEOBJ.AddGameObj("Explosion", Tag_Effect, Layer_Effect);
 	explo->Position = gameObj.Position;
-	explo->Scale = VECTOR3(2, 2);
+	explo->Scale = VECTOR3(2.5, 2.5);
 
 	auto box = explo->AddComponent<CBoxCollider>();
-	box->Size = VECTOR3(20, 20);
+	box->Size = VECTOR3(25, 25);
 	box->Trigger = true;
 
 	auto csr = explo->AddComponent<CSpriteRender>();

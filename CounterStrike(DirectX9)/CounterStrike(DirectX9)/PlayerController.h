@@ -14,10 +14,12 @@ private :
 	UINT Bullet;
 	UINT* TotalBullet;
 	UINT* MagazineBullet;
+	UINT GrenadeCnt;
 	CSpriteRender* HealthRender[3];
 	CSpriteRender* ArmorRender[3];
 	CSpriteRender* TotalBulletRender[3];
 	CSpriteRender* CurrentBulletRender[3];
+	CSpriteRender* GrenadeRender;
 	VECTOR3 HealthPos[3];
 	VECTOR3 ArmorPos[3];
 	VECTOR3 TotalBulletPos[3];
@@ -34,9 +36,10 @@ public :
 	CPlayerController(CGameObj* Owner);
 	~CPlayerController();
 public :
-	void AddBullet();
+	void AddBullet(UINT type = 0);
 	void InvalidateUI();
 private :
+	void FireInTheHall();
 	void WeaponChange(WEAPON change);
 	void ShotGunEffEnd();
 	void InvisibleNumber(CSpriteRender* src[3], UINT data);

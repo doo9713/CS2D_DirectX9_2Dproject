@@ -22,7 +22,10 @@ void CController::MakeBullet(double angle)
 	auto obj = GAMEOBJ.AddGameObj("Bullet", Tag_Ammo, Layer_EnviromentDown);
 	obj->Position = gameObj.Position;
 	obj->Angle = Angle + 45;
-	obj->AddComponent<CBoxCollider>();
+	
+	auto box = obj->AddComponent<CBoxCollider>();
+	box->Size = VECTOR3(5, 5);
+	box->Trigger = true;
 
 	auto bullet = obj->AddComponent<CBullet>();
 	bullet->Dir = VECTOR3(1, 0, 0);
@@ -36,12 +39,15 @@ void CController::MakeBullet(double angle)
 
 void CController::MakeBullet(double angle, float posx, float posy)
 {
-	double Angle = gameObj.Angle;
+	double Angle = angle;
 	auto obj = GAMEOBJ.AddGameObj("Bullet", Tag_Ammo, Layer_EnviromentDown);
 	obj->Position.x = posx;
 	obj->Position.y = posy;
 	obj->Angle = Angle + 45;
-	obj->AddComponent<CBoxCollider>();
+	
+	auto box = obj->AddComponent<CBoxCollider>();
+	box->Size = VECTOR3(5, 5);
+	box->Trigger = true;
 
 	auto bullet = obj->AddComponent<CBullet>();
 	bullet->Dir = VECTOR3(1, 0, 0);

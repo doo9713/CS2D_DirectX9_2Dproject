@@ -127,6 +127,15 @@
     <Filter Include="Component\Effect\ExplosionEffect">
       <UniqueIdentifier>{a9253136-ee37-42fb-bea5-2d815a529a2a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Component\Item\BulletItem\AutoGunItem">
+      <UniqueIdentifier>{150a0f81-58ba-43ad-90b7-61bd4d677c8e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Component\Item\BulletItem\ShotGunItem">
+      <UniqueIdentifier>{7ec7e87a-dd06-4020-b593-a73d0e85692b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="App\Manu">
+      <UniqueIdentifier>{019e3e75-65e6-401b-862c-2271c43d247c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -242,6 +251,15 @@
     </ClCompile>
     <ClCompile Include="ExplosionEffect.cpp">
       <Filter>Component\Effect\ExplosionEffect</Filter>
+    </ClCompile>
+    <ClCompile Include="AutoGunItem.cpp">
+      <Filter>Component\Item\BulletItem\AutoGunItem</Filter>
+    </ClCompile>
+    <ClCompile Include="ShotGunItem.cpp">
+      <Filter>Component\Item\BulletItem\ShotGunItem</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuApp.cpp">
+      <Filter>App\Manu</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -370,6 +388,15 @@
     </ClInclude>
     <ClInclude Include="ExplosionEffect.h">
       <Filter>Component\Effect\ExplosionEffect</Filter>
+    </ClInclude>
+    <ClInclude Include="AutoGunItem.h">
+      <Filter>Component\Item\BulletItem\AutoGunItem</Filter>
+    </ClInclude>
+    <ClInclude Include="ShotGunItem.h">
+      <Filter>Component\Item\BulletItem\ShotGunItem</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuApp.h">
+      <Filter>App\Manu</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

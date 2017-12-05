@@ -9,6 +9,9 @@
 #include "SpriteRender.h"
 #include "BoxCollider.h"
 #include "Animation.h"
+#include "AutoGunItem.h"
+#include "ShotGunItem.h"
+#include "Rigid.h"
 
 RTTILINK(CEnemyController, CController)
 
@@ -38,8 +41,14 @@ void CEnemyController::Start()
 
 void CEnemyController::Update()
 {
+	/* 캐릭터 죽음 */
 	if (Health == 0)
+	{
+		int temp = Random(0, 9);
+		if(temp < 2)
+			MakeItem(Weapon);
 		Destroy(gameObj);
+	}
 
 	if ((Target->Position - gameObj.Position).Length() < ViewLength)
 	{
@@ -51,20 +60,14 @@ void CEnemyController::Update()
 			if (dstAngle >= 360) dstAngle -= 360;
 			if (firstAngle < 90 && dstAngle > 270) firstAngle += 360;
 			if (dstAngle < 90 && firstAngle > 270) dstAngle += 360;
+			if (firstAngle >= 90 && firstAngle <= 270 && dstAngle < 90) dstAngle += 360;
 		}
 
 		rate = Clamp(rate + TIME.Delta * 8, 0.0, 1.0);
 		gameObj.Angle = Lerp(rate, firstAngle, dstAngle);
 
 		if (dstAngle != ToTarget(Target->Position, gameObj.Position) + 180)
-		{
-			firstAngle = gameObj.Angle;
-			dstAngle = ToTarget(Target->Position, gameObj.Position) + 180;
-			if (dstAngle >= 360) dstAngle -= 360;
-			if (firstAngle < 90 && dstAngle > 270) firstAngle += 360;
-			if (dstAngle < 90 && firstAngle > 270) dstAngle += 360;
 			rate = 0;
-		}
 
 		/* 일정거리에서 적이 플레이어를 향해 총 발사 설정 */
 		double CompareAngle = dstAngle - gameObj.Angle;
@@ -73,7 +76,7 @@ void CEnemyController::Update()
 			if (Weapon == Weapon_AutoGun)
 			{
 				Anim->AnimationName = "GunFireEffect";
-				if (Time > ActionTime || Time == 0)
+				if (Time > ActionTime)
 				{
 					MakeBullet(Random(gameObj.Angle - 2, gameObj.Angle + 2));
 
@@ -83,7 +86,7 @@ void CEnemyController::Update()
 			}
 			else
 			{
-				if (Time > ActionTime || Time == 0)
+				if (Time > ActionTime)
 				{
 					Anim->AnimationName = "GunFireEffect";
 					AddInvoke(CF(ShotGunEffEnd), 0.2);
@@ -102,7 +105,10 @@ void CEnemyController::Update()
 		}
 
 		/* 일정거리에서 적이 나를 향해 전진 */
-		if ((Target->Position - gameObj.Position).Length() > 200)
+		int t_Length;
+		if (Weapon == Weapon_AutoGun) t_Length = 200;
+		else t_Length = 100;
+		if ((Target->Position - gameObj.Position).Length() > t_Length)
 		{
 			VECTOR3 Dir = VECTOR3(1, 0, 0);
 			Dir.Rotation(gameObj.Angle);
@@ -124,12 +130,17 @@ void CEnemyController::OnCollisionEnter(CGameObj* Other)
 		Health = Clamp(Health - 100, 0, 100);
 	}
 
-	if (Other->Tag == Tag_Ammo && (Other->GetComponent<CAmmo>()->Shooter)->Tag == Tag_Player/* != &gameObj*/)
+	if (Other->Tag == Tag_Ammo && (Other->GetComponent<CAmmo>()->Shooter)->Tag == Tag_Player)
 	{
 		for (int i = 0; i < 3; ++i)
 			MakeBlood();
 
-		Health = Clamp(Health - Random(20, 40), 0, 100);
+		Health = Clamp(Health - Random(15, 30), 0, 100);
+		
+		VECTOR3 shooterPos = (Other->GetComponent<CAmmo>()->Shooter)->Position;
+		float distance = (gameObj.Position - shooterPos).Length();
+		if (distance < 1000)
+			ViewLength = distance + 200;
 	}
 }
 
@@ -140,6 +151,32 @@ CEnemyController::CEnemyController(CGameObj* Owner)
 
 CEnemyController::~CEnemyController()
 {
+}
+
+void CEnemyController::MakeItem(WEAPON myWeapon)
+{
+	if (myWeapon > Weapon_ShotGun)
+		return;
+
+	auto obj = GAMEOBJ.AddGameObj("BulletItem", Tag_Item, Layer_EnviromentDown);
+	obj->Position = gameObj.Position;
+	obj->AddComponent<CRigid>();
+	obj->AddComponent<CBoxCollider>();
+
+	auto csr = obj->AddComponent<CSpriteRender>();
+	csr->RenderKey = "Item";
+
+	switch (myWeapon)
+	{
+	case Weapon_AutoGun :
+		obj->AddComponent<CAutoGunItem>();
+		csr->Page = 4;
+		break;
+	case Weapon_ShotGun :
+		obj->AddComponent<CShotGunItem>();
+		csr->Page = 5;
+		break;
+	}
 }
 
 void CEnemyController::ShotGunEffEnd()
