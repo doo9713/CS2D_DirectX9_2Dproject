@@ -108,6 +108,46 @@ void CGameApp::Initialize()
 	MakeBox(-1425, -525, 6);
 
 	MakeBox(-1375, -725, 2, 150, 150);
+
+	MakeBox(150, 550, 4, 100, 100);
+	MakeBox(-150, 800, 4, 100, 100);
+	MakeBox(-175, 725, 3);
+	MakeBox(250, 750, 4, 100, 100);
+
+	MakeBox(1150, 800, 1, 100, 100);
+	MakeBox(1225, 575, 2, 150, 150);
+	MakeBox(1325, 525);
+	MakeBox(1375, 525);
+	MakeBox(1425, 525);
+
+	MakeBox(1325, 175, 6);
+	MakeBox(1375, 175, 6);
+	MakeBox(1425, 175, 6);
+	MakeBox(1275, 175, 6);
+	MakeBox(1275, 125, 6);
+	MakeBox(1275, 75, 6);
+
+	MakeBox(1300, -200, 7, 100, 100);
+	MakeBox(1400, -200, 7, 100, 100);
+
+	MakeBox(-100, -700, 1, 100, 100);
+	MakeBox(-175, -725);
+	MakeBox(-225, -725);
+	MakeBox(-275, -725);
+	MakeBox(-275, -775);
+	MakeBox(-275, -825);
+	MakeBox(350, -800, 1, 100, 100);
+	MakeBox(325, -725);
+	MakeBox(275, -725);
+	MakeBox(225, -725);
+	MakeBox(175, -725);
+	MakeBox(125, -725);
+
+	/* Make Other Obj */
+	MakeTree(-75, 75);
+	MakeTree(-90, 540);
+	MakeTree(-890, 590);
+	MakeTree(-930, 647);
 #pragma endregion
 
 #pragma region Character Obj Init
@@ -153,12 +193,6 @@ void CGameApp::Initialize()
 #pragma endregion
 
 #pragma region Test Code
-	/* Temp make Tree */
-	obj = GAMEOBJ.AddGameObj("Tree", Tag_Enviroment, Layer_EnviromentUp);
-	obj->Position = VECTOR3(-75, 75);
-	csr = obj->AddComponent<CSpriteRender>();
-	csr->RenderKey = "Tree";
-
 	/* Temp make Enemy */
 	obj = GAMEOBJ.AddGameObj("Enemy", Tag_Enemy, Layer_Character);
 	obj->AddComponent<CRigid>();
@@ -275,4 +309,17 @@ void CGameApp::MakeBox(float posx, float posy, UINT page, float sizex, float siz
 void CGameApp::MakeBox(VECTOR3 pos, UINT page, VECTOR3 size)
 {
 	MakeBox(pos.x, pos.y, page, size.x, size.y);
+}
+
+void CGameApp::MakeTree(float posx, float posy)
+{
+	auto obj = GAMEOBJ.AddGameObj("Tree", Tag_Enviroment, Layer_EnviromentUp);
+	obj->Position = VECTOR3(posx, posy);
+	auto csr = obj->AddComponent<CSpriteRender>();
+	csr->RenderKey = "Tree";
+}
+
+void CGameApp::MakeTree(VECTOR3 pos)
+{
+	MakeTree(pos.x, pos.y);
 }

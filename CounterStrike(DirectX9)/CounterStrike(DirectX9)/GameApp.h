@@ -16,5 +16,7 @@ private :
 	void MakeTransWall(VECTOR3 pos, VECTOR3 size = VECTOR3(50, 50));
 	void MakeBox(float posx, float posy, UINT page = 0, float sizex = 50, float sizey = 50);
 	void MakeBox(VECTOR3 pos, UINT page = 0, VECTOR3 size = VECTOR3(50, 50));
+	void MakeTree(float posx, float posy);
+	void MakeTree(VECTOR3 pos);
 };
 
