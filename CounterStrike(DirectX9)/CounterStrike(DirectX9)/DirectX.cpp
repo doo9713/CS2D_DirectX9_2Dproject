@@ -135,6 +135,13 @@ void UTILITY::CTextureList::Load(const char* Key, const char* Path, const char* 
 	Texture.insert(std::make_pair(Key, tex));
 }
 
+void UTILITY::CTextureList::Clear()
+{
+	for (auto tex : Texture)
+		delete tex.second;
+	Texture.clear();
+}
+
 // 이미지 가져오기
 UTILITY::CTexture::Image* UTILITY::CTextureList::GetImage(const char* Key, UINT Cnt)
 {

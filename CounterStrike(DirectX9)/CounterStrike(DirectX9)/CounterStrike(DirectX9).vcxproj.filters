@@ -136,6 +136,15 @@
     <Filter Include="App\Manu">
       <UniqueIdentifier>{019e3e75-65e6-401b-862c-2271c43d247c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Component\UIButton\StartButton">
+      <UniqueIdentifier>{83065323-dca0-4b69-81ce-05cd951851c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Component\UIButton\ExitButton">
+      <UniqueIdentifier>{830dc131-723e-418c-bfdb-db4cf34307ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="App\Load">
+      <UniqueIdentifier>{54c4cef6-5b0c-4201-a9bd-32d756ccfd7f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -260,6 +269,15 @@
     </ClCompile>
     <ClCompile Include="MenuApp.cpp">
       <Filter>App\Manu</Filter>
+    </ClCompile>
+    <ClCompile Include="StartButton.cpp">
+      <Filter>Component\UIButton\StartButton</Filter>
+    </ClCompile>
+    <ClCompile Include="ExitButton.cpp">
+      <Filter>Component\UIButton\ExitButton</Filter>
+    </ClCompile>
+    <ClCompile Include="LoadApp.cpp">
+      <Filter>App\Load</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -397,6 +415,15 @@
     </ClInclude>
     <ClInclude Include="MenuApp.h">
       <Filter>App\Manu</Filter>
+    </ClInclude>
+    <ClInclude Include="StartButton.h">
+      <Filter>Component\UIButton\StartButton</Filter>
+    </ClInclude>
+    <ClInclude Include="ExitButton.h">
+      <Filter>Component\UIButton\ExitButton</Filter>
+    </ClInclude>
+    <ClInclude Include="LoadApp.h">
+      <Filter>App\Load</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

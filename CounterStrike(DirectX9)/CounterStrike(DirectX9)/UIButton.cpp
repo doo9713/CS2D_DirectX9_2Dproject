@@ -1,14 +1,7 @@
 #include "UIButton.h"
 #include "GameObj.h"
-#include "SpriteRender.h"
 
 RTTILINK(CUIButton, CComponent)
-
-void CUIButton::Start()
-{
-	auto dst = gameObj.GetComponent<CUIButton>();
-	if (dst != this) Destroy(this);
-}
 
 void CUIButton::Update()
 {
@@ -23,28 +16,19 @@ void CUIButton::Update()
 
 		if (KEY.Push(VK_LBUTTON))
 		{
-
+			for (auto com : gameObj.component)
+				com->ClickButton();
 		}
 	}
 	else
 	{
-		if (gameObj.GetComponent<CSpriteRender>()->Page == 1)
-			gameObj.GetComponent<CSpriteRender>()->Page = 0;
-		if (gameObj.GetComponent<CSpriteRender>()->Page == 3)
-			gameObj.GetComponent<CSpriteRender>()->Page = 2;
+		for (auto com : gameObj.component)
+			com->OutButton();
 	}
 }
 
-void CUIButton::OnButton()
-{
-	if (gameObj.GetComponent<CSpriteRender>()->Page == 0)
-		gameObj.GetComponent<CSpriteRender>()->Page = 1;
-	if (gameObj.GetComponent<CSpriteRender>()->Page == 2)
-		gameObj.GetComponent<CSpriteRender>()->Page = 3;
-}
-
 CUIButton::CUIButton(CGameObj* Owner)
-	: CComponent(Owner)
+	: CComponent(Owner), csr(nullptr)
 {
 }
 

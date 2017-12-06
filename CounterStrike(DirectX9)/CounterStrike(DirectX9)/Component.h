@@ -38,6 +38,8 @@ public :
 	virtual void Update() {}
 	virtual void Render() {}
 	virtual void OnButton() {}
+	virtual void OutButton() {}
+	virtual void ClickButton() {}
 	virtual void OnCollisionEnter(CGameObj* Other) {}
 	virtual void OnCollisionStay(CGameObj* Other) {}
 	virtual void OnCollisionExit(CGameObj* Other) {}

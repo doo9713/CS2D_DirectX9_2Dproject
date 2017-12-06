@@ -2,11 +2,13 @@
 #include "GameObj.h"
 #include "GameObjList.h"
 #include "SpriteRender.h"
-#include "UIButton.h"
+#include "StartButton.h"
+#include "ExitButton.h"
 
 void CMenuApp::Initialize()
 {
 	DRX.Init(hWnd, false);
+	FONT.Init();
 
 	MATRIX Projection;
 	D3DXMatrixOrthoLH(&Projection, ScreenWidth, ScreenHeight, 0, 1);
@@ -18,11 +20,13 @@ void CMenuApp::Initialize()
 
 #pragma region File Load
 	// TODO : File Load Code
+	TEXTURE.Load("Text", "../Resource/Texture/Text");
 	TEXTURE.Load("BackGround", "../Resource/Texture/BackGround");
 	TEXTURE.Load("Menu", "../Resource/Texture/Menu");
 	TEXTURE.Load("Title", "../Resource/Texture/Title");
 
 	SHADER.OnLoad("Default", "../Resource/Effect/Default.fx");
+	FONT.FontLoad("Default", 0, "../Resource/Font/Font_01.txt");
 #pragma endregion
 
 #pragma region Menu Init
@@ -42,20 +46,20 @@ void CMenuApp::Initialize()
 	obj = GAMEOBJ.AddGameObj("btStart", Tag_UI, Layer_UI);
 	obj->Position = VECTOR3(-650, -50);
 	obj->Scale = VECTOR3(2, 2);
-	bt = obj->AddComponent<CUIButton>();
-	bt->Size = VECTOR3(120, 35);
 	csr = obj->AddComponent<CSpriteRender>();
 	csr->RenderKey = "Menu";
 	csr->Page = 2;
+	bt = obj->AddComponent<CStartButton>();
+	bt->Size = VECTOR3(120, 35);
 
 	obj = GAMEOBJ.AddGameObj("btQuit", Tag_UI, Layer_UI);
 	obj->Position = VECTOR3(-650, -150);
 	obj->Scale = VECTOR3(2, 2);
-	bt = obj->AddComponent<CUIButton>();
-	bt->Size = VECTOR3(120, 35);
 	csr = obj->AddComponent<CSpriteRender>();
 	csr->RenderKey = "Menu";
 	csr->Page = 0;
+	bt = obj->AddComponent<CExitButton>();
+	bt->Size = VECTOR3(120, 35);
 #pragma  endregion
 }
 

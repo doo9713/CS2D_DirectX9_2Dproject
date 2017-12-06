@@ -1,7 +1,9 @@
 #include "GameApp.h"
 #include "MenuApp.h"
+#include "LoadApp.h"
 
 HWND hWnd;
+SCENE gSceneCtrl;
 
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
@@ -51,10 +53,12 @@ int APIENTRY WinMain(HINSTANCE Inst, HINSTANCE PrevInst,
 	double FTime = 0;
 	double UTime = 0;
 	// TODO : App Initialize Code
-	CGameApp Game;
+	gSceneCtrl = SCENE_START;
 	CMenuApp Menu;
+	CLoadApp Load;
+	CGameApp Game;
 	//Game.Initialize();
-	Menu.Initialize();
+	//Menu.Initialize();
 
 	while (true)
 	{
@@ -74,7 +78,26 @@ int APIENTRY WinMain(HINSTANCE Inst, HINSTANCE PrevInst,
 			UTime -= UpdateTime;
 			// TODO : App Update Code
 			//Game.Update();
-			Menu.Update();
+			//Menu.Update();
+			switch (gSceneCtrl)
+			{
+			case SCENE_START :
+				Menu.Initialize();
+				gSceneCtrl = SCENE_MAIN;
+			case SCENE_MAIN :
+				Menu.Update();
+				break;
+			case SCENE_LOAD :
+				Load.Initialize();
+				Game.Initialize();
+			case SCENE_GAME :
+				Game.Update();
+				break;
+			case SCENE_EXIT :
+				return (int)msg.wParam;;
+			default :
+				break;
+			}
 		}
 
 		if (FTime > FrameTime)
@@ -82,7 +105,22 @@ int APIENTRY WinMain(HINSTANCE Inst, HINSTANCE PrevInst,
 			FTime -= FrameTime;
 			// TODO : App Render Code
 			//Game.Render();
-			Menu.Render();
+			//Menu.Render();
+			switch (gSceneCtrl)
+			{
+			case SCENE_MAIN:
+				Menu.Render();
+				break;
+			case SCENE_LOAD:
+				break;
+			case SCENE_GAME:
+				Game.Render();
+				break;
+			case SCENE_EXIT:
+				return (int)msg.wParam;;
+			default:
+				break;
+			}
 		}
 	}
 

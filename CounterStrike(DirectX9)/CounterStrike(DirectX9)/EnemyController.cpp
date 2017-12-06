@@ -56,11 +56,29 @@ void CEnemyController::Update()
 		if (rate == 0)
 		{
 			firstAngle = gameObj.Angle;
-			dstAngle = ToTarget(Target->Position, gameObj.Position) + 180;
-			if (dstAngle >= 360) dstAngle -= 360;
-			if (firstAngle < 90 && dstAngle > 270) firstAngle += 360;
-			if (dstAngle < 90 && firstAngle > 270) dstAngle += 360;
-			if (firstAngle >= 90 && firstAngle <= 270 && dstAngle < 90) dstAngle += 360;
+			dstAngle = ToTarget(Target->Position, gameObj.Position) + 180.0;
+			if(dstAngle >= 360) dstAngle -= 360;
+			if (firstAngle != dstAngle)
+			{
+				if (firstAngle > 180)
+				{
+					if (firstAngle - 180 > dstAngle)
+						dstAngle += 360;
+				}
+				else if (firstAngle < 180)
+				{
+					if (firstAngle + 180 < dstAngle)
+						dstAngle -= 360;
+				}
+			}
+			/*if (temp > 360) temp -= 360;*/
+			//if (dstAngle >= 360.0 && firstAngle <= 180.0)
+			//{
+			//	if(firstAngle < 180.0) dstAngle = Clamp(dstAngle - 360.0, 0.0, 360.0);
+			//}
+			//if (firstAngle < 90 && dstAngle > 270) firstAngle += 360;
+			//if (dstAngle < 90 && firstAngle > 270) dstAngle += 360;
+			//if (firstAngle >= 90 && firstAngle <= 270 && dstAngle < 90) dstAngle += 360;
 		}
 
 		rate = Clamp(rate + TIME.Delta * 8, 0.0, 1.0);

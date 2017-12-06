@@ -166,6 +166,7 @@
     <ClCompile Include="EffectEvent.cpp" />
     <ClCompile Include="EnemyController.cpp" />
     <ClCompile Include="EtcF.cpp" />
+    <ClCompile Include="ExitButton.cpp" />
     <ClCompile Include="ExplosionEffect.cpp" />
     <ClCompile Include="FileIO.cpp" />
     <ClCompile Include="GameApp.cpp" />
@@ -176,6 +177,7 @@
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="KeyF.cpp" />
     <ClCompile Include="LeftMove.cpp" />
+    <ClCompile Include="LoadApp.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MathF.cpp" />
     <ClCompile Include="MenuApp.cpp" />
@@ -186,6 +188,7 @@
     <ClCompile Include="Rtti.cpp" />
     <ClCompile Include="ShotGunItem.cpp" />
     <ClCompile Include="SpriteRender.cpp" />
+    <ClCompile Include="StartButton.cpp" />
     <ClCompile Include="TimeF.cpp" />
     <ClCompile Include="UIButton.cpp" />
     <ClCompile Include="UpMove.cpp" />
@@ -211,6 +214,7 @@
     <ClInclude Include="EffectEvent.h" />
     <ClInclude Include="EnemyController.h" />
     <ClInclude Include="EtcF.h" />
+    <ClInclude Include="ExitButton.h" />
     <ClInclude Include="ExplosionEffect.h" />
     <ClInclude Include="FileIO.h" />
     <ClInclude Include="GameApp.h" />
@@ -221,6 +225,7 @@
     <ClInclude Include="Item.h" />
     <ClInclude Include="KeyF.h" />
     <ClInclude Include="LeftMove.h" />
+    <ClInclude Include="LoadApp.h" />
     <ClInclude Include="Macro.h" />
     <ClInclude Include="MathF.h" />
     <ClInclude Include="MenuApp.h" />
@@ -231,6 +236,7 @@
     <ClInclude Include="Rtti.h" />
     <ClInclude Include="ShotGunItem.h" />
     <ClInclude Include="SpriteRender.h" />
+    <ClInclude Include="StartButton.h" />
     <ClInclude Include="TimeF.h" />
     <ClInclude Include="UIButton.h" />
     <ClInclude Include="UpMove.h" />

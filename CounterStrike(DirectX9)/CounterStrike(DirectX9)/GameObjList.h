@@ -16,6 +16,7 @@ public :
 public :
 	void Update();
 	void Render();
+	void Clear();
 public :
 	CGameObj* AddGameObj(const char* name = "GameObj", TAG tag = Tag_Default, LAYER layer = Layer_Default);
 	CGameObj* AddGameObj(CGameObj* obj);

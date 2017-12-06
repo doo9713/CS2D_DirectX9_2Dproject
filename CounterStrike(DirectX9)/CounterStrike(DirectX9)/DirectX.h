@@ -94,6 +94,7 @@ namespace UTILITY
 		std::map<std::string, CTexture*> Texture;
 	public :
 		void Load(const char* Key, const char* Path, const char* Elimit = "png");
+		void Clear();
 		CTexture::Image* GetImage(const char* Key, UINT Cnt = 0);
 		~CTextureList()
 		{

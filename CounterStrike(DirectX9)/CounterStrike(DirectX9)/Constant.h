@@ -36,3 +36,14 @@ enum LAYER
 	Layer_UI,
 	Layer_End
 };
+
+enum SCENE
+{
+	SCENE_START,
+	SCENE_MAIN,
+	SCENE_LOAD,
+	SCENE_GAME,
+	SCENE_EXIT
+};
+
+extern SCENE gSceneCtrl;

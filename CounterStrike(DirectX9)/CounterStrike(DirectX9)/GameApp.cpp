@@ -14,37 +14,9 @@
 
 void CGameApp::Initialize()
 {
-	DRX.Init(hWnd, false);
-	FONT.Init();
-
-	MATRIX Projection;
-	D3DXMatrixOrthoLH(&Projection, ScreenWidth, ScreenHeight, 0, 1);
-	DRX->SetTransform(D3DTS_PROJECTION, &Projection);
-
 	CGameObj* obj;
 	CSpriteRender* csr;
 	CBoxCollider* box;
-
-#pragma region File Load
-	// TODO : File Load Code
-	TEXTURE.Load("Text", "../Resource/Texture/Text");
-	TEXTURE.Load("BackGround", "../Resource/Texture/Map");
-	TEXTURE.Load("Player", "../Resource/Texture/Player");
-	TEXTURE.Load("Box", "../Resource/Texture/Object/Box");
-	TEXTURE.Load("Ammo", "../Resource/Texture/Ammo");
-	TEXTURE.Load("GunFire", "../Resource/Texture/Effect/GunFire");
-	TEXTURE.Load("Explosion", "../Resource/Texture/Effect/Explosion");
-	TEXTURE.Load("BodyPart", "../Resource/Texture/BodyPart");
-	TEXTURE.Load("Tree", "../Resource/Texture/Object/Tree");
-	TEXTURE.Load("Item", "../Resource/Texture/Object/Item"); // page : 0 -> C4, 1 -> Bag, 2 -> Armor, 3 -> Health, 4 -> AutoGun, 5 -> ShotGun
-
-	ANIMCLIP.OnLoad("GunFireEffect", "../Resource/AnimClip/GunFire.Clip");
-	ANIMCLIP.OnLoad("ExplosionEffect", "../Resource/AnimClip/Explosion.Clip");
-
-	SHADER.OnLoad("Default", "../Resource/Effect/Default.fx");
-
-	FONT.FontLoad("Default", 0, "../Resource/Font/Font_01.txt");
-#pragma endregion
 
 #pragma region Map obj Init
 	/* Make BackGround */
@@ -53,114 +25,123 @@ void CGameApp::Initialize()
 	csr = obj->AddComponent<CSpriteRender>();
 	csr->RenderKey = "BackGround";
 
-	/* Make Wall */
-	MakeWall(0, 875, 3000, 50);
-	MakeWall(0, -875, 3000, 50);
-	MakeWall(1475, 0, 50, 1800);
-	MakeWall(-1475, 0, 50, 1800);
+	///* Make Wall */
+	//MakeWall(0, 875, 3000, 50);
+	//MakeWall(0, -875, 3000, 50);
+	//MakeWall(1475, 0, 50, 1800);
+	//MakeWall(-1475, 0, 50, 1800);
 
-	MakeTransWall(-1025, 725, 50, 350);
-	MakeTransWall(-1250, 575, 500, 50);
-	MakeTransWall(575, -675, 50, 400);
-	MakeTransWall(1025, -475, 900, 50);
+	//MakeTransWall(-1025, 725, 50, 350);
+	//MakeTransWall(-1250, 575, 500, 50);
+	//MakeTransWall(575, -675, 50, 400);
+	//MakeTransWall(1025, -475, 900, 50);
 
-	/* Make Box*/
-	MakeBox(175, 125);
-	MakeBox(125, 125);
-	MakeBox(175, 75);
+	///* Make Box*/
+	//MakeBox(175, 125);
+	//MakeBox(125, 125);
+	//MakeBox(175, 75);
 
-	MakeBox(-125, 125);
-	MakeBox(-75, 125);
-	MakeBox(-125, 75);
+	//MakeBox(-125, 125);
+	//MakeBox(-75, 125);
+	//MakeBox(-125, 75);
 
-	MakeBox(175, -175);
-	MakeBox(125, -175);
-	MakeBox(175, -125);
+	//MakeBox(175, -175);
+	//MakeBox(125, -175);
+	//MakeBox(175, -125);
 
-	MakeBox(-125, -175);
-	MakeBox(-75, -175);
-	MakeBox(-125, -125);
+	//MakeBox(-125, -175);
+	//MakeBox(-75, -175);
+	//MakeBox(-125, -125);
 
-	MakeBox(-1425, 525, 3);
-	MakeBox(-1375, 525, 3);
-	MakeBox(-1300, 500, 4, 100, 100);
+	//MakeBox(-1425, 525, 3);
+	//MakeBox(-1375, 525, 3);
+	//MakeBox(-1300, 500, 4, 100, 100);
 
-	MakeBox(-1250, 300, 4, 100, 100);
-	MakeBox(-1175, 325, 3);
-	MakeBox(-1300, 200, 4, 100, 100);
-	MakeBox(-1250, 100, 4, 100, 100);
-	MakeBox(-1175, 75, 3);
+	//MakeBox(-1250, 300, 4, 100, 100);
+	//MakeBox(-1175, 325, 3);
+	//MakeBox(-1300, 200, 4, 100, 100);
+	//MakeBox(-1250, 100, 4, 100, 100);
+	//MakeBox(-1175, 75, 3);
 
-	MakeBox(-1275, -75, 6);
-	MakeBox(-1225, -75, 6);
-	MakeBox(-1300, -150, 7, 100, 100);
-	MakeBox(-1200, -150, 7, 100, 100);
-	MakeBox(-1275, -225, 6);
-	MakeBox(-1225, -225, 6);
-	MakeBox(-1275, -275, 6);
-	MakeBox(-1275, -325, 6);
-	MakeBox(-1275, -375, 6);
-	MakeBox(-1225, -375, 6);
-	MakeBox(-1175, -375, 6);
+	//MakeBox(-1275, -75, 6);
+	//MakeBox(-1225, -75, 6);
+	//MakeBox(-1300, -150, 7, 100, 100);
+	//MakeBox(-1200, -150, 7, 100, 100);
+	//MakeBox(-1275, -225, 6);
+	//MakeBox(-1225, -225, 6);
+	//MakeBox(-1275, -275, 6);
+	//MakeBox(-1275, -325, 6);
+	//MakeBox(-1275, -375, 6);
+	//MakeBox(-1225, -375, 6);
+	//MakeBox(-1175, -375, 6);
 
-	MakeBox(-1275, -525, 6);
-	MakeBox(-1325, -525, 6);
-	MakeBox(-1375, -525, 6);
-	MakeBox(-1425, -525, 6);
+	//MakeBox(-1275, -525, 6);
+	//MakeBox(-1325, -525, 6);
+	//MakeBox(-1375, -525, 6);
+	//MakeBox(-1425, -525, 6);
 
-	MakeBox(-1375, -725, 2, 150, 150);
+	//MakeBox(-1375, -725, 2, 150, 150);
 
-	MakeBox(150, 550, 4, 100, 100);
-	MakeBox(-150, 800, 4, 100, 100);
-	MakeBox(-175, 725, 3);
-	MakeBox(250, 750, 4, 100, 100);
+	//MakeBox(150, 550, 4, 100, 100);
+	//MakeBox(-150, 800, 4, 100, 100);
+	//MakeBox(-175, 725, 3);
+	//MakeBox(250, 750, 4, 100, 100);
 
-	MakeBox(1150, 800, 1, 100, 100);
-	MakeBox(1225, 575, 2, 150, 150);
-	MakeBox(1325, 525);
-	MakeBox(1375, 525);
-	MakeBox(1425, 525);
+	//MakeBox(1150, 800, 1, 100, 100);
+	//MakeBox(1225, 575, 2, 150, 150);
+	//MakeBox(1325, 525);
+	//MakeBox(1375, 525);
+	//MakeBox(1425, 525);
 
-	MakeBox(1325, 175, 6);
-	MakeBox(1375, 175, 6);
-	MakeBox(1425, 175, 6);
-	MakeBox(1275, 175, 6);
-	MakeBox(1275, 125, 6);
-	MakeBox(1275, 75, 6);
+	//MakeBox(1325, 175, 6);
+	//MakeBox(1375, 175, 6);
+	//MakeBox(1425, 175, 6);
+	//MakeBox(1275, 175, 6);
+	//MakeBox(1275, 125, 6);
+	//MakeBox(1275, 75, 6);
 
-	MakeBox(1300, -200, 7, 100, 100);
-	MakeBox(1400, -200, 7, 100, 100);
+	//MakeBox(1300, -200, 7, 100, 100);
+	//MakeBox(1400, -200, 7, 100, 100);
 
-	MakeBox(-100, -700, 1, 100, 100);
-	MakeBox(-175, -725);
-	MakeBox(-225, -725);
-	MakeBox(-275, -725);
-	MakeBox(-275, -775);
-	MakeBox(-275, -825);
-	MakeBox(350, -800, 1, 100, 100);
-	MakeBox(325, -725);
-	MakeBox(275, -725);
-	MakeBox(225, -725);
-	MakeBox(175, -725);
-	MakeBox(125, -725);
+	//MakeBox(-100, -700, 1, 100, 100);
+	//MakeBox(-175, -725);
+	//MakeBox(-225, -725);
+	//MakeBox(-275, -725);
+	//MakeBox(-275, -775);
+	//MakeBox(-275, -825);
+	//MakeBox(350, -800, 1, 100, 100);
+	//MakeBox(325, -725);
+	//MakeBox(275, -725);
+	//MakeBox(225, -725);
+	//MakeBox(175, -725);
+	//MakeBox(125, -725);
 
-	/* Make Other Obj */
-	MakeTree(-75, 75);
-	MakeTree(-160, 580);
-	MakeTree(-330, 190);
-	MakeTree(-430, 790);
-	MakeTree(-540, 590);
-	MakeTree(-570, 700);
-	MakeTree(-840, 120);
-	MakeTree(-890, 590);
-	MakeTree(-930, 647);
-	MakeTree(-940, 260);
-	MakeTree(-1030, 230);
+	///* Make Other Obj */
+	//MakeTree(-75, 75);
+	//MakeTree(-160, 580);
+	//MakeTree(-330, 190);
+	//MakeTree(-430, 790);
+	//MakeTree(-540, 590);
+	//MakeTree(-570, 700);
+	//MakeTree(-840, 120);
+	//MakeTree(-890, 590);
+	//MakeTree(-930, 647);
+	//MakeTree(-940, 260);
+	//MakeTree(-1030, 230);
 
-	MakeTree(-260, -290);
-	MakeTree(-400, -200);
-	MakeTree(-480, -330);
+	//MakeTree(-260, -290);
+	//MakeTree(-400, -200);
+	//MakeTree(-480, -330);
+	//MakeTree(-890, -280);
+	//MakeTree(-960, -160);
+	//MakeTree(-1100, -360);
+	//MakeTree(-1200, -310);
+	//MakeTree(-490, -650);
+	//MakeTree(-740, -600);
+	//MakeTree(-770, -770);
+	//MakeTree(-1030, -680);
 #pragma endregion
+
 
 #pragma region Character Obj Init
 	// TODO : Game Initialize Code
@@ -212,35 +193,10 @@ void CGameApp::Initialize()
 
 #pragma region Test Code
 	/* Temp make Enemy */
-	obj = GAMEOBJ.AddGameObj("Enemy", Tag_Enemy, Layer_Character);
-	obj->AddComponent<CRigid>();
-	obj->AddComponent<CEnemyController>();
-	obj->Center = VECTOR3(12, 0, 0);
-	obj->Position = VECTOR3(400, 0);
-	obj->Angle = Random(0, 360);
-
-	box = obj->AddComponent<CBoxCollider>();
-	box->Size = VECTOR3(20, 20);
-	box->Center = VECTOR3(-10, 0, 0);
-
-	csr = obj->AddComponent<CSpriteRender>();
-	csr->RenderKey = "Player";
-	csr->Page = 3;
-
-	obj = GAMEOBJ.AddGameObj("Enemy", Tag_Enemy, Layer_Character);
-	obj->AddComponent<CRigid>();
-	obj->AddComponent<CEnemyController>();
-	obj->Center = VECTOR3(12, 0, 0);
-	obj->Position = VECTOR3(-400, 0);
-	obj->Angle = Random(0, 360);
-
-	box = obj->AddComponent<CBoxCollider>();
-	box->Size = VECTOR3(20, 20);
-	box->Center = VECTOR3(-10, 0, 0);
-
-	csr = obj->AddComponent<CSpriteRender>();
-	csr->RenderKey = "Player";
-	csr->Page = 3;
+	MakeEnemy(400, 0);
+	MakeEnemy(-400, 0);
+	MakeEnemy(0, 400);
+	MakeEnemy(0, -400);
 
 	/* Temp make Item */
 	obj = GAMEOBJ.AddGameObj("HealthItem", Tag_Item, Layer_EnviromentDown);
@@ -269,6 +225,9 @@ void CGameApp::Initialize()
 	csr = obj->AddComponent<CSpriteRender>();
 	csr->RenderKey = "Item";
 	csr->Page = 1;
+
+	MakeTank(-200, 300, 50, 80);
+	MakeBoat(600, -550, 250);
 #pragma endregion
 }
 
@@ -342,4 +301,71 @@ void CGameApp::MakeTree(float posx, float posy)
 void CGameApp::MakeTree(VECTOR3 pos)
 {
 	MakeTree(pos.x, pos.y);
+}
+
+void CGameApp::MakeBoat(float posx, float posy, float ang)
+{
+	auto obj = GAMEOBJ.AddGameObj("Boat", Tag_Enviroment, Layer_EnviromentDown);
+	obj->Position = VECTOR3(posx, posy);
+	obj->Angle = ang;
+	obj->AddComponent<CRigid>();
+	auto csr = obj->AddComponent<CSpriteRender>();
+	csr->RenderKey = "Vehicle";
+	csr->Page = 2;
+	auto box = obj->AddComponent<CBoxCollider>();
+	box->Size = VECTOR3(80, 190);
+	box->Freez = true;
+}
+
+void CGameApp::MakeBoat(VECTOR3 pos, float ang)
+{
+	MakeBoat(pos.x, pos.y, ang);
+}
+
+void CGameApp::MakeTank(float posx, float posy, float botang, float topang)
+{
+	auto obj = GAMEOBJ.AddGameObj("TankBottom", Tag_Enviroment, Layer_EnviromentDown);
+	obj->Position = VECTOR3(posx, posy);
+	obj->Angle = botang;
+	obj->AddComponent<CRigid>();
+	auto csr = obj->AddComponent<CSpriteRender>();
+	csr->RenderKey = "Vehicle";
+	csr->Page = 0;
+	auto box = obj->AddComponent<CBoxCollider>();
+	box->Size = VECTOR3(90, 180);
+	box->Freez = true;
+
+	obj = GAMEOBJ.AddGameObj("TankTop", Tag_Enviroment, Layer_EnviromentUp);
+	obj->Position = VECTOR3(posx, posy);
+	obj->Angle = topang;
+	csr = obj->AddComponent<CSpriteRender>();
+	csr->RenderKey = "Vehicle";
+	csr->Page = 1;
+}
+
+void CGameApp::MakeTank(VECTOR3 pos, float botang, float topang)
+{
+	MakeTank(pos.x, pos.y, botang, topang);
+}
+
+void CGameApp::MakeEnemy(float posx, float posy)
+{
+	auto obj = GAMEOBJ.AddGameObj("Enemy", Tag_Enemy, Layer_Character);
+	obj->AddComponent<CRigid>();
+	obj->AddComponent<CEnemyController>();
+	obj->Center = VECTOR3(12, 0, 0);
+	obj->Position = VECTOR3(posx, posy);
+	obj->Angle = Random(0, 360);
+
+	auto box = obj->AddComponent<CBoxCollider>();
+	box->Size = VECTOR3(20, 20);
+	box->Center = VECTOR3(-10, 0, 0);
+
+	auto csr = obj->AddComponent<CSpriteRender>();
+	csr->RenderKey = "Enemy";
+}
+
+void CGameApp::MakeEnemy(VECTOR3 pos)
+{
+	MakeEnemy(pos.x, pos.y);
 }

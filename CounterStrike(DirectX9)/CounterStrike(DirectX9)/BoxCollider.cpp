@@ -52,7 +52,7 @@ void CBoxCollider::PushCheck(const VECTOR3* Box, const VECTOR3& Pivot, const VEC
 		CenterPos = CenterPos - Pivot;
 		CGameObj* Temp = &Other->gameObj;
 		while (Temp->Parent) Temp = Temp->Parent;
-		Temp->Position += CenterPos.Normalize() * TIME.Delta * 200;
+		Temp->Position += CenterPos.Normalize() * TIME.Delta * 280;
 		return;
 	}
 	if (AngleArray[(Low - 1) % 4] > TargetAngle && TargetAngle > AngleArray[(Low + 0) % 4])
@@ -61,7 +61,7 @@ void CBoxCollider::PushCheck(const VECTOR3* Box, const VECTOR3& Pivot, const VEC
 		CenterPos = CenterPos - Pivot;
 		CGameObj* Temp = &Other->gameObj;
 		while (Temp->Parent) Temp = Temp->Parent;
-		Temp->Position += CenterPos.Normalize() * TIME.Delta * 200;
+		Temp->Position += CenterPos.Normalize() * TIME.Delta * 280;
 		return;
 	}
 	if (AngleArray[(Low + 1) % 4] > TargetAngle && TargetAngle > AngleArray[(Low + 2) % 4])
@@ -70,7 +70,7 @@ void CBoxCollider::PushCheck(const VECTOR3* Box, const VECTOR3& Pivot, const VEC
 		CenterPos = CenterPos - Pivot;
 		CGameObj* Temp = &Other->gameObj;
 		while (Temp->Parent) Temp = Temp->Parent;
-		Temp->Position += CenterPos.Normalize() * TIME.Delta * 200;
+		Temp->Position += CenterPos.Normalize() * TIME.Delta * 280;
 		return;
 	}
 	if (AngleArray[(Low + 2) % 4] > TargetAngle && TargetAngle > AngleArray[(Low - 1) % 4])
@@ -79,7 +79,7 @@ void CBoxCollider::PushCheck(const VECTOR3* Box, const VECTOR3& Pivot, const VEC
 		CenterPos = CenterPos - Pivot;
 		CGameObj* Temp = &Other->gameObj;
 		while (Temp->Parent) Temp = Temp->Parent;
-		Temp->Position += CenterPos.Normalize() * TIME.Delta * 200;
+		Temp->Position += CenterPos.Normalize() * TIME.Delta * 280;
 		return;
 	}
 }

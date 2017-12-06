@@ -50,6 +50,17 @@ void CGameObjList::Render()
 	}
 }
 
+void CGameObjList::Clear()
+{
+	for (auto obj : Active)
+		delete obj;
+	Active.clear();
+	for (int i = 0; i < Tag_End; ++i)
+		TagList[i].clear();
+	for (int i = 0; i < Layer_End; ++i)
+		LayerList[i].clear();
+}
+
 CGameObj* CGameObjList::AddGameObj(const char* name, TAG tag, LAYER layer)
 {
 	return AddGameObj(new CGameObj(name, tag, layer));
@@ -99,8 +110,6 @@ CGameObjList::CGameObjList()
 CGameObjList::~CGameObjList()
 {
 	for (auto obj : Active)
-	{
 		delete obj;
-	}
 	Active.clear();
 }
