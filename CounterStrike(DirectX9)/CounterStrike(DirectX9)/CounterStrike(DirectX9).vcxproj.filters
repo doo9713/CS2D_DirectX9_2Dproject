@@ -46,9 +46,6 @@
     <Filter Include="App\Game">
       <UniqueIdentifier>{1efbee15-d4ab-4691-b7ea-843146e8a493}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Component\AutoDestroy">
-      <UniqueIdentifier>{0f1381d7-74e0-4870-898c-ac62d71888a6}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Component\BoxCollider">
       <UniqueIdentifier>{8a12513f-5332-4dc9-8122-6a919ebf1df4}</UniqueIdentifier>
     </Filter>
@@ -133,9 +130,6 @@
     <Filter Include="Component\Item\BulletItem\ShotGunItem">
       <UniqueIdentifier>{7ec7e87a-dd06-4020-b593-a73d0e85692b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="App\Manu">
-      <UniqueIdentifier>{019e3e75-65e6-401b-862c-2271c43d247c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Component\UIButton\StartButton">
       <UniqueIdentifier>{83065323-dca0-4b69-81ce-05cd951851c9}</UniqueIdentifier>
     </Filter>
@@ -144,6 +138,18 @@
     </Filter>
     <Filter Include="App\Load">
       <UniqueIdentifier>{54c4cef6-5b0c-4201-a9bd-32d756ccfd7f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Component\Manager">
+      <UniqueIdentifier>{0e90ba40-6cf9-40b4-9108-94ca8f4cda5d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Component\Manager\LoadManager">
+      <UniqueIdentifier>{fc733e6d-e972-47ad-9e7b-7372b7f0d22b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="App\Menu">
+      <UniqueIdentifier>{019e3e75-65e6-401b-862c-2271c43d247c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Component\Manager\GameManager">
+      <UniqueIdentifier>{f05492f8-f043-4a35-8efa-c5a76c005de2}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -182,9 +188,6 @@
     </ClCompile>
     <ClCompile Include="App.cpp">
       <Filter>App</Filter>
-    </ClCompile>
-    <ClCompile Include="AutoDestroy.cpp">
-      <Filter>Component\AutoDestroy</Filter>
     </ClCompile>
     <ClCompile Include="BoxCollider.cpp">
       <Filter>Component\BoxCollider</Filter>
@@ -268,7 +271,7 @@
       <Filter>Component\Item\BulletItem\ShotGunItem</Filter>
     </ClCompile>
     <ClCompile Include="MenuApp.cpp">
-      <Filter>App\Manu</Filter>
+      <Filter>App\Menu</Filter>
     </ClCompile>
     <ClCompile Include="StartButton.cpp">
       <Filter>Component\UIButton\StartButton</Filter>
@@ -278,6 +281,12 @@
     </ClCompile>
     <ClCompile Include="LoadApp.cpp">
       <Filter>App\Load</Filter>
+    </ClCompile>
+    <ClCompile Include="LoadManager.cpp">
+      <Filter>Component\Manager\LoadManager</Filter>
+    </ClCompile>
+    <ClCompile Include="GameManger.cpp">
+      <Filter>Component\Manager\GameManager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -328,9 +337,6 @@
     </ClInclude>
     <ClInclude Include="GameApp.h">
       <Filter>App\Game</Filter>
-    </ClInclude>
-    <ClInclude Include="AutoDestroy.h">
-      <Filter>Component\AutoDestroy</Filter>
     </ClInclude>
     <ClInclude Include="BoxCollider.h">
       <Filter>Component\BoxCollider</Filter>
@@ -414,7 +420,7 @@
       <Filter>Component\Item\BulletItem\ShotGunItem</Filter>
     </ClInclude>
     <ClInclude Include="MenuApp.h">
-      <Filter>App\Manu</Filter>
+      <Filter>App\Menu</Filter>
     </ClInclude>
     <ClInclude Include="StartButton.h">
       <Filter>Component\UIButton\StartButton</Filter>
@@ -424,6 +430,12 @@
     </ClInclude>
     <ClInclude Include="LoadApp.h">
       <Filter>App\Load</Filter>
+    </ClInclude>
+    <ClInclude Include="LoadManager.h">
+      <Filter>Component\Manager\LoadManager</Filter>
+    </ClInclude>
+    <ClInclude Include="GameManger.h">
+      <Filter>Component\Manager\GameManager</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

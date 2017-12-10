@@ -40,6 +40,15 @@ void CSpriteRender::ChangeColorMul(UINT Alpha, UINT Red, UINT Green, UINT Blue)
 
 void CSpriteRender::Render()
 {
+	if (gameObj.Name == "Title")
+	{
+		int a = 10;
+		a = 20;
+		a = 30;
+		int b = 50;
+		a = b;
+	}
+
 	if (ShaderKey == "")
 		DRX.Draw(gameObj.World, RenderKey.data(), Page);
 	else

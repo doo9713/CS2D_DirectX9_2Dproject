@@ -92,6 +92,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StructMemberAlignment>1Byte</StructMemberAlignment>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -121,6 +122,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StructMemberAlignment>1Byte</StructMemberAlignment>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -154,7 +156,6 @@
     <ClCompile Include="AnimClipList.cpp" />
     <ClCompile Include="App.cpp" />
     <ClCompile Include="ArmorItem.cpp" />
-    <ClCompile Include="AutoDestroy.cpp" />
     <ClCompile Include="AutoGunItem.cpp" />
     <ClCompile Include="BoxCollider.cpp" />
     <ClCompile Include="Bullet.cpp" />
@@ -170,6 +171,7 @@
     <ClCompile Include="ExplosionEffect.cpp" />
     <ClCompile Include="FileIO.cpp" />
     <ClCompile Include="GameApp.cpp" />
+    <ClCompile Include="GameManger.cpp" />
     <ClCompile Include="GameObj.cpp" />
     <ClCompile Include="GameObjList.cpp" />
     <ClCompile Include="Grenade.cpp" />
@@ -178,6 +180,7 @@
     <ClCompile Include="KeyF.cpp" />
     <ClCompile Include="LeftMove.cpp" />
     <ClCompile Include="LoadApp.cpp" />
+    <ClCompile Include="LoadManager.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MathF.cpp" />
     <ClCompile Include="MenuApp.cpp" />
@@ -200,7 +203,6 @@
     <ClInclude Include="AnimClipList.h" />
     <ClInclude Include="App.h" />
     <ClInclude Include="ArmorItem.h" />
-    <ClInclude Include="AutoDestroy.h" />
     <ClInclude Include="AutoGunItem.h" />
     <ClInclude Include="BoxCollider.h" />
     <ClInclude Include="Bullet.h" />
@@ -218,6 +220,7 @@
     <ClInclude Include="ExplosionEffect.h" />
     <ClInclude Include="FileIO.h" />
     <ClInclude Include="GameApp.h" />
+    <ClInclude Include="GameManger.h" />
     <ClInclude Include="GameObj.h" />
     <ClInclude Include="GameObjList.h" />
     <ClInclude Include="Grenade.h" />
@@ -226,6 +229,7 @@
     <ClInclude Include="KeyF.h" />
     <ClInclude Include="LeftMove.h" />
     <ClInclude Include="LoadApp.h" />
+    <ClInclude Include="LoadManager.h" />
     <ClInclude Include="Macro.h" />
     <ClInclude Include="MathF.h" />
     <ClInclude Include="MenuApp.h" />

@@ -15,8 +15,11 @@
 
 RTTILINK(CEnemyController, CController)
 
+int CEnemyController::EnemyCnt = 0;
+
 void CEnemyController::Start()
 {
+	++EnemyCnt;
 	/* 플레이어 게임 오브젝트를 찾는다 */
 	Target = GAMEOBJ.FindGameObj("Player", Tag_Player);
 	if (Target == nullptr)
@@ -44,9 +47,12 @@ void CEnemyController::Update()
 	/* 캐릭터 죽음 */
 	if (Health == 0)
 	{
+		for (int i = 0; i < 6; ++i)
+			MakeBlood();
 		int temp = Random(0, 9);
 		if(temp < 2)
 			MakeItem(Weapon);
+		--EnemyCnt;
 		Destroy(gameObj);
 	}
 
@@ -71,14 +77,6 @@ void CEnemyController::Update()
 						dstAngle -= 360;
 				}
 			}
-			/*if (temp > 360) temp -= 360;*/
-			//if (dstAngle >= 360.0 && firstAngle <= 180.0)
-			//{
-			//	if(firstAngle < 180.0) dstAngle = Clamp(dstAngle - 360.0, 0.0, 360.0);
-			//}
-			//if (firstAngle < 90 && dstAngle > 270) firstAngle += 360;
-			//if (dstAngle < 90 && firstAngle > 270) dstAngle += 360;
-			//if (firstAngle >= 90 && firstAngle <= 270 && dstAngle < 90) dstAngle += 360;
 		}
 
 		rate = Clamp(rate + TIME.Delta * 8, 0.0, 1.0);

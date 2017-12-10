@@ -79,12 +79,13 @@ namespace UTILITY
 	public:
 		~CTexture()
 		{
-			for (auto img : ImageList)
+			for (int i = 0; i < ImageList.size(); ++i)
 			{
-				img->Tex->Release();
-				delete img;
+				ImageList[i]->Tex->Release();
+				delete ImageList[i];
 			}
 			ImageList.clear();
+			ImageList.resize(0);
 		}
 	};
 

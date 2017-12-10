@@ -15,6 +15,7 @@ constexpr double UpdateTime = 0.01;
 enum TAG
 {
 	Tag_Default,
+	Tag_Manager,
 	Tag_Player,
 	Tag_Enemy,
 	Tag_Ammo,
@@ -41,8 +42,11 @@ enum SCENE
 {
 	SCENE_START,
 	SCENE_MAIN,
-	SCENE_LOAD,
+	SCENE_LOADSTART,
+	SCENE_LOADING,
+	SCENE_LOADEND,
 	SCENE_GAME,
+	SCENE_GAMEOVER,
 	SCENE_EXIT
 };
 

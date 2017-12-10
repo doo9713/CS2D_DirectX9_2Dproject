@@ -5,6 +5,8 @@
 class CEnemyController : public CController
 {
 	RTTICHECK
+public :
+	static int EnemyCnt;
 private :
 	float ViewLength;
 	double rate;

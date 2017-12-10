@@ -137,8 +137,11 @@ void UTILITY::CTextureList::Load(const char* Key, const char* Path, const char* 
 
 void UTILITY::CTextureList::Clear()
 {
-	for (auto tex : Texture)
-		delete tex.second;
+	for (auto tex = Texture.begin(); tex != Texture.end(); ++tex)
+	{
+		delete tex->second;
+		tex->second = nullptr;
+	}
 	Texture.clear();
 }
 

@@ -14,6 +14,8 @@
 
 RTTILINK(CPlayerController, CController)
 
+bool CPlayerController::Alive = true;
+
 void CPlayerController::Start()
 {
 	Health = 100;
@@ -100,7 +102,10 @@ void CPlayerController::Update()
 {
 	/* 플래이어 죽음 */
 	if (Health == 0)
+	{
+		Alive = false;
 		Destroy(gameObj);
+	}
 
 	/* 플래이어가 마우스 좌표를 바라봄 */
 	VECTOR3 Mouse = GetMousePosition();
@@ -331,8 +336,8 @@ CPlayerController::CPlayerController(CGameObj* Owner)
 	TotalBullet = new UINT(Weapon_End);
 	MagazineBullet = new UINT(Weapon_End);
 
-	TotalBullet[Weapon_AutoGun] = 270;
-	TotalBullet[Weapon_ShotGun] = 45;
+	TotalBullet[Weapon_AutoGun] = 150;
+	TotalBullet[Weapon_ShotGun] = 15;
 	TotalBullet[Weapon_Change] = 0;
 	MagazineBullet[Weapon_AutoGun] = 30;
 	MagazineBullet[Weapon_ShotGun] = 5;
@@ -349,15 +354,15 @@ void CPlayerController::AddBullet(UINT type)
 	switch (type)
 	{
 	case 0 :
-		TotalBullet[Weapon_AutoGun] += 60;
-		TotalBullet[Weapon_ShotGun] += 10;
-		GrenadeCnt = Clamp(GrenadeCnt + 1, 0, 5);
+		TotalBullet[Weapon_AutoGun] += 30;
+		TotalBullet[Weapon_ShotGun] += 5;
+		GrenadeCnt = Clamp(GrenadeCnt + 2, 0, 5);
 		break;
 	case 1 :
-		TotalBullet[Weapon_AutoGun] += 60;
+		TotalBullet[Weapon_AutoGun] += 30;
 		break;
 	case 2 :
-		TotalBullet[Weapon_ShotGun] += 10;
+		TotalBullet[Weapon_ShotGun] += 5;
 		break;
 	default :
 		break;

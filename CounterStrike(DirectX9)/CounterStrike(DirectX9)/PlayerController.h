@@ -7,6 +7,8 @@ class CSpriteRender;
 class CPlayerController : public CController
 {
 	RTTICHECK
+public :
+	static bool Alive;
 private :
 	bool IsReloading;
 	CSpriteRender* WaitingBar[2]; // 0 -> ¹è°æ, 1 -> ¹Ù

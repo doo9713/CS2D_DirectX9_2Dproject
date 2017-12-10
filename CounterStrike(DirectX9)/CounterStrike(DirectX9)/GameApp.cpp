@@ -11,6 +11,7 @@
 #include "HealthItem.h"
 #include "ArmorItem.h"
 #include "BulletItem.h"
+#include "GameManger.h"
 
 void CGameApp::Initialize()
 {
@@ -19,13 +20,18 @@ void CGameApp::Initialize()
 	CBoxCollider* box;
 
 #pragma region Map obj Init
+	/* Make Game Manager */
+	obj = GAMEOBJ.AddGameObj("GameManager", Tag_UI, Layer_UI);
+	obj->AddComponent<CGameManger>();
+	obj->Position = VECTOR3(-600, 300);
+
 	/* Make BackGround */
 	obj = GAMEOBJ.AddGameObj("BackGround", Tag_Enviroment, Layer_Background);
 	obj->Position = VECTOR3(0, 0);
 	csr = obj->AddComponent<CSpriteRender>();
 	csr->RenderKey = "BackGround";
 
-	///* Make Wall */
+	/* Make Wall */
 	//MakeWall(0, 875, 3000, 50);
 	//MakeWall(0, -875, 3000, 50);
 	//MakeWall(1475, 0, 50, 1800);
@@ -116,7 +122,7 @@ void CGameApp::Initialize()
 	//MakeBox(175, -725);
 	//MakeBox(125, -725);
 
-	///* Make Other Obj */
+	///* Make Tree Obj */
 	//MakeTree(-75, 75);
 	//MakeTree(-160, 580);
 	//MakeTree(-330, 190);
@@ -140,8 +146,33 @@ void CGameApp::Initialize()
 	//MakeTree(-740, -600);
 	//MakeTree(-770, -770);
 	//MakeTree(-1030, -680);
-#pragma endregion
 
+	//MakeTree(240, 620);
+	//MakeTree(320, 540);
+	//MakeTree(390, 730);
+	//MakeTree(500, 600);
+	//MakeTree(480, 250);
+	//MakeTree(250, 140);
+	//MakeTree(910, 130);
+	//MakeTree(920, 420);
+	//MakeTree(1100, 350);
+	//MakeTree(1270, 400);
+	//MakeTree(1330, 260);
+
+	//MakeTree(180, -260);
+	//MakeTree(300, -600);
+	//MakeTree(360, -300);
+	//MakeTree(780, -280);
+	//MakeTree(960, -190);
+	//MakeTree(1170, -220);
+	//MakeTree(1320, -340);
+
+	///* Make Other Obj */
+	//MakeTank(-200, 300, 50, 80);
+	//MakeTank(850, 570, 170, 130);
+	//MakeBoat(600, -550, 250);
+	//MakeBoat(760, -500, 2000);
+#pragma endregion
 
 #pragma region Character Obj Init
 	// TODO : Game Initialize Code
@@ -161,11 +192,6 @@ void CGameApp::Initialize()
 #pragma endregion
 
 #pragma region UI Init
-	// TODO : UI Initialize Code
-	TEXTURE.Load("Symbol", "../Resource/Texture/Ui/Symbol");
-	TEXTURE.Load("Number", "../Resource/Texture/Ui/Number");
-	TEXTURE.Load("Bar", "../Resource/Texture/Ui/");
-
 	obj = GAMEOBJ.AddGameObj("Health", Tag_UI, Layer_UI);
 	obj->Position = VECTOR3(-760, -420);
 	csr = obj->AddComponent<CSpriteRender>();
@@ -177,12 +203,6 @@ void CGameApp::Initialize()
 	csr = obj->AddComponent<CSpriteRender>();
 	csr->RenderKey = "Symbol";
 	csr->Page = 1;
-
-	//obj = GAMEOBJ.AddGameObj("Timer", Tag_UI, Layer_UI);
-	//obj->Position = VECTOR3(-100, -420);
-	//csr = obj->AddComponent<CSpriteRender>();
-	//csr->RenderKey = "Symbol";
-	//csr->Page = 2;
 #pragma endregion
 
 #pragma region Font
@@ -226,8 +246,7 @@ void CGameApp::Initialize()
 	csr->RenderKey = "Item";
 	csr->Page = 1;
 
-	MakeTank(-200, 300, 50, 80);
-	MakeBoat(600, -550, 250);
+	gSceneCtrl = SCENE_GAME;
 #pragma endregion
 }
 

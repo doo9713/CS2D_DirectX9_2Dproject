@@ -52,19 +52,16 @@ int APIENTRY WinMain(HINSTANCE Inst, HINSTANCE PrevInst,
 	TimeClass TimeC;
 	double FTime = 0;
 	double UTime = 0;
+
 	// TODO : App Initialize Code
 	gSceneCtrl = SCENE_START;
 	CMenuApp Menu;
 	CLoadApp Load;
 	CGameApp Game;
-	//Game.Initialize();
-	//Menu.Initialize();
 
 	while (true)
 	{
 		TimeC.SetTimer();
-		FTime += TimeC.RealTime;
-		UTime += TimeC.RealTime;
 		if (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE))
 		{
 			if (msg.message == WM_QUIT)
@@ -73,25 +70,29 @@ int APIENTRY WinMain(HINSTANCE Inst, HINSTANCE PrevInst,
 			DispatchMessage(&msg);
 		}
 
-		if (UTime > UpdateTime)
+		if (UTime > UpdateTime || UTime == 0)
 		{
 			UTime -= UpdateTime;
 			// TODO : App Update Code
-			//Game.Update();
-			//Menu.Update();
 			switch (gSceneCtrl)
 			{
 			case SCENE_START :
 				Menu.Initialize();
-				gSceneCtrl = SCENE_MAIN;
 			case SCENE_MAIN :
 				Menu.Update();
 				break;
-			case SCENE_LOAD :
+			case SCENE_LOADSTART :
 				Load.Initialize();
+			case SCENE_LOADING :
+				Load.Update();
+				break;
+			case SCENE_LOADEND :
 				Game.Initialize();
 			case SCENE_GAME :
 				Game.Update();
+				break;
+			case SCENE_GAMEOVER :
+				Menu.Initialize();
 				break;
 			case SCENE_EXIT :
 				return (int)msg.wParam;;
@@ -100,18 +101,17 @@ int APIENTRY WinMain(HINSTANCE Inst, HINSTANCE PrevInst,
 			}
 		}
 
-		if (FTime > FrameTime)
+		if (FTime > FrameTime || FTime == 0)
 		{
 			FTime -= FrameTime;
 			// TODO : App Render Code
-			//Game.Render();
-			//Menu.Render();
 			switch (gSceneCtrl)
 			{
 			case SCENE_MAIN:
 				Menu.Render();
 				break;
-			case SCENE_LOAD:
+			case SCENE_LOADING:
+				Load.Render();
 				break;
 			case SCENE_GAME:
 				Game.Render();
@@ -122,6 +122,8 @@ int APIENTRY WinMain(HINSTANCE Inst, HINSTANCE PrevInst,
 				break;
 			}
 		}
+		FTime += TimeC.RealTime;
+		UTime += TimeC.RealTime;
 	}
 
 	return (int)msg.wParam;

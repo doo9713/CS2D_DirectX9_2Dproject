@@ -21,7 +21,7 @@ void CStartButton::OutButton()
 
 void CStartButton::ClickButton()
 {
-	gSceneCtrl = SCENE_LOAD;
+	gSceneCtrl = SCENE_LOADSTART;
 }
 
 CStartButton::CStartButton(CGameObj* Owner)

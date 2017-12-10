@@ -1,29 +1,28 @@
 #include "LoadApp.h"
 #include "GameObjList.h"
+#include "GameObj.h"
+#include "SpriteRender.h"
 #include "AnimClipList.h"
+#include "LoadManager.h"
 
 void CLoadApp::Initialize()
 {
-	GAMEOBJ.Clear();
 	TEXTURE.Clear();
+	GAMEOBJ.Clear();
 
-	TEXTURE.Load("Text", "../Resource/Texture/Text");
-	TEXTURE.Load("BackGround", "../Resource/Texture/Map");
-	TEXTURE.Load("Player", "../Resource/Texture/Player");
-	TEXTURE.Load("Enemy", "../Resource/Texture/Enemy");
-	TEXTURE.Load("Box", "../Resource/Texture/Object/Box");
-	TEXTURE.Load("Ammo", "../Resource/Texture/Ammo");
-	TEXTURE.Load("GunFire", "../Resource/Texture/Effect/GunFire");
-	TEXTURE.Load("Explosion", "../Resource/Texture/Effect/Explosion");
-	TEXTURE.Load("BodyPart", "../Resource/Texture/BodyPart");
-	TEXTURE.Load("Tree", "../Resource/Texture/Object/Tree");
-	TEXTURE.Load("Vehicle", "../Resource/Texture/Object/Vehicle");
-	TEXTURE.Load("Item", "../Resource/Texture/Object/Item"); // page : 0 -> C4, 1 -> Bag, 2 -> Armor, 3 -> Health, 4 -> AutoGun, 5 -> ShotGun
+	CGameObj* obj;
+	CSpriteRender* csr;
 
-	ANIMCLIP.OnLoad("GunFireEffect", "../Resource/AnimClip/GunFire.Clip");
-	ANIMCLIP.OnLoad("ExplosionEffect", "../Resource/AnimClip/Explosion.Clip");
+	TEXTURE.Load("Loading", "../Resource/Texture/BackGround");
+	TEXTURE.Load("Bar", "../Resource/Texture/Ui/");
 
-	gSceneCtrl = SCENE_GAME;
+	obj = GAMEOBJ.AddGameObj("LoadingManager", Tag_Manager, Layer_Background);
+	obj->AddComponent<CLoadManager>();
+	csr = obj->AddComponent<CSpriteRender>();
+	csr->RenderKey = "Loading";
+	csr->Page = 1;
+
+	gSceneCtrl = SCENE_LOADING;
 }
 
 CLoadApp::CLoadApp()

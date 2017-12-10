@@ -18,7 +18,7 @@ void CGrenade::Start()
 void CGrenade::Update()
 {
 	gameObj.Position += Dir * TIME.Delta * Speed;
-	Speed -= 2;
+	//Speed -= 1;
 	gameObj.Angle = ClampCycle(gameObj.Angle + TIME.Delta * 500, 0.0, 360.0);
 }
 
@@ -51,7 +51,7 @@ void CGrenade::Explosion()
 {
 	auto explo = GAMEOBJ.AddGameObj("Explosion", Tag_Effect, Layer_Effect);
 	explo->Position = gameObj.Position;
-	explo->Scale = VECTOR3(2.5, 2.5);
+	explo->Scale = VECTOR3(4, 4);
 
 	auto box = explo->AddComponent<CBoxCollider>();
 	box->Size = VECTOR3(25, 25);

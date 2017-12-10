@@ -7,12 +7,22 @@
 
 void CMenuApp::Initialize()
 {
-	DRX.Init(hWnd, false);
-	FONT.Init();
+	if (gSceneCtrl == SCENE_GAMEOVER)
+	{
+		TEXTURE.Clear();
+		GAMEOBJ.Clear();
 
-	MATRIX Projection;
-	D3DXMatrixOrthoLH(&Projection, ScreenWidth, ScreenHeight, 0, 1);
-	DRX->SetTransform(D3DTS_PROJECTION, &Projection);
+		DRX.Camera(0, 0);
+	}	
+	else
+	{
+		DRX.Init(hWnd, false);
+		FONT.Init();
+
+		MATRIX Projection;
+		D3DXMatrixOrthoLH(&Projection, ScreenWidth, ScreenHeight, 0, 1);
+		DRX->SetTransform(D3DTS_PROJECTION, &Projection);
+	}
 
 	CGameObj* obj;
 	CSpriteRender* csr;
@@ -25,8 +35,11 @@ void CMenuApp::Initialize()
 	TEXTURE.Load("Menu", "../Resource/Texture/Menu");
 	TEXTURE.Load("Title", "../Resource/Texture/Title");
 
-	SHADER.OnLoad("Default", "../Resource/Effect/Default.fx");
-	FONT.FontLoad("Default", 0, "../Resource/Font/Font_01.txt");
+	if (gSceneCtrl == SCENE_START)
+	{
+		SHADER.OnLoad("Default", "../Resource/Effect/Default.fx");
+		FONT.FontLoad("Default", 0, "../Resource/Font/Font_01.txt");
+	}	
 #pragma endregion
 
 #pragma region Menu Init
@@ -35,7 +48,7 @@ void CMenuApp::Initialize()
 	csr = obj->AddComponent<CSpriteRender>();
 	csr->RenderKey = "BackGround";
 
-	obj = GAMEOBJ.AddGameObj("Title", Tag_Default, Layer_Background);
+	obj = GAMEOBJ.AddGameObj("Title", Tag_UI, Layer_UI);
 	obj->Position = VECTOR3(-300, 300);
 	csr = obj->AddComponent<CSpriteRender>();
 	csr->RenderKey = "Title";
@@ -61,6 +74,8 @@ void CMenuApp::Initialize()
 	bt = obj->AddComponent<CExitButton>();
 	bt->Size = VECTOR3(120, 35);
 #pragma  endregion
+
+	gSceneCtrl = SCENE_MAIN;
 }
 
 CMenuApp::CMenuApp()

@@ -1,4 +1,154 @@
-﻿  GameApp.cpp
-d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\gameapp.cpp(390): warning C4244: '=': 'int'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+﻿  GameManger.cpp
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\directx.h(82): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+  코드를 생성하고 있습니다...
+  컴파일하고 있습니다...
+  UpMove.cpp
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\directx.h(82): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\upmove.cpp(8): warning C4244: '+=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  UIButton.cpp
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\directx.h(82): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+  StartButton.cpp
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\directx.h(82): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+  SpriteRender.cpp
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\directx.h(82): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\spriterender.cpp(12): warning C4244: '=': 'double'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\spriterender.cpp(13): warning C4244: '=': 'double'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\spriterender.cpp(14): warning C4244: '=': 'double'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\spriterender.cpp(19): warning C4244: '=': 'double'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\spriterender.cpp(20): warning C4244: '=': 'double'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\spriterender.cpp(21): warning C4244: '=': 'double'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\spriterender.cpp(22): warning C4244: '=': 'double'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\spriterender.cpp(27): warning C4244: '=': 'double'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\spriterender.cpp(28): warning C4244: '=': 'double'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\spriterender.cpp(29): warning C4244: '=': 'double'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\spriterender.cpp(30): warning C4244: '=': 'double'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\spriterender.cpp(35): warning C4244: '=': 'double'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\spriterender.cpp(36): warning C4244: '=': 'double'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\spriterender.cpp(37): warning C4244: '=': 'double'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\spriterender.cpp(38): warning C4244: '=': 'double'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  ShotGunItem.cpp
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\directx.h(82): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+  Rigid.cpp
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\directx.h(82): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\rigid.cpp(31): warning C4244: '인수': 'double'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  RightMove.cpp
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\directx.h(82): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\rightmove.cpp(8): warning C4244: '+=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  PlayerController.cpp
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\directx.h(82): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\playercontroller.cpp(55): warning C4305: '인수': 'double'에서 'float'(으)로 잘립니다.
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\playercontroller.cpp(64): warning C4305: '인수': 'double'에서 'float'(으)로 잘립니다.
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\playercontroller.cpp(71): warning C4305: '인수': 'double'에서 'float'(으)로 잘립니다.
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\playercontroller.cpp(149): warning C4305: '인수': 'double'에서 'float'(으)로 잘립니다.
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\playercontroller.cpp(164): warning C4305: '인수': 'double'에서 'float'(으)로 잘립니다.
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\playercontroller.cpp(174): warning C4305: '인수': 'double'에서 'float'(으)로 잘립니다.
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\playercontroller.cpp(183): warning C4305: '인수': 'double'에서 'float'(으)로 잘립니다.
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\playercontroller.cpp(183): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\playercontroller.cpp(250): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\playercontroller.cpp(265): warning C4305: '인수': 'double'에서 'float'(으)로 잘립니다.
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\playercontroller.cpp(265): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Move.cpp
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\directx.h(82): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+  MenuApp.cpp
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\directx.h(82): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\menuapp.cpp(23): warning C4244: '인수': 'const UINT'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Main.cpp
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\directx.h(82): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+  LoadManager.cpp
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\directx.h(82): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\loadmanager.cpp(14): warning C4305: '인수': 'double'에서 'float'(으)로 잘립니다.
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\loadmanager.cpp(32): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  LoadApp.cpp
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\directx.h(82): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+  LeftMove.cpp
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\directx.h(82): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\leftmove.cpp(8): warning C4244: '-=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Item.cpp
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\directx.h(82): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+  HealthItem.cpp
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\directx.h(82): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+  Grenade.cpp
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\directx.h(82): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\grenade.cpp(20): warning C4244: '인수': 'double'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\grenade.cpp(20): warning C4244: '인수': 'UINT'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\grenade.cpp(22): warning C4244: '=': 'double'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  GameObjList.cpp
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\directx.h(82): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+  GameObj.cpp
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\directx.h(82): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+  GameApp.cpp
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\directx.h(82): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\gameapp.cpp(377): warning C4244: '=': 'int'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  코드를 생성하고 있습니다...
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\playercontroller.cpp(463): warning C4715: 'CPlayerController::PositionNum': 모든 제어 경로에서 값을 반환하지는 않습니다.
+  컴파일하고 있습니다...
+  ExplosionEffect.cpp
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\directx.h(82): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+  ExitButton.cpp
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\directx.h(82): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+  EnemyController.cpp
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\directx.h(82): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\enemycontroller.cpp(83): warning C4244: '=': 'double'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\enemycontroller.cpp(113): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\enemycontroller.cpp(132): warning C4244: '인수': 'double'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  EffectEvent.cpp
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\directx.h(82): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+  DownMove.cpp
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\directx.h(82): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\downmove.cpp(8): warning C4244: '-=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  DirectX.cpp
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\directx.h(82): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\directx.cpp(121): warning C4244: '인수': 'UINT'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\directx.cpp(166): warning C4244: '=': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\directx.cpp(167): warning C4244: '=': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\directx.cpp(169): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(205): note: 'fopen' 선언을 참조하십시오.
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\directx.cpp(174): warning C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1193): note: 'fscanf' 선언을 참조하십시오.
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\directx.cpp(209): warning C4244: '+=': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\directx.cpp(226): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\directx.cpp(229): warning C4244: '+=': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\directx.cpp(230): warning C4244: '-=': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Controller.cpp
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\directx.h(82): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\controller.cpp(24): warning C4244: '=': 'double'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\controller.cpp(32): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\controller.cpp(46): warning C4244: '=': 'double'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\controller.cpp(54): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Component.cpp
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\directx.h(82): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+  BulletItem.cpp
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\directx.h(82): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+  Bullet.cpp
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\directx.h(82): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\bullet.cpp(15): warning C4244: '인수': 'double'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\bullet.cpp(15): warning C4244: '인수': 'UINT'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  BoxCollider.cpp
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\directx.h(82): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\boxcollider.cpp(55): warning C4244: '인수': 'double'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\boxcollider.cpp(64): warning C4244: '인수': 'double'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\boxcollider.cpp(73): warning C4244: '인수': 'double'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\boxcollider.cpp(82): warning C4244: '인수': 'double'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  AutoGunItem.cpp
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\directx.h(82): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+  ArmorItem.cpp
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\directx.h(82): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+  App.cpp
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\directx.h(82): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+  Animation.cpp
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\directx.h(82): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+  AnimClipList.cpp
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\directx.h(82): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+  AnimClip.cpp
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\directx.h(82): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\animclip.cpp(5): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(205): note: 'fopen' 선언을 참조하십시오.
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\animclip.cpp(10): warning C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1193): note: 'fscanf' 선언을 참조하십시오.
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\animclip.cpp(16): warning C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1193): note: 'fscanf' 선언을 참조하십시오.
+  Ammo.cpp
+d:\문서\github\cs2d_directx9_2dproject\counterstrike(directx9)\counterstrike(directx9)\directx.h(82): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+  코드를 생성하고 있습니다...
   CounterStrike(DirectX9).vcxproj -> D:\문서\GitHub\CS2D_DirectX9_2Dproject\CounterStrike(DirectX9)\Debug\CounterStrike(DirectX9).exe
   CounterStrike(DirectX9).vcxproj -> D:\문서\GitHub\CS2D_DirectX9_2Dproject\CounterStrike(DirectX9)\Debug\CounterStrike(DirectX9).pdb (Full PDB)
