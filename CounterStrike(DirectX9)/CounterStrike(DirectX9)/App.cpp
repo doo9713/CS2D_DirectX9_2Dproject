@@ -1,5 +1,6 @@
 #include "App.h"
 #include "GameObjList.h"
+#include "GameSound.hpp"
 
 void CApp::Update()
 {
@@ -13,6 +14,9 @@ void CApp::Render()
 	DRX.Begin();
 	GAMEOBJ.Render();
 	DRX.End();
+
+	GameSound Snd;
+	Snd->Update();
 }
 
 CApp::CApp()

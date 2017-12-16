@@ -2,13 +2,14 @@
 #include "GameObj.h"
 #include "EnemyController.h"
 #include "PlayerController.h"
+#include "GameSound.hpp"
 
 RTTILINK(CGameManger, CComponent)
 
 void CGameManger::Start()
 {
-	FONT.WordScale = VECTOR3(8, 8);
-	FONT.WordSpace = 5.f;
+	FONT.WordScale = VECTOR3(4, 4);
+	FONT.WordJump = 10;
 }
 
 void CGameManger::Update()
@@ -26,6 +27,10 @@ void CGameManger::Update()
 
 	if (IsOver && KEY.Push(VK_SPACE))
 	{
+		GameSound Snd;
+		Snd->Stop("Game");
+		Snd->Close();
+
 		gSceneCtrl = SCENE_GAMEOVER;
 	}
 }

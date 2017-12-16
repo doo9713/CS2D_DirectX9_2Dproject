@@ -11,6 +11,7 @@
 #include "DownMove.h"
 #include "Animation.h"
 #include "Rigid.h"
+#include "GameSound.hpp"
 
 RTTILINK(CPlayerController, CController)
 
@@ -18,6 +19,7 @@ bool CPlayerController::Alive = true;
 
 void CPlayerController::Start()
 {
+	Alive = true;
 	Health = 100;
 	Armor = 100;
 
@@ -103,6 +105,11 @@ void CPlayerController::Update()
 	/* ÇÃ·¡ÀÌ¾î Á×À½ */
 	if (Health == 0)
 	{
+		GameSound Snd;
+		Snd->Play("Pain");
+
+		for (int i = 0; i < 6; ++i)
+			MakeBlood();
 		Alive = false;
 		Destroy(gameObj);
 	}
@@ -137,6 +144,9 @@ void CPlayerController::Update()
 	/* ÃÑ ±³È¯ */
 	if (Weapon != Weapon_AutoGun && KEY.Push('1'))
 	{
+		GameSound Snd;
+		Snd->Play("Reload1");
+
 		Anim->AnimationName = "";
 		TotalBullet[Weapon] += Bullet;
 		Bullet = 0;
@@ -152,6 +162,9 @@ void CPlayerController::Update()
 	}
 	if (Weapon != Weapon_ShotGun && KEY.Push('2'))
 	{
+		GameSound Snd;
+		Snd->Play("Reload1");
+
 		Anim->AnimationName = "";
 		TotalBullet[Weapon] += Bullet;
 		Bullet = 0;
@@ -169,6 +182,9 @@ void CPlayerController::Update()
 	/* ÃÑ ÀåÀü */
 	if (KEY.Push('R'))
 	{
+		GameSound Snd;
+		Snd->Play("Reload1");
+
 		WaitingBar[0]->RenderKey = "Bar";
 		WaitingBar[1]->RenderKey = "Bar";
 		WaitingBar[1]->gameObj.Scale = VECTOR3(0, 0.2);
@@ -199,8 +215,10 @@ void CPlayerController::Update()
 				Bullet += needBullet;
 			}
 
-			InvalidateUI();
+			GameSound Snd;
+			Snd->Play("Reload2");
 
+			InvalidateUI();
 			IsReloading = false;
 		}
 	}
@@ -212,11 +230,18 @@ void CPlayerController::Update()
 	case Weapon_AutoGun :
 		if (KEY.Push(VK_LBUTTON))
 			Time = 0;
+		if (KEY.Push(VK_LBUTTON) && Bullet == 0)
+		{
+			GameSound Snd;
+			Snd->Play("GunEmpty");
+		}
 		if (KEY.Down(VK_LBUTTON) && Bullet > 0 && !IsReloading)
 		{
 			Anim->AnimationName = "GunFireEffect";
 			if (Time > ActionTime || Time == 0)
 			{
+				GameSound Snd;
+				Snd->Play("AutoGun");
 				MakeBullet(Random(gameObj.Angle - 1, gameObj.Angle + 1));
 
 				if(Time != 0)
@@ -237,10 +262,18 @@ void CPlayerController::Update()
 			Anim->AnimationName = "";
 		break;
 	case Weapon_ShotGun :
+		if (KEY.Push(VK_LBUTTON) && Bullet == 0)
+		{
+			GameSound Snd;
+			Snd->Play("GunEmpty");
+		}
 		if (KEY.Push(VK_LBUTTON) && Bullet > 0 && !IsReloading)
 		{
 			if (Time > ActionTime || Time == 0)
 			{
+				GameSound Snd;
+				Snd->Play("ShotGun");
+
 				Anim->AnimationName = "GunFireEffect";
 				AddInvoke(CF(ShotGunEffEnd), 0.2);
 				for (; i < 4; ++i)
@@ -275,9 +308,11 @@ void CPlayerController::Update()
 	/* ¼ö·ùÅº ÅõÃ´ */
 	if (KEY.Push('F') && !IsReloading)
 	{
-		AddInvoke(CF(FireInTheHall), 1);
+		GameSound Snd;
+		Snd->Play("Pinpull");
+
+		AddInvoke(CF(FireInTheHall), 0.5);
 		GrenadeCnt = Clamp(GrenadeCnt - 1, 0, 5);
-		IsReloading = true;
 		InvalidateUI();
 	}
 }
@@ -412,6 +447,9 @@ void CPlayerController::WeaponChange(WEAPON change)
 {
 	Time = 0;
 	Weapon = change;
+
+	GameSound Snd;
+	Snd->Play("Reload2");
 
 	UINT needBullet = MagazineBullet[Weapon];
 	if (TotalBullet[Weapon] <= needBullet)

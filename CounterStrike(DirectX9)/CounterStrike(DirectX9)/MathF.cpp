@@ -74,13 +74,13 @@ double UTILITY::Lerp(double rate, double begin, double end)
 	return (end - begin) * rate + begin;
 }
 
-// 선형 보간
+// 선형 보간(백터)
 UTILITY::VECTOR3 UTILITY::Lerp(double rate, const VECTOR3& begin, const VECTOR3& end)
 {
 	return (end - begin) * rate + begin;
 }
 
-// 선형 보간
+// 선형 보간(행렬)
 UTILITY::MATRIX UTILITY::Lerp(double rate, const MATRIX& begin, const MATRIX& end)
 {
 	return D3DXMATRIX(

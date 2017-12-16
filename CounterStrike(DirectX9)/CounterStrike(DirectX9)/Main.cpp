@@ -1,6 +1,7 @@
 #include "GameApp.h"
 #include "MenuApp.h"
 #include "LoadApp.h"
+#include "resource.h"
 
 HWND hWnd;
 SCENE gSceneCtrl;
@@ -28,12 +29,12 @@ int APIENTRY WinMain(HINSTANCE Inst, HINSTANCE PrevInst,
 	wcex.cbClsExtra = 0;
 	wcex.cbWndExtra = 0;
 	wcex.hInstance = Inst;
-	wcex.hIcon = LoadIcon(Inst, IDI_APPLICATION);
-	wcex.hCursor = LoadCursor(nullptr, IDC_ARROW);
+	wcex.hIcon = LoadIcon(Inst, IDI_CSICON);
+	wcex.hCursor = LoadCursorFromFile("../Resource/ETC/mouse.cur");
 	wcex.hbrBackground = (HBRUSH)(COLOR_WINDOW + 1);
 	wcex.lpszMenuName = nullptr;
 	wcex.lpszClassName = "CoiunterStrike2D";
-	wcex.hIconSm = LoadIcon(wcex.hInstance, IDI_APPLICATION);
+	wcex.hIconSm = LoadIcon(wcex.hInstance, IDI_CSICON);
 	RegisterClassExA(&wcex);
 
 	RECT rc = { 0, 0, ScreenWidth, ScreenHeight };

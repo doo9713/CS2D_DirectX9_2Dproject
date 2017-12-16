@@ -3,6 +3,7 @@
 #include "GameObjList.h"
 #include "GameObj.h"
 #include "SpriteRender.h"
+#include "GameSound.hpp"
 
 RTTILINK(CLoadManager, CComponent)
 
@@ -28,7 +29,7 @@ void CLoadManager::Start()
 
 void CLoadManager::Update()
 {
-	rate = LoadOrder / 16;
+	rate = (double)LoadOrder / 24.0;
 	LoadingBar[1]->gameObj.Scale = VECTOR3(Clamp(rate, 0.0, 1.0), 1);
 	if (LoadOrder == 0)
 	{
@@ -108,6 +109,60 @@ void CLoadManager::Update()
 	else if (LoadOrder == 15)
 	{
 		TEXTURE.Load("Number", "../Resource/Texture/Ui/Number");
+		++LoadOrder;
+	}
+	else if (LoadOrder == 16)
+	{
+		GameSound Snd;
+		Snd->LoadSound("AutoGun", "../Resource/Sound/AutoGun.mp3", false);
+		++LoadOrder;
+	}
+	else if (LoadOrder == 17)
+	{
+		GameSound Snd;
+		Snd->LoadSound("ShotGun", "../Resource/Sound/ShotGun.mp3", false);
+		++LoadOrder;
+	}
+	else if (LoadOrder == 18)
+	{
+		GameSound Snd;
+		Snd->LoadSound("Reload1", "../Resource/Sound/Reload1.mp3", false);
+		++LoadOrder;
+	}
+	else if (LoadOrder == 19)
+	{
+		GameSound Snd;
+		Snd->LoadSound("Grenade", "../Resource/Sound/Grenade.wav", false);
+		++LoadOrder;
+	}
+	else if (LoadOrder == 20)
+	{
+		GameSound Snd;
+		Snd->LoadSound("Pinpull", "../Resource/Sound/Pinpull.wav", false);
+		++LoadOrder;
+	}
+	else if (LoadOrder == 21)
+	{
+		GameSound Snd;
+		Snd->LoadSound("Pain", "../Resource/Sound/Pain.mp3", false);
+		++LoadOrder;
+	}
+	else if (LoadOrder == 22)
+	{
+		GameSound Snd;
+		Snd->LoadSound("Game", "../Resource/Sound/Game.wav", true);
+		++LoadOrder;
+	}
+	else if (LoadOrder == 23)
+	{
+		GameSound Snd;
+		Snd->LoadSound("GunEmpty", "../Resource/Sound/GunEmpty.mp3", false);
+		++LoadOrder;
+	}
+	else if (LoadOrder == 24)
+	{
+		GameSound Snd;
+		Snd->LoadSound("Reload2", "../Resource/Sound/Reload2.mp3", false);
 		++LoadOrder;
 	}
 	else

@@ -4,9 +4,13 @@
 #include "SpriteRender.h"
 #include "AnimClipList.h"
 #include "LoadManager.h"
+#include "GameSound.hpp"
 
 void CLoadApp::Initialize()
 {
+	GameSound Snd;
+	Snd->Stop("Main");
+
 	TEXTURE.Clear();
 	GAMEOBJ.Clear();
 

@@ -4,6 +4,7 @@
 #include "SpriteRender.h"
 #include "StartButton.h"
 #include "ExitButton.h"
+#include "GameSound.hpp"
 
 void CMenuApp::Initialize()
 {
@@ -23,6 +24,14 @@ void CMenuApp::Initialize()
 		D3DXMatrixOrthoLH(&Projection, ScreenWidth, ScreenHeight, 0, 1);
 		DRX->SetTransform(D3DTS_PROJECTION, &Projection);
 	}
+
+	GameSound Snd;
+	Snd->Init(500);
+	Snd->LoadSound("Main", "../Resource/Sound/Main.mp3", true);
+	Snd->LoadSound("BtInto", "../Resource/Sound/btInto.mp3", false);
+	Snd->LoadSound("BtClick", "../Resource/Sound/btClick.mp3", false);
+	Snd->Play("Main");
+	Snd->SetVolume(50);
 
 	CGameObj* obj;
 	CSpriteRender* csr;

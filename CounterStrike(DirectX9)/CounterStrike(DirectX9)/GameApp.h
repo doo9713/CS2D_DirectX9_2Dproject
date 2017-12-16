@@ -24,5 +24,11 @@ private :
 	void MakeTank(VECTOR3 pos, float botang, float topang = 0);
 	void MakeEnemy(float posx, float posy);
 	void MakeEnemy(VECTOR3 pos);
+	void MakeBulletItem(float posx, float posy);
+	void MakeBulletItem(VECTOR3 pos);
+	void MakeArmorItem(float posx, float posy);
+	void MakeArmorItem(VECTOR3 pos);
+	void MakeHealthItem(float posx, float posy);
+	void MakeHealthItem(VECTOR3 pos);
 };
 

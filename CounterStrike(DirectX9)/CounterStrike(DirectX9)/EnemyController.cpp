@@ -12,6 +12,7 @@
 #include "AutoGunItem.h"
 #include "ShotGunItem.h"
 #include "Rigid.h"
+#include "GameSound.hpp"
 
 RTTILINK(CEnemyController, CController)
 
@@ -20,6 +21,7 @@ int CEnemyController::EnemyCnt = 0;
 void CEnemyController::Start()
 {
 	++EnemyCnt;
+
 	/* 플레이어 게임 오브젝트를 찾는다 */
 	Target = GAMEOBJ.FindGameObj("Player", Tag_Player);
 	if (Target == nullptr)
@@ -47,6 +49,9 @@ void CEnemyController::Update()
 	/* 캐릭터 죽음 */
 	if (Health == 0)
 	{
+		GameSound Snd;
+		Snd->Play("Pain");
+
 		for (int i = 0; i < 6; ++i)
 			MakeBlood();
 		int temp = Random(0, 9);
@@ -94,6 +99,10 @@ void CEnemyController::Update()
 				Anim->AnimationName = "GunFireEffect";
 				if (Time > ActionTime)
 				{
+					GameSound Snd;
+					Snd->Play("AutoGun");
+					//Snd->SetVolume(50);
+
 					MakeBullet(Random(gameObj.Angle - 2, gameObj.Angle + 2));
 
 					if (Time != 0)
@@ -104,6 +113,10 @@ void CEnemyController::Update()
 			{
 				if (Time > ActionTime)
 				{
+					GameSound Snd;
+					Snd->Play("ShotGun");
+					//Snd->SetVolume(50);
+
 					Anim->AnimationName = "GunFireEffect";
 					AddInvoke(CF(ShotGunEffEnd), 0.2);
 					for (int i = -3; i < 4; ++i)

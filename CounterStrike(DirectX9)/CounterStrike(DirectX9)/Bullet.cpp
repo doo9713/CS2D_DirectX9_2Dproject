@@ -6,7 +6,7 @@ RTTILINK(CBullet, CAmmo)
 
 void CBullet::Start()
 {
-	AddInvoke(OCF(Destroy, gameObj), 1);
+	AddInvoke(OCF(Destroy, gameObj), 0.7);
 	Speed = 900;
 }
 

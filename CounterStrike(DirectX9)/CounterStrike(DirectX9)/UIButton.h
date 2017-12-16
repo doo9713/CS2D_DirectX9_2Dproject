@@ -6,6 +6,8 @@ class CSpriteRender;
 class CUIButton : public CComponent
 {
 	RTTICHECK
+private :
+	bool CursorIn;
 protected :
 	CSpriteRender* csr;
 public :

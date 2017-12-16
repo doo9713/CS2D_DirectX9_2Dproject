@@ -6,6 +6,7 @@
 #include "ExplosionEffect.h"
 #include "BoxCollider.h"
 #include "Rigid.h"
+#include "GameSound.hpp"
 
 RTTILINK(CGrenade, CAmmo)
 
@@ -27,14 +28,6 @@ void CGrenade::OnCollisionEnter(CGameObj* Other)
 	if (Other != Shooter)
 	{
 		Explosion();
-		//if (Other->Tag == Tag_Enemy)
-		//	Explosion();
-		//else
-		//{
-		//	AddInvoke(CF(Explosion), 0.5);
-		//	Dir *= -1;
-		//	Speed = 75;
-		//}
 	}
 }
 
@@ -49,6 +42,9 @@ CGrenade::~CGrenade()
 
 void CGrenade::Explosion()
 {
+	GameSound Snd;
+	Snd->Play("Grenade");
+
 	auto explo = GAMEOBJ.AddGameObj("Explosion", Tag_Effect, Layer_Effect);
 	explo->Position = gameObj.Position;
 	explo->Scale = VECTOR3(4, 4);
